@@ -21,6 +21,7 @@ public class Enemy : Entity
     [SerializeField] private float damage;
     [SerializeField] private float aggroRange;
     [SerializeField] private float attackRange;
+    [SerializeField] private bool isAttacking = false;
 
     private void Start()
     {
@@ -42,8 +43,19 @@ public class Enemy : Entity
             rb.velocity = new Vector3(diff.x, 0, diff.z).normalized * moveSpeed;
         }
         if (distance < attackRange)
-        {            
+        {
+            shouldMove = false;
+            rb.velocity = Vector3.zero;
             AttackPlayer();
+        }
+        else if (!isAttacking)
+        {
+            shouldMove = true;
+        }
+
+        if (attackCDTimer > 0)
+        {
+            attackCDTimer -= Time.deltaTime;
         }
     }
 
@@ -51,11 +63,9 @@ public class Enemy : Entity
     {
         if (attackCDTimer > 0)
         {
-            attackCDTimer -= Time.deltaTime;
             return;
         }
-
-        StartCoroutine(StopToAttack());
+        StartCoroutine(HandleAttackCheck());
         enemyAttackRotator.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
         //Spawn the attack effect
@@ -67,13 +77,12 @@ public class Enemy : Entity
         attackCDTimer = attackCD;
     }
 
-    private IEnumerator StopToAttack()
+    private IEnumerator HandleAttackCheck()
     {
-        shouldMove = false;
-        rb.velocity = Vector3.zero;
+        isAttacking = true;
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
-        shouldMove = true;
+        isAttacking = false;
     }
 
     public override IEnumerator DeathSequence()

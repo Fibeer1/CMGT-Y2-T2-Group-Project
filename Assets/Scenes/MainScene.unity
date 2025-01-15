@@ -126221,6 +126221,7 @@ MonoBehaviour:
   swordSwingRotator: {fileID: 1586576237}
   swordSwingCDTimer: 0.5
   swordSwingCooldown: 0.5
+  autoswing: 0
 --- !u!65 &629317925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127594,7 +127595,8 @@ MonoBehaviour:
   attackCD: 1
   damage: 10
   aggroRange: 10
-  attackRange: 1.5
+  attackRange: 1
+  isAttacking: 0
 --- !u!4 &1621920899
 Transform:
   m_ObjectHideFlags: 0
