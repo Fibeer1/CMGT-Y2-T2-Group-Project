@@ -70,15 +70,15 @@ public class Enemy : Entity
 
         //Spawn the attack effect
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
-            enemyAttackRotator.position + enemyAttackRotator.forward / 3, enemyAttackRotator.rotation, transform);
+            enemyAttackRotator.position + enemyAttackRotator.forward / 2.5f, enemyAttackRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
         swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnTransform = enemyAttackRotator;
-        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = enemyAttackRotator.forward / 3;
+        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = enemyAttackRotator.forward / 2.5f;
         attackCDTimer = attackCD;
     }
 
     private IEnumerator HandleAttackCheck()
-    {
+    {        
         isAttacking = true;
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
