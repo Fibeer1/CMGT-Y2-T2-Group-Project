@@ -9,6 +9,12 @@ public class MeleeAttackTrigger : Projectile
     public Transform spawnTransform;
     public Vector3 spawnOffset;
 
+    [Header("Text Variables")]
+    [SerializeField] private Color textColor = new Color(0.35f, 0, 0);
+    [SerializeField] private float textSize = 3;
+    [SerializeField] private float textFadeDuration = 0.1f;
+    [SerializeField] private float textLifetime = 0.5f;
+
     public override void InitializeProjectile(Entity pOrigin, float pDamage)
     {
         base.InitializeProjectile(pOrigin, pDamage);
@@ -27,6 +33,7 @@ public class MeleeAttackTrigger : Projectile
         Entity collisionEntity = collision.transform.GetComponent<Entity>();
         if (collisionEntity != null && origin.allegiance != collisionEntity.allegiance)
         {
+            TextPopUp3D.PopUpText(transform.position, damage.ToString(), textSize, textColor, textFadeDuration, textLifetime);
             collisionEntity.ChangeHealth(damage);
         }
     }
