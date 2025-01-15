@@ -33,7 +33,7 @@ public class MeleeAttackTrigger : Projectile
         Entity collisionEntity = collision.transform.GetComponent<Entity>();
         if (collisionEntity != null && origin.allegiance != collisionEntity.allegiance)
         {
-            TextPopUp3D.PopUpText(transform.position, damage.ToString(), textSize, textColor, textFadeDuration, textLifetime);
+            TextPopUp3D.PopUpText(collision.transform.position + Vector3.up / 2, damage.ToString(), textSize, textColor, textFadeDuration, textLifetime);
             collisionEntity.ChangeHealth(damage);
         }
     }
