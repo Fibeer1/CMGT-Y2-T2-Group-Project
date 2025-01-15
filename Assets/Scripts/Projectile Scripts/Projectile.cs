@@ -23,10 +23,14 @@ public class Projectile : MonoBehaviour
         Physics.IgnoreCollision(GetComponent<Collider>(), pOrigin.GetComponent<Collider>());
     }
 
+    private protected void HandleMovement()
+    {
+        rb.velocity = transform.right * speed;
+    }
+
     private protected void HandleLifeTime()
     {
         lifeTime -= Time.deltaTime;
-        rb.velocity = transform.right * speed;
         if (lifeTime <= 0)
         {
             DestroyProjectile();

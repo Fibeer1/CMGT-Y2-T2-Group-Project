@@ -91,9 +91,12 @@ public class Player : Entity
             }
 
             //Spawn the sword swing effect
-            GameObject swordSwingInstance = Instantiate(swordSwingPrefab, 
-                swordSwingRotator.position + swordSwingRotator.forward / 3, swordSwingRotator.rotation, transform);
+            Vector3 spawnPosition = swordSwingRotator.position + swordSwingRotator.forward / 3;
+            GameObject swordSwingInstance = Instantiate(swordSwingPrefab,
+                spawnPosition, swordSwingRotator.rotation); ;
             swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+            swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnTransform = swordSwingRotator;
+            swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = swordSwingRotator.forward / 3;
             swordSwingCDTimer = swordSwingCooldown;
         }
     }

@@ -252,5 +252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothTime: 0.3
+  moveSpeed: 3.5
+  smoothTime: 0.2
   bloodGainAmount: 5

@@ -5,8 +5,15 @@ using UnityEngine;
 public class Pickupable : MonoBehaviour
 {
     public Transform target;
+    [SerializeField] private float moveSpeed;
     [SerializeField] private float smoothTime = 0.2f;
     private Vector3 velocity = Vector3.zero;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private protected void HandleMoving()
     {
@@ -14,6 +21,8 @@ public class Pickupable : MonoBehaviour
         {
             return;
         }
-        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
+        Vector3 diff = target.position - transform.position;
+        Vector3 targetVelocity = new Vector3(diff.x, 0, diff.z).normalized * moveSpeed;
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothTime);
     }
 }
