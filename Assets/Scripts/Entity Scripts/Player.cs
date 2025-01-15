@@ -26,6 +26,7 @@ public class Player : Entity
     [SerializeField] private Transform swordSwingRotator;
     [SerializeField] private float swordSwingCDTimer;
     [SerializeField] private float swordSwingCooldown = 0.75f;
+    [SerializeField] private bool autoswing = false;
 
     private void Awake()
     {
@@ -80,24 +81,32 @@ public class Player : Entity
             swordSwingCDTimer -= Time.deltaTime;
             return;
         }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (autoswing && Input.GetKey(KeyCode.Mouse0))
         {
-            //Rotate the sword swing transform towards the mouse
-            Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit))
-            {
-                swordSwingRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
-            }
-
-            //Spawn the sword swing effect
-            Vector3 spawnPosition = swordSwingRotator.position + swordSwingRotator.forward / 3;
-            GameObject swordSwingInstance = Instantiate(swordSwingPrefab,
-                spawnPosition, swordSwingRotator.rotation); ;
-            swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
-            swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnTransform = swordSwingRotator;
-            swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = swordSwingRotator.forward / 3;
-            swordSwingCDTimer = swordSwingCooldown;
+            SwingSword();
         }
+        else if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            SwingSword();
+        }
+    }
+
+    private void SwingSword()
+    {
+        //Rotate the sword swing transform towards the mouse
+        Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        {
+            swordSwingRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
+        }
+
+        //Spawn the sword swing effect
+        Vector3 spawnPosition = swordSwingRotator.position + swordSwingRotator.forward / 3;
+        GameObject swordSwingInstance = Instantiate(swordSwingPrefab,
+            spawnPosition, swordSwingRotator.rotation); ;
+        swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnTransform = swordSwingRotator;
+        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = swordSwingRotator.forward / 3;
+        swordSwingCDTimer = swordSwingCooldown;
     }
 }

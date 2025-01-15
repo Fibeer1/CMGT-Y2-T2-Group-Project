@@ -53,3 +53,6 @@ TagManager:
   - name: Visual Effect
     uniqueID: 2780738007
     locked: 0
+  - name: Text
+    uniqueID: 638910555
+    locked: 0
