@@ -8,8 +8,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private protected GameObject deathEffect;
     public string allegiance;
     public bool isDead = false;
-    public float health = 5;
-    public float maxHealth = 5;
+    public float health = 100;
+    public float maxHealth = 100;
 
     public virtual void InitializeEntity()
     {

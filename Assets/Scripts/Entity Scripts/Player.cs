@@ -9,12 +9,16 @@ public class Player : Entity
 
     [Header("Stat Variables")]
     public float damage = 3;
-    [SerializeField] private float speed = 8f;
+    [SerializeField] private float speed = 3f;
 
     [Header("Movement Variables")]
     private float horizontal;
     private float vertical;
     private Rigidbody rb;
+
+    [Header("Blood Drain Variables")]
+    [SerializeField] private bool shouldDrainBlood = true;
+    [SerializeField] private float bloodDrainDivider = 3f;
 
     private void Awake()
     {
@@ -31,6 +35,7 @@ public class Player : Entity
             return;
         }
         HandleMovementInput();
+        HandleBloodDrain();
     }
 
     private void FixedUpdate()
@@ -46,5 +51,15 @@ public class Player : Entity
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+    }
+
+    private void HandleBloodDrain()
+    {
+        if (!shouldDrainBlood)
+        {
+            return;
+        }
+        //If bloodDrainDivider is 3, health loss will be 0.3/sec
+        ChangeHealth(Time.deltaTime / bloodDrainDivider);
     }
 }

@@ -14,6 +14,10 @@ public class SpriteBillboard : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!shouldTurn)
+        {
+            return;
+        }
         transform.LookAt(mainCamera.transform);
         transform.Rotate(0, 180, 0);
     }
