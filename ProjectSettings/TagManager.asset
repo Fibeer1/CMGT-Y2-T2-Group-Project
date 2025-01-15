@@ -44,3 +44,9 @@ TagManager:
   - name: Player
     uniqueID: 1800589917
     locked: 0
+  - name: Weapon
+    uniqueID: 586963123
+    locked: 0
+  - name: Visual Effect
+    uniqueID: 2780738007
+    locked: 0

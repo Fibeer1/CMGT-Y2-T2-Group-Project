@@ -6,6 +6,7 @@ public class Player : Entity
 {
     [Header("General Variables")]
     public Vector3 spawnPoint;
+    private Camera playerCam;
 
     [Header("Stat Variables")]
     public float damage = 3;
@@ -20,12 +21,20 @@ public class Player : Entity
     [SerializeField] private bool shouldDrainBlood = true;
     [SerializeField] private float bloodDrainDivider = 3f;
 
+    [Header("Sword Swing Variables")]
+    [SerializeField] private GameObject swordSwingPrefab;
+    [SerializeField] private Transform swordSwingRotator;
+    [SerializeField] private float swordSwingCDTimer;
+    [SerializeField] private float swordSwingCooldown = 0.75f;
+
     private void Awake()
     {
         base.InitializeEntity();
         maxHealth = health;
         spawnPoint = transform.position;
+        playerCam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
+        swordSwingCDTimer = swordSwingCooldown;
     }
 
     private void Update()
@@ -36,6 +45,7 @@ public class Player : Entity
         }
         HandleMovementInput();
         HandleBloodDrain();
+        HandleSwordSwing();
     }
 
     private void FixedUpdate()
@@ -61,5 +71,30 @@ public class Player : Entity
         }
         //If bloodDrainDivider is 3, health loss will be 0.3/sec
         ChangeHealth(Time.deltaTime / bloodDrainDivider);
+    }
+
+    private void HandleSwordSwing()
+    {
+        if (swordSwingCDTimer > 0)
+        {
+            swordSwingCDTimer -= Time.deltaTime;
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            //Rotate the sword swing transform towards the mouse
+            Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            {
+                swordSwingRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
+            }
+
+            //Spawn the sword swing effect
+            GameObject swordSwingInstance = Instantiate(swordSwingPrefab, 
+                swordSwingRotator.position + swordSwingRotator.forward / 3, swordSwingRotator.rotation, transform);
+            swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+            swordSwingCDTimer = swordSwingCooldown;
+        }
     }
 }
