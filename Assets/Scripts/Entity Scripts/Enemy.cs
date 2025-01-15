@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject bloodOrbPrefab;
+    [SerializeField] private int bloodOrbsOnDeath;
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
+    }
+
+    private void HandlePlayerTargeting()
+    {
+        
+    }
+
+    public override IEnumerator DeathSequence()
+    {
+        yield return null;
     }
 }
