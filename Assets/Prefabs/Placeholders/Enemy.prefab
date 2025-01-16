@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5094061435265918746}
   - component: {fileID: 8013095299461563213}
   - component: {fileID: 8131169390822030349}
+  - component: {fileID: 1730138799474534964}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -55,7 +56,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.25, y: 0.5, z: 0.25}
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8013095299461563213
 Rigidbody:
@@ -101,19 +102,49 @@ MonoBehaviour:
   isDead: 0
   health: 100
   maxHealth: 100
+  moveSpeed: 1
+  shouldMove: 1
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
   bloodOrbsOnDeath: 3
   bloodOrbSpeed: 5
-  moveSpeed: 1
-  shouldMove: 1
+  tier1MatPrefab: {fileID: 0}
+  tier1MatChance: 0.1
+  tier2MatPrefab: {fileID: 0}
+  tier2MatChance: 0.05
   enemyAttackPrefab: {fileID: 4919045626839232044, guid: 017ad231964213140b6d41ba7b09ee7d, type: 3}
   enemyAttackRotator: {fileID: 6718667339481537443}
   attackCDTimer: 1
   attackCD: 1
   damage: 10
-  aggroRange: 10
+  aggroRange: 7.5
+  deAggroRange: 10
   attackRange: 1
+  attackRangeOffset: 0.5
+  attackDelay: 0.25
+  aggroed: 0
   isAttacking: 0
+--- !u!195 &1730138799474534964
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125692600370886296}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.15
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 0.5
+  m_BaseOffset: 0.25
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &703665877227841313
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +186,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5047988196281162716}
   - component: {fileID: 3504148300496033484}
-  - component: {fileID: 8473111540348290456}
   m_Layer: 0
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -171,8 +201,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2476684855550608620}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -216,10 +246,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1591211129
-  m_SortingLayer: 2
+  m_SortingLayerID: 968355605
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c388b0a7dc3d4a41acbb19c67a34ffb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0004b3bd46d22445b1fe7cde2e3099a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -230,15 +260,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8473111540348290456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2476684855550608620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db15ed776d0bd145a30c21fbbc49d75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

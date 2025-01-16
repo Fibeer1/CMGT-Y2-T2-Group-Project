@@ -52,7 +52,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -111,7 +111,18 @@ MonoBehaviour:
   swordSwingRotator: {fileID: 8218634187496514979}
   swordSwingCDTimer: 0.5
   swordSwingCooldown: 0.5
+  attackRangeOffset: 0.4
   autoswing: 0
+  rangedAttackCDTimer: 0
+  rangedAttackCD: 0
+  isDashing: 0
+  dashingPower: 10
+  dashingTime: 0.2
+  dashingCooldown: 1
+  afterimage: {fileID: 0}
+  tier1MaterialCount: 0
+  tier2MaterialCount: 0
+  tier3MaterialCount: 0
 --- !u!1 &6602070654364919941
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +259,6 @@ GameObject:
   m_Component:
   - component: {fileID: 231399743789407172}
   - component: {fileID: 8591423304846837510}
-  - component: {fileID: 5452672212973362166}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -309,7 +319,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1800589917
+  m_SortingLayerID: 968355605
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5843b00e9f59c3c4691ee107a7cab14b, type: 3}
@@ -323,15 +333,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5452672212973362166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9117542307645686161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db15ed776d0bd145a30c21fbbc49d75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

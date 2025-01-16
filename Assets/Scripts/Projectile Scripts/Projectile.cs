@@ -10,6 +10,12 @@ public class Projectile : MonoBehaviour
     private protected Rigidbody rb;
     [SerializeField] private protected float lifeTime;
 
+    [Header("Text Variables")]
+    [SerializeField] private protected Color textColor = new Color(0.35f, 0, 0);
+    [SerializeField] private protected float textSize = 3;
+    [SerializeField] private protected float textFadeDuration = 0.1f;
+    [SerializeField] private protected float textLifetime = 0.5f;
+
     private void Update()
     {
         HandleLifeTime();
@@ -54,6 +60,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void OnHit(Entity victim)
     {
+        TextPopUp3D.PopUpText(victim.transform.position + Vector3.up / 2, damage.ToString(), textSize, textColor, textFadeDuration, textLifetime);
         victim.ChangeHealth(damage);
         DestroyProjectile();
     }

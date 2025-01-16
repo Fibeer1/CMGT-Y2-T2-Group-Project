@@ -17,7 +17,7 @@ public class BloodOrb : Pickupable
         HandleMoving();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Entity collisionEntity = collision.transform.GetComponent<Entity>();
 
