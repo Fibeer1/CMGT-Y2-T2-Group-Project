@@ -102,6 +102,7 @@ MonoBehaviour:
   isDead: 0
   health: 100
   maxHealth: 100
+  armor: 0
   moveSpeed: 1
   shouldMove: 1
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}

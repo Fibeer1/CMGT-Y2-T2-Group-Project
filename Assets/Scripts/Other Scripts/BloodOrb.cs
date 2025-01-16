@@ -30,4 +30,13 @@ public class BloodOrb : Pickupable
             Destroy(gameObject);
         }
     }
+
+    public override void OnCollision(Player player)
+    {
+        TextPopUp3D.PopUpText(player.transform.position + Vector3.up / 2, bloodGainAmount.ToString(),
+                textSize, textColor, textFadeDuration, textLifetime);
+        player.ChangeHealth(-bloodGainAmount);
+        //Negative value because if it's positive it would hurt the entity
+        Destroy(gameObject);
+    }
 }

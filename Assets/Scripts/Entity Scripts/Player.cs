@@ -59,10 +59,7 @@ public class Player : Entity
     [SerializeField] private float shieldMaxHPCost = 0.45f; //% of max health
 
     [Header("Material Variables")]
-    public int tier1MaterialCount;
-    public int tier2MaterialCount;
-    public int tier3MaterialCount;
-
+    public int[] materialCounts;
 
     private void Awake()
     {

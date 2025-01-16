@@ -25,4 +25,19 @@ public class Pickupable : MonoBehaviour
         Vector3 targetVelocity = new Vector3(diff.x, 0, diff.z).normalized * moveSpeed;
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothTime);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Player collisionPlayer = collision.transform.GetComponent<Player>();
+
+        if (collisionPlayer != null && collision.transform == target)
+        {
+            OnCollision(collisionPlayer);
+        }
+    }
+
+    public virtual void OnCollision(Player player)
+    {
+
+    }
 }

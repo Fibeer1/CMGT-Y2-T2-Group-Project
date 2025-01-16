@@ -18,6 +18,8 @@ public class Enemy : Entity
     [SerializeField] private float tier1MatChance = 0.1f; //10%
     [SerializeField] private GameObject tier2MatPrefab;
     [SerializeField] private float tier2MatChance = 0.05f; //5%
+    [SerializeField] private GameObject tier3MatPrefab;
+    [SerializeField] private float tier3MatChance = 0.01f; //1%
 
     [Header("Combat Variables")]
     [SerializeField] private GameObject enemyAttackPrefab;
