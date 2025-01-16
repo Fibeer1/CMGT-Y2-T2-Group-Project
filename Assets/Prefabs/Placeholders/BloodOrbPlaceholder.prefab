@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 10
   smoothTime: 0.2
   bloodGainAmount: 5
   textColor: {r: 0, g: 0.4188679, b: 0.002030673, a: 1}
