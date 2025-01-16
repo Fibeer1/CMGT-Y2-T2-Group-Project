@@ -38,7 +38,7 @@ public class Player : Entity
     [SerializeField] private float rangedAttackOffset;
     [SerializeField] private float rangedAttackCDTimer;
     [SerializeField] private float rangedAttackCD;
-    [SerializeField] private float rangedAttackCost = 0.2f; //% of current health
+    [SerializeField] private float rangedAttackCost = 0.1f; //% of current health
 
     [Header("Dash Variables")]   
     public bool isDashing;
