@@ -4,10 +4,15 @@ using TMPro;
 
 public class CharacterScreen : MonoBehaviour
 {
+    [SerializeField] private GameObject characterScreen;
+    private bool isMenuOpen = false;
     private Player player;
     public TextMeshProUGUI rarityText;
     public TextMeshProUGUI statsText;
     public TextMeshProUGUI costText;
+    [SerializeField] private TextMeshProUGUI ironCountText;
+    [SerializeField] private TextMeshProUGUI platinumCountText;
+    [SerializeField] private TextMeshProUGUI bloodiumCountText;
 
     private string selectedPart = "";
 
@@ -15,21 +20,58 @@ public class CharacterScreen : MonoBehaviour
     private int chestplateArmor = 5;
     private int chestplateHealth = 50;
     private string chestplateRarity = "FirstCommon";
+    private int chestplateArmorGrowth = 10;
+    private int chestplateHealthGrowth = 25;
 
     private int leggingsArmor = 5;
     private int leggingsHealth = 50;
     private string leggingsRarity = "FirstCommon";
+    private int leggingsArmorGrowth = 3;
+    private int leggintsHealthGrowth = 10;
 
     private int bootsArmor = 8;
     private int bootsHealth = 80;
     private string bootsRarity = "FirstCommon";
+    private int bootsArmorGrowth = 3;
+    private int bootsHealthGrowth = 5;
 
-    private int swordDamage = 20;
+    private int swordDamage = 25;
     private string swordRarity = "FirstCommon";
+    private int swordDamageGrowth;
+    private int currentSwordUpgrade = 0;
+    [SerializeField] private int[] swordMatTier1Costs;
+    [SerializeField] private int[] swordMatTier2Costs;
+    [SerializeField] private int[] swordMatTier3Costs;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        characterScreen.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (isMenuOpen)
+            {
+                ToggleCharacterScreen(false);
+            }
+            else
+            {
+                ToggleCharacterScreen(true);
+            }
+        }
+        ironCountText.text = player.materialCounts[0] + "x";
+        platinumCountText.text = player.materialCounts[1] + "x";
+        bloodiumCountText.text = player.materialCounts[2] + "x";
+    }
+
+    public void ToggleCharacterScreen(bool shouldEnableScreen)
+    {
+        Time.timeScale = shouldEnableScreen ? 0 : 1;
+        isMenuOpen = shouldEnableScreen;
+        characterScreen.SetActive(shouldEnableScreen);
     }
 
     public void UpdateUI(string rarity, string stats, string cost)
