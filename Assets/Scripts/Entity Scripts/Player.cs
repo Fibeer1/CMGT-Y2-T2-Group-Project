@@ -46,7 +46,6 @@ public class Player : Entity
     [SerializeField] private float dashingPower = 16f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
-    [SerializeField] private ParticleSystem afterimage;
 
     [Header("Shield Variables")]
     [SerializeField] private GameObject shieldPrefab;
@@ -256,13 +255,11 @@ public class Player : Entity
         canDash = false;
         isDashing = true;
         //hud.dashCooldown = 0;
-        afterimage.Play();
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * dashingPower;
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        afterimage.Stop();
     }
 }
