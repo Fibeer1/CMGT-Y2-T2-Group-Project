@@ -7,6 +7,7 @@ public class Player : Entity
     [Header("General Variables")]
     public Vector3 spawnPoint;
     private Camera playerCam;
+    [SerializeField] private SpriteRenderer playerSprite;
 
     [Header("Stat Variables")]
     public float meleeDamage = 25;
@@ -136,6 +137,23 @@ public class Player : Entity
         {
             base.ChangeHealth(healthChangeValue, false);
         }
+    }
+
+    public override IEnumerator DeathSequence()
+    {
+        if (isDead)
+        {
+            yield break;
+        }
+        isDead = true;
+        Instantiate(deathEffect, transform.position, Quaternion.identity);        
+        playerSprite.enabled = false;
+        health = 0;
+        rb.velocity = Vector2.zero;
+        GetComponent<Collider>().enabled = false;        
+        yield return new WaitForSecondsRealtime(1);
+        GameOverScreen.DeathAnimation();
+        enabled = false;
     }
 
     private void HandleShooting()
