@@ -13,13 +13,9 @@ public class Enemy : Entity
     [Header("Material Drop Variables")]
     [SerializeField] private GameObject bloodOrbPrefab;
     [SerializeField] private int bloodOrbsOnDeath;
-    [SerializeField] private float bloodOrbSpeed = 5;
-    [SerializeField] private GameObject tier1MatPrefab;
-    [SerializeField] private float tier1MatChance = 0.1f; //10%
-    [SerializeField] private GameObject tier2MatPrefab;
-    [SerializeField] private float tier2MatChance = 0.05f; //5%
-    [SerializeField] private GameObject tier3MatPrefab;
-    [SerializeField] private float tier3MatChance = 0.01f; //1%
+    [SerializeField] private float pickupableSpawnSpeed = 5;
+    [SerializeField] private GameObject[] materialPrefabs;
+    [SerializeField] private int[] materialChances;
 
     [Header("Combat Variables")]
     [SerializeField] private GameObject enemyAttackPrefab;
@@ -98,7 +94,7 @@ public class Enemy : Entity
 
         //Spawn the attack effect
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
-            enemyAttackRotator.position + enemyAttackRotator.forward / 2.5f, enemyAttackRotator.rotation, transform);
+            enemyAttackRotator.position + enemyAttackRotator.forward * attackRangeOffset, enemyAttackRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
         
         //Attack duration is half the attack cooldown
@@ -117,10 +113,29 @@ public class Enemy : Entity
     {
         for (int i = 0; i < bloodOrbsOnDeath; i++)
         {
-            Vector3 bloodOrbMoveDirection = Random.insideUnitCircle.normalized * bloodOrbSpeed;
-            bloodOrbMoveDirection.y = Random.Range(2.5f, 7.5f);
-            GameObject currentOrbInstance = Instantiate(bloodOrbPrefab, transform.position, Quaternion.identity);
-            currentOrbInstance.GetComponent<Rigidbody>().velocity = bloodOrbMoveDirection;
+            LaunchPickupable(bloodOrbPrefab, pickupableSpawnSpeed, 2.5f, 7.5f);
         }
+        for (int i = 0; i < materialPrefabs.Length; i++)
+        {
+            DropMaterial(i);
+        }
+    }
+
+    private void DropMaterial(int materialIndex)
+    {
+        int randomNumber = Random.Range(materialChances[materialIndex], 100); //E.g. 1 to 100 -> 1% chance
+        if (randomNumber != materialChances[materialIndex])
+        {
+            return;
+        }
+        LaunchPickupable(materialPrefabs[materialIndex], pickupableSpawnSpeed, 2.5f, 7.5f);
+    }
+
+    private void LaunchPickupable(GameObject pickupablePrefab, float pickupableSpeed, float minYVelocity, float maxYVelocity)
+    {
+        Vector3 objectMoveDirection = Random.insideUnitCircle.normalized * pickupableSpeed;
+        objectMoveDirection.y = Random.Range(minYVelocity, maxYVelocity);
+        GameObject currentOrbInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
+        currentOrbInstance.GetComponent<Rigidbody>().velocity = objectMoveDirection;
     }
 }

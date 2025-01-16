@@ -165,7 +165,7 @@ MonoBehaviour:
   shieldCDTimer: 0
   shieldCD: 30
   shieldMaxHPCost: 0.1
-  materialCounts: 
+  materialCounts: 000000000000000000000000
 --- !u!1 &6602070654364919941
 GameObject:
   m_ObjectHideFlags: 0

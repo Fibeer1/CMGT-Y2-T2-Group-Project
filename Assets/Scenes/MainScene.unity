@@ -128842,6 +128842,10 @@ PrefabInstance:
       propertyPath: bloodDrainDivider
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3329649715335850037, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: materialCounts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5414110946162122300, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -128942,10 +128946,6 @@ PrefabInstance:
     - target: {fileID: 140998754220963780, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047988196281162716, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
