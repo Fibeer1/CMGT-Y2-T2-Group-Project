@@ -60613,8 +60613,11 @@ MonoBehaviour:
   isDead: 0
   health: 100
   maxHealth: 100
+  armor: 0
   spawnPoint: {x: 0, y: 0, z: 0}
-  damage: 3
+  playerSprite: {fileID: 0}
+  meleeDamage: 25
+  rangedDamage: 50
   speed: 3
   shouldDrainBlood: 1
   bloodDrainDivider: 3
@@ -60622,7 +60625,28 @@ MonoBehaviour:
   swordSwingRotator: {fileID: 0}
   swordSwingCDTimer: 0
   swordSwingCooldown: 0.75
+  attackRangeOffset: 0.4
   autoswing: 0
+  rangedProjectilePrefab: {fileID: 0}
+  shootRotator: {fileID: 0}
+  rangedAttackOffset: 0
+  rangedAttackCDTimer: 0
+  rangedAttackCD: 0
+  rangedAttackCost: 0.2
+  isDashing: 0
+  dashingPower: 16
+  dashingTime: 0.2
+  dashingCooldown: 1
+  shieldPrefab: {fileID: 0}
+  percentageMissingHealthShield: 0.25
+  fixedShieldAmount: 10
+  shieldDuration: 0
+  shieldCDTimer: 0
+  shieldCD: 0
+  shieldMaxHPCost: 0.45
+  tier1MaterialCount: 10
+  tier2MaterialCount: 10
+  tier3MaterialCount: 10
 --- !u!65 &629317925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61485,7 +61509,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1800589917
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5843b00e9f59c3c4691ee107a7cab14b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

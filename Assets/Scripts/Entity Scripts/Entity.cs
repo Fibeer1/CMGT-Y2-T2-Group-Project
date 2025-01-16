@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour
 
         if (health > maxHealth)
         {
-            health = maxHealth;
+            health = maxHealth; 
         }
         if (health <= 0)
         {
