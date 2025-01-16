@@ -12,7 +12,7 @@ public class Player : Entity
     [Header("Stat Variables")]
     public float meleeDamage = 25;
     public float rangedDamage = 50f;
-    [SerializeField] private float speed = 3f;
+    public float speed = 3f;
 
     [Header("Movement Variables")]
     private float horizontal;
@@ -150,7 +150,7 @@ public class Player : Entity
         playerSprite.enabled = false;
         health = 0;
         rb.velocity = Vector2.zero;
-        GetComponent<Collider>().enabled = false;        
+        GetComponent<Collider>().enabled = false;
         yield return new WaitForSecondsRealtime(1);
         GameOverScreen.DeathAnimation();
         enabled = false;
