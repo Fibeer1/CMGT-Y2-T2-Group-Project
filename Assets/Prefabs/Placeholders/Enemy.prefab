@@ -107,13 +107,12 @@ MonoBehaviour:
   shouldMove: 1
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
   bloodOrbsOnDeath: 3
-  bloodOrbSpeed: 5
-  tier1MatPrefab: {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
-  tier1MatChance: 0.1
-  tier2MatPrefab: {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
-  tier2MatChance: 0.05
-  tier3MatPrefab: {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
-  tier3MatChance: 0.01
+  pickupableSpawnSpeed: 5
+  materialPrefabs:
+  - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
+  - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
+  - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
+  materialChances: 640000006400000064000000
   enemyAttackPrefab: {fileID: 4919045626839232044, guid: 017ad231964213140b6d41ba7b09ee7d, type: 3}
   enemyAttackRotator: {fileID: 6718667339481537443}
   attackCDTimer: 1
