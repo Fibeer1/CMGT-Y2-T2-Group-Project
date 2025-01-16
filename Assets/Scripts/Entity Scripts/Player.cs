@@ -222,13 +222,14 @@ public class Player : Entity
     }
 
     private void GenerateShield()
-    {
+    {        
         float missingHP = (maxHealth - health) * percentageMissingHealthShield;
         float healthCost = maxHealth * shieldMaxHPCost;
         if (healthCost > health)
         {
             return;
         }
+        shieldCDTimer = shieldCD;
         float shieldHealth = fixedShieldAmount + missingHP;
         ChangeHealth(healthCost);
         currentShieldInstance = Instantiate(shieldPrefab, transform.position, 

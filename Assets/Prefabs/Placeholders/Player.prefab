@@ -134,6 +134,7 @@ MonoBehaviour:
   isDead: 0
   health: 100
   maxHealth: 100
+  armor: 0
   spawnPoint: {x: 0, y: 0, z: 0}
   meleeDamage: 25
   rangedDamage: 50
@@ -151,12 +152,11 @@ MonoBehaviour:
   rangedAttackOffset: 0.2
   rangedAttackCDTimer: 0
   rangedAttackCD: 1
-  rangedAttackCost: 0.2
+  rangedAttackCost: 0.1
   isDashing: 0
   dashingPower: 10
   dashingTime: 0.2
   dashingCooldown: 1
-  afterimage: {fileID: 0}
   shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
   percentageMissingHealthShield: 0.25
   fixedShieldAmount: 10
