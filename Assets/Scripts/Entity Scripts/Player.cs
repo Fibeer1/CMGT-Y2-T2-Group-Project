@@ -94,13 +94,14 @@ public class Player : Entity
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
     }
 
-    public void UpdatePlayerStats(float newMaxHealth, float newArmor)
+    public void UpdatePlayerStats(float maxHealthGrowth, float armorGrowth, float moveSpeedGrowth, float damageGrowth)
     {
-        maxHealth = newMaxHealth;
-        armor = newArmor;
+        maxHealth += maxHealthGrowth;
+        armor += armorGrowth;
+        speed += moveSpeedGrowth;
+        meleeDamage += damageGrowth;
 
-        float maxHealthDifference = newMaxHealth - maxHealth;
-        health += maxHealthDifference;
+        health += maxHealthGrowth;
         if (health > maxHealth)
         {
             health = maxHealth;

@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text;
 
 public class CharacterScreen : MonoBehaviour
 {
     [SerializeField] private GameObject characterScreen;
     private bool isMenuOpen = false;
     private Player player;
+
+    [SerializeField] private string[] rarities;
     public TextMeshProUGUI rarityText;
     public TextMeshProUGUI statsText;
     public TextMeshProUGUI costText;
@@ -14,34 +17,7 @@ public class CharacterScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI platinumCountText;
     [SerializeField] private TextMeshProUGUI bloodiumCountText;
 
-    private string selectedPart = "";
-
-    // Equipment stats and rarities
-    private int chestplateArmor = 5;
-    private int chestplateHealth = 50;
-    private string chestplateRarity = "FirstCommon";
-    private int chestplateArmorGrowth = 10;
-    private int chestplateHealthGrowth = 25;
-
-    private int leggingsArmor = 5;
-    private int leggingsHealth = 50;
-    private string leggingsRarity = "FirstCommon";
-    private int leggingsArmorGrowth = 3;
-    private int leggintsHealthGrowth = 10;
-
-    private int bootsArmor = 8;
-    private int bootsHealth = 80;
-    private string bootsRarity = "FirstCommon";
-    private int bootsArmorGrowth = 3;
-    private int bootsHealthGrowth = 5;
-
-    private int swordDamage = 25;
-    private string swordRarity = "FirstCommon";
-    private int swordDamageGrowth;
-    private int currentSwordUpgrade = 0;
-    [SerializeField] private int[] swordMatTier1Costs;
-    [SerializeField] private int[] swordMatTier2Costs;
-    [SerializeField] private int[] swordMatTier3Costs;
+    private UIGearPiece currentGearPiece;
 
     private void Start()
     {
@@ -83,191 +59,96 @@ public class CharacterScreen : MonoBehaviour
 
     private string GetNextRarity(string currentRarity)
     {
-        if (currentRarity == "Legendary")
-        {
-            return "<color=yellow>Legendary (MAX)</color>";
-        }
-
         switch (currentRarity)
         {
-            case "FirstCommon":
-                return "<color=#696969>Common</color> -> <color=#2E8B57>Uncommon</color>";
             case "Common":
-                return "<color=#2E8B57>Uncommon</color> -> <color=blue>Rare</color>";
+                return "<color=#696969>Common</color> -> <color=#2E8B57>Uncommon</color>";
             case "Uncommon":
-                return "<color=blue>Rare</color> -> <color=purple>Epic</color>";
+                return "<color=#2E8B57>Uncommon</color> -> <color=blue>Rare</color>";
             case "Rare":
+                return "<color=blue>Rare</color> -> <color=purple>Epic</color>";
+            case "Epic":
                 return "<color=purple>Epic</color> -> <color=yellow>Legendary</color>";
             default:
                 return "<color=yellow>Legendary (MAX)</color>";
         }
     }
 
-    public void OnChestPlateClicked()
+    public void OnGearPieceClick(GameObject gearPiece)
     {
-        selectedPart = "ChestPlate";
-        string nextRarity = GetNextRarity(chestplateRarity);
-        if (chestplateRarity == "Legendary")
-        {
-            UpdateUI(nextRarity, $"Armor: {chestplateArmor}\nHealth: {chestplateHealth}", "Cost: N/A");
-        }
-        else
-        {
-            UpdateUI(
-                nextRarity,
-                $"Armor: {chestplateArmor} -> {chestplateArmor + 5}\nHealth: {chestplateHealth} -> {chestplateHealth + 50}",
-                GetUpgradeCost(chestplateRarity)
-            );
-        }
-    }
-
-    public void OnLeggingsClicked()
-    {
-        selectedPart = "Leggings";
-        string nextRarity = GetNextRarity(leggingsRarity);
-        if (leggingsRarity == "Legendary")
-        {
-            UpdateUI(nextRarity, $"Armor: {leggingsArmor}\nHealth: {leggingsHealth}", "Cost: N/A");
-        }
-        else
-        {
-            UpdateUI(
-                nextRarity,
-                $"Armor: {leggingsArmor} -> {leggingsArmor + 5}\nHealth: {leggingsHealth} -> {leggingsHealth + 50}",
-                GetUpgradeCost(leggingsRarity)
-            );
-        }
-    }
-
-    public void OnBootsClicked()
-    {
-        selectedPart = "Boots";
-        string nextRarity = GetNextRarity(bootsRarity);
-        if (bootsRarity == "Legendary")
-        {
-            UpdateUI(nextRarity, $"Armor: {bootsArmor}\nHealth: {bootsHealth}", "Cost: N/A");
-        }
-        else
-        {
-            UpdateUI(
-                nextRarity,
-                $"Armor: {bootsArmor} -> {bootsArmor + 4}\nHealth: {bootsHealth} -> {bootsHealth + 40}",
-                GetUpgradeCost(bootsRarity)
-            );
-        }
-    }
-
-    public void OnSwordClicked()
-    {
-        selectedPart = "Sword";
-        string nextRarity = GetNextRarity(swordRarity);
-        if (swordRarity == "Legendary")
-        {
-            UpdateUI(nextRarity, $"Damage: {swordDamage}", "Cost: N/A");
-        }
-        else
-        {
-            UpdateUI(
-                nextRarity,
-                $"Damage: {swordDamage} -> {swordDamage + 10}",
-                GetUpgradeCost(swordRarity)
-            );
-        }
+        currentGearPiece = gearPiece.GetComponent<UIGearPiece>();
+        UpdateGearPiece();
     }
 
     public void OnUpgradeButtonClicked()
     {
-        if (string.IsNullOrEmpty(selectedPart))
+        if (currentGearPiece == null || 
+            (currentGearPiece != null && 
+            currentGearPiece.currentRarityIndex == rarities.Length - 1))
         {
-            Debug.LogWarning("No equipment part selected for upgrade.");
+            Debug.Log("No equipment part selected for upgrade.");
             return;
         }
-
-        bool canUpgrade = false;
-
-        switch (selectedPart)
-        {
-            case "ChestPlate":
-                canUpgrade = CheckMaterialsAndUpgrade(1, 1, 0);
-                if (canUpgrade)
-                {
-                    chestplateArmor += 5;
-                    chestplateHealth += 50;
-                    UpgradeRarity(ref chestplateRarity);
-                    player.UpdatePlayerStats(player.maxHealth + 50, player.armor + 5);
-                    OnChestPlateClicked();
-                }
-                break;
-
-            case "Leggings":
-                canUpgrade = CheckMaterialsAndUpgrade(1, 1, 0);
-                if (canUpgrade)
-                {
-                    leggingsArmor += 5;
-                    leggingsHealth += 50;
-                    UpgradeRarity(ref leggingsRarity);
-                    player.UpdatePlayerStats(player.maxHealth + 50, player.armor + 5);
-                    OnLeggingsClicked();
-                }
-                break;
-
-            case "Boots":
-                canUpgrade = CheckMaterialsAndUpgrade(1, 1, 0);
-                if (canUpgrade)
-                {
-                    bootsArmor += 4;
-                    bootsHealth += 40;
-                    UpgradeRarity(ref bootsRarity);
-                    player.UpdatePlayerStats(player.maxHealth + 40, player.armor + 4);
-                    OnBootsClicked();
-                }
-                break;
-
-            case "Sword":
-                canUpgrade = CheckMaterialsAndUpgrade(2, 1, 0);
-                if (canUpgrade)
-                {
-                    swordDamage += 10;
-                    UpgradeRarity(ref swordRarity);
-                    player.meleeDamage = swordDamage;
-                    OnSwordClicked();
-                }
-                break;
-
-            default:
-                Debug.LogWarning("Unknown equipment part selected for upgrade.");
-                break;
-        }
+        int ironCost = GetUpgradeCosts()[0];
+        int platinumCost = GetUpgradeCosts()[1];
+        int bloodCost = GetUpgradeCosts()[2];
+        bool canUpgrade = CheckMaterialsAndUpgrade(ironCost, platinumCost, bloodCost);
 
         if (!canUpgrade)
         {
-            Debug.LogWarning("Not enough materials to upgrade.");
+            Debug.Log("Missing required materials to upgrade.");
+            return;
         }
+
+        player.UpdatePlayerStats(currentGearPiece.healthGrowth, currentGearPiece.armorGrowth,
+                        currentGearPiece.moveSpeedGrowth, currentGearPiece.meleeDamageGrowth);
+        currentGearPiece.currentRarityIndex++;
+        UpdateGearPiece();
     }
 
-    private void UpgradeRarity(ref string rarity)
-    {
-        switch (rarity)
+    private void UpdateGearPiece()
+    {        
+        string nextRarity = GetNextRarity(rarities[currentGearPiece.currentRarityIndex]);
+        if (currentGearPiece.currentRarityIndex == rarities.Length - 1)
         {
-            case "FirstCommon":
-                rarity = "Common";
-                break;
-            case "Common":
-                rarity = "Uncommon";
-                break;
-            case "Uncommon":
-                rarity = "Rare";
-                break;
-            case "Rare":
-                rarity = "Epic";
-                break;
-            case "Epic":
-                rarity = "Legendary";
-                break;
-            default:
-                Debug.LogWarning("Rarity is already at maximum (Legendary).");
-                break;
+            UpdateUI(nextRarity, string.Empty, string.Empty);
+            return;
         }
+
+        StringBuilder stats = new StringBuilder();
+        if (currentGearPiece.healthGrowth > 0)
+        {
+            stats.Append($"Health: +{currentGearPiece.healthGrowth}\n");
+        }
+        if (currentGearPiece.armorGrowth > 0)
+        {
+            stats.Append($"Armor: +{currentGearPiece.armorGrowth}\n");
+        }
+        if (currentGearPiece.moveSpeedGrowth > 0)
+        {
+            stats.Append($"Speed: +{currentGearPiece.moveSpeedGrowth}\n");
+        }
+        if (currentGearPiece.meleeDamageGrowth > 0)
+        {
+            stats.Append($"Melee Damage: +{currentGearPiece.meleeDamageGrowth}\n");
+        }
+        StringBuilder costsText = new StringBuilder();
+        int ironCost = GetUpgradeCosts()[0];
+        int platinumCost = GetUpgradeCosts()[1];
+        int bloodCost = GetUpgradeCosts()[2];
+        if (ironCost > 0)
+        {
+            costsText.Append($"{ironCost}x Iron\n");
+        }
+        if (platinumCost > 0)
+        {
+            costsText.Append($"{platinumCost}x Platinum\n");
+        }
+        if (bloodCost > 0)
+        {
+            costsText.Append($"{bloodCost}x Blood\n");
+        }
+        UpdateUI(nextRarity, stats.ToString(), costsText.ToString());
     }
 
     private bool CheckMaterialsAndUpgrade(int ironRequired, int platinumRequired, int tier3Required)
@@ -284,22 +165,8 @@ public class CharacterScreen : MonoBehaviour
         return false;
     }
 
-    private string GetUpgradeCost(string rarity)
+    private int[] GetUpgradeCosts()
     {
-        switch (rarity)
-        {
-            case "FirstCommon":
-                return "Cost: 1x Iron";
-            case "Common":
-                return "Cost: 1x Iron\n1x Platinum";
-            case "Uncommon":
-                return "Cost: 2x Iron\n2x Platinum";
-            case "Rare":
-                return "Cost: 3x Iron\n3x Platinum";
-            case "Epic":
-                return "Cost: 5x Iron\n5x Platinum";
-            default:
-                return "Cost: N/A";
-        }
+        return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
     }
 }

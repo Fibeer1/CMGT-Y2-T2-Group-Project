@@ -104,12 +104,15 @@ public class Enemy : Entity
 
     public override IEnumerator DeathSequence()
     {
-        DropBloodOrbs();
+        if (isDead)
+        {
+            yield break;
+        }
+        DropPickupables();
         StartCoroutine(base.DeathSequence());
-        yield return null;
     }
 
-    private void DropBloodOrbs()
+    private void DropPickupables()
     {
         for (int i = 0; i < bloodOrbsOnDeath; i++)
         {
