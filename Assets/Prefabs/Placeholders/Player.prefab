@@ -141,7 +141,7 @@ MonoBehaviour:
   rangedDamage: 50
   speed: 3
   shouldDrainBlood: 1
-  bloodDrainDivider: 3
+  bloodDrainDivider: 1.5
   swordSwingPrefab: {fileID: 6664643138578975943, guid: 5bd67172b88a7c34b92a918fe9122d1a, type: 3}
   swordSwingRotator: {fileID: 8218634187496514979}
   swordSwingCDTimer: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   rangedAttackCD: 1
   rangedAttackCost: 0.1
   isDashing: 0
-  dashingPower: 10
+  dashingPower: 7
   dashingTime: 0.2
   dashingCooldown: 1
   shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
@@ -165,9 +165,7 @@ MonoBehaviour:
   shieldCDTimer: 0
   shieldCD: 30
   shieldMaxHPCost: 0.1
-  tier1MaterialCount: 0
-  tier2MaterialCount: 0
-  tier3MaterialCount: 0
+  materialCounts: 
 --- !u!1 &6602070654364919941
 GameObject:
   m_ObjectHideFlags: 0

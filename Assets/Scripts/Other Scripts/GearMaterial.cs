@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Material : Pickupable
+public class GearMaterial : Pickupable
 {
     [SerializeField] private string materialName;
     public int materialTierIndex;
@@ -22,7 +22,7 @@ public class Material : Pickupable
     public override void OnCollision(Player player)
     {
         player.materialCounts[materialTierIndex] += materialCount;
-        TextPopUp3D.PopUpText(player.transform.position + Vector3.up / 2, materialName + materialCount,
+        TextPopUp3D.PopUpText(player.transform.position + Vector3.up / 2, materialName + " +" + materialCount,
                 textSize, textColor, textFadeDuration, textLifetime);
         Destroy(gameObject);
     }   

@@ -94,6 +94,19 @@ public class Player : Entity
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
     }
 
+    public void UpdatePlayerStats(float newMaxHealth, float newArmor)
+    {
+        maxHealth = newMaxHealth;
+        armor = newArmor;
+
+        float maxHealthDifference = newMaxHealth - maxHealth;
+        health += maxHealthDifference;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
+
     private void HandleMovementInput()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
