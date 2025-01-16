@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void ChangeHealth(float healthChangeValue)
+    public virtual void ChangeHealth(float healthChangeValue, bool shieldDamage = true)
     {
         health -= healthChangeValue;
 

@@ -98,8 +98,6 @@ public class Enemy : Entity
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
             enemyAttackRotator.position + enemyAttackRotator.forward / 2.5f, enemyAttackRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
-        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnTransform = enemyAttackRotator;
-        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = enemyAttackRotator.forward * attackRangeOffset;
         
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
@@ -118,7 +116,7 @@ public class Enemy : Entity
         for (int i = 0; i < bloodOrbsOnDeath; i++)
         {
             Vector3 bloodOrbMoveDirection = Random.insideUnitCircle.normalized * bloodOrbSpeed;
-            bloodOrbMoveDirection.y = Random.Range(10, 15);
+            bloodOrbMoveDirection.y = Random.Range(2.5f, 7.5f);
             GameObject currentOrbInstance = Instantiate(bloodOrbPrefab, transform.position, Quaternion.identity);
             currentOrbInstance.GetComponent<Rigidbody>().velocity = bloodOrbMoveDirection;
         }

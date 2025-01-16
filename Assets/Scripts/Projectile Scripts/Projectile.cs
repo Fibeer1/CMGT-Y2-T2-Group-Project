@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         HandleLifeTime();
+        HandleMovement();
     }
 
     public virtual void InitializeProjectile(Entity pOrigin, float pDamage)
@@ -31,7 +32,10 @@ public class Projectile : MonoBehaviour
 
     private protected void HandleMovement()
     {
-        rb.velocity = transform.right * speed;
+        if (speed > 0)
+        {
+            rb.velocity = transform.forward * speed;
+        }
     }
 
     private protected void HandleLifeTime()

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1598586956949194279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2302666237565066484}
+  m_Layer: 0
+  m_Name: ShootRotator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2302666237565066484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598586956949194279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8048304551033911683}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5414110946162122300
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +65,7 @@ Transform:
   m_Children:
   - {fileID: 231399743789407172}
   - {fileID: 8218634187496514979}
+  - {fileID: 2302666237565066484}
   - {fileID: 1036714070098962662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,7 +115,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!114 &3329649715335850037
 MonoBehaviour:
@@ -97,29 +129,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfd4c6f199954343aa523cb93a06397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 6225803126070366110, guid: 468845f2ec4b55149852925d3a0db439, type: 3}
   allegiance: Ally
   isDead: 0
   health: 100
   maxHealth: 100
   spawnPoint: {x: 0, y: 0, z: 0}
-  damage: 25
+  meleeDamage: 25
+  rangedDamage: 50
   speed: 3
   shouldDrainBlood: 1
   bloodDrainDivider: 3
   swordSwingPrefab: {fileID: 6664643138578975943, guid: 5bd67172b88a7c34b92a918fe9122d1a, type: 3}
   swordSwingRotator: {fileID: 8218634187496514979}
-  swordSwingCDTimer: 0.5
+  swordSwingCDTimer: 0
   swordSwingCooldown: 0.5
   attackRangeOffset: 0.4
   autoswing: 0
+  rangedProjectilePrefab: {fileID: 852857912230753220, guid: e964c0c5ed3b1174bad991897803c608, type: 3}
+  shootRotator: {fileID: 2302666237565066484}
+  rangedAttackOffset: 0.2
   rangedAttackCDTimer: 0
-  rangedAttackCD: 0
+  rangedAttackCD: 1
+  rangedAttackCost: 0.2
   isDashing: 0
   dashingPower: 10
   dashingTime: 0.2
   dashingCooldown: 1
   afterimage: {fileID: 0}
+  shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
+  percentageMissingHealthShield: 0.25
+  fixedShieldAmount: 10
+  shieldDuration: 30
+  shieldCDTimer: 0
+  shieldCD: 30
+  shieldMaxHPCost: 0.1
   tier1MaterialCount: 0
   tier2MaterialCount: 0
   tier3MaterialCount: 0
@@ -259,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231399743789407172}
   - component: {fileID: 8591423304846837510}
+  - component: {fileID: 1170755921892645746}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -333,3 +378,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1170755921892645746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9117542307645686161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db15ed776d0bd145a30c21fbbc49d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

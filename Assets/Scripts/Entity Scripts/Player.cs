@@ -9,7 +9,8 @@ public class Player : Entity
     private Camera playerCam;
 
     [Header("Stat Variables")]
-    public float damage = 3;
+    public float meleeDamage = 25;
+    public float rangedDamage = 50f;
     [SerializeField] private float speed = 3f;
 
     [Header("Movement Variables")]
@@ -37,6 +38,7 @@ public class Player : Entity
     [SerializeField] private float rangedAttackOffset;
     [SerializeField] private float rangedAttackCDTimer;
     [SerializeField] private float rangedAttackCD;
+    [SerializeField] private float rangedAttackCost = 0.2f; //% of current health
 
     [Header("Dash Variables")]   
     public bool isDashing;
@@ -48,10 +50,13 @@ public class Player : Entity
 
     [Header("Shield Variables")]
     [SerializeField] private GameObject shieldPrefab;
-    private GameObject currentShieldInstance;
+    private Shield currentShieldInstance;
+    public float percentageMissingHealthShield = 0.25f; //% of missing health
+    public float fixedShieldAmount = 10;
     [SerializeField] private float shieldDuration;
     [SerializeField] private float shieldCDTimer;
     [SerializeField] private float shieldCD;
+    [SerializeField] private float shieldMaxHPCost = 0.45f; //% of max health
 
     [Header("Material Variables")]
     public int tier1MaterialCount;
@@ -75,11 +80,12 @@ public class Player : Entity
         {
             return;
         }
-        HandleMovementInput();
-        HandleDashing();
+        HandleMovementInput();        
         HandleBloodDrain();
-        HandleSwordSwing();
         HandleShooting();
+        HandleSwordSwing();        
+        HandleShieldMechanics();
+        HandleDashing();
     }
 
     private void FixedUpdate()
@@ -104,7 +110,33 @@ public class Player : Entity
             return;
         }
         //If bloodDrainDivider is 3, health loss will be 0.3/sec
-        ChangeHealth(Time.deltaTime / bloodDrainDivider);
+        ChangeHealth(Time.deltaTime / bloodDrainDivider, false);
+    }
+
+    public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true)
+    {
+        if (shieldDamage)
+        {
+            if (currentShieldInstance != null)
+            {
+                float remainingShieldHealth = currentShieldInstance.shieldHealth - healthChangeValue;
+                if (remainingShieldHealth <= 0)
+                {
+                    DestroyShield();
+                    base.ChangeHealth(-remainingShieldHealth);
+                    return;
+                }
+                currentShieldInstance.shieldHealth = remainingShieldHealth;
+            }
+            else
+            {
+                base.ChangeHealth(healthChangeValue, false);
+            }
+        }
+        else
+        {
+            base.ChangeHealth(healthChangeValue, false);
+        }
     }
 
     private void HandleShooting()
@@ -128,12 +160,17 @@ public class Player : Entity
         {
             shootRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
         }
-
+        float healthCost = health * rangedAttackCost;
+        if (healthCost > health)
+        {
+            return;
+        }
+        ChangeHealth(healthCost, false);
         //Spawn the projectile
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
         GameObject rangedProjectileInstance = Instantiate(rangedProjectilePrefab,
             spawnPosition, shootRotator.rotation); ;
-        rangedProjectileInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+        rangedProjectileInstance.GetComponent<Projectile>().InitializeProjectile(this, rangedDamage);
         rangedAttackCDTimer = rangedAttackCD;
     }
 
@@ -166,11 +203,44 @@ public class Player : Entity
         //Spawn the sword swing effect
         Vector3 spawnPosition = swordSwingRotator.position + swordSwingRotator.forward * attackRangeOffset;
         GameObject swordSwingInstance = Instantiate(swordSwingPrefab,
-            spawnPosition, swordSwingRotator.rotation); ;
-        swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
-        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnTransform = swordSwingRotator;
-        swordSwingInstance.GetComponent<MeleeAttackTrigger>().spawnOffset = swordSwingRotator.forward / 3;
+            spawnPosition, swordSwingRotator.rotation, transform);
+        swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, meleeDamage);
         swordSwingCDTimer = swordSwingCooldown;
+    }
+
+    private void HandleShieldMechanics()
+    {
+        if (shieldCDTimer > 0 || currentShieldInstance != null)
+        {
+            shieldCDTimer -= Time.deltaTime;
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GenerateShield();
+        }
+    }
+
+    private void GenerateShield()
+    {
+        float missingHP = (maxHealth - health) * percentageMissingHealthShield;
+        float healthCost = maxHealth * shieldMaxHPCost;
+        if (healthCost > health)
+        {
+            return;
+        }
+        float shieldHealth = fixedShieldAmount + missingHP;
+        ChangeHealth(healthCost);
+        currentShieldInstance = Instantiate(shieldPrefab, transform.position, 
+            Quaternion.identity, transform).GetComponent<Shield>();        
+        currentShieldInstance.InitializeShield(this, shieldHealth, shieldDuration);
+    }
+
+    public void DestroyShield()
+    {
+        Destroy(currentShieldInstance.gameObject);
+        currentShieldInstance = null;
     }
 
     private void HandleDashing()

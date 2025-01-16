@@ -6,8 +6,6 @@ public class MeleeAttackTrigger : Projectile
 {
     private Animator animator;
     [SerializeField] private string swingAnimationName;
-    public Transform spawnTransform;
-    public Vector3 spawnOffset;
 
     public override void InitializeProjectile(Entity pOrigin, float pDamage)
     {
@@ -19,7 +17,6 @@ public class MeleeAttackTrigger : Projectile
     private void Update()
     {
         HandleLifeTime();
-        transform.position = spawnTransform.position + spawnOffset;
     }
 
     private void OnTriggerEnter(Collider collision)
