@@ -54,6 +54,7 @@ public class Player : Entity
     public float dashingCooldown = 1f;
     public float dashHealthCost = 5f;
     public Enemy closestEnemy;
+    [SerializeField] private GameObject dashProjectile;
 
     [Header("Shield Variables")]
     [SerializeField] private GameObject shieldPrefab;
@@ -184,11 +185,11 @@ public class Player : Entity
         }
         if (Input.GetKeyDown(rangedAttackKey))
         {
-            Shoot();
+            Shoot(rangedProjectilePrefab);
         }
     }
 
-    private void Shoot(bool shouldDrainHealth = true, Transform target = null)
+    private void Shoot(GameObject projectilePrefab, bool shouldDrainHealth = true, Transform target = null)
     {
         if (shouldDrainHealth)
         {
@@ -197,13 +198,14 @@ public class Player : Entity
             {
                 return;
             }
+            rangedAttackCDTimer = rangedAttackCD;
             ChangeHealth(healthCost, false);
         }
         Vector3 targetDirection = Vector3.zero;
         if (target != null)
         {
             //Rotate the shooter transform towards the target
-            targetDirection = target.position - transform.position;
+            shootRotator.LookAt(target);
         }
         else
         {
@@ -211,17 +213,17 @@ public class Player : Entity
             Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
-                targetDirection = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);               
+                targetDirection = new Vector3(raycastHit.point.x, shootRotator.position.y, raycastHit.point.z);
             }
+            shootRotator.LookAt(targetDirection);
         }
-        shootRotator.LookAt(targetDirection);
+        
 
         //Spawn the projectile
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
-        GameObject rangedProjectileInstance = Instantiate(rangedProjectilePrefab,
-            spawnPosition, shootRotator.rotation); ;
-        rangedProjectileInstance.GetComponent<Projectile>().InitializeProjectile(this, rangedDamage);
-        rangedAttackCDTimer = rangedAttackCD;
+        GameObject projectileInstance = Instantiate(projectilePrefab,
+            spawnPosition, shootRotator.rotation);
+        projectileInstance.GetComponent<Projectile>().InitializeProjectile(this, rangedDamage);
     }
 
     private void HandleSwordSwing()
@@ -315,7 +317,7 @@ public class Player : Entity
         yield return new WaitForSeconds(dashingTime);
         if (closestEnemy != null)
         {
-            Shoot(false, closestEnemy.transform);
+            Shoot(dashProjectile, false, closestEnemy.transform);
         }
         isDashing = false;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;

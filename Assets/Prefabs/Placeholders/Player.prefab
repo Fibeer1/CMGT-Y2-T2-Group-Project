@@ -3678,7 +3678,7 @@ GameObject:
   - component: {fileID: 6404779622907385561}
   - component: {fileID: 8891580708881374529}
   - component: {fileID: 5113396166266851425}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerEnemyProximity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3719,7 +3719,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5113396166266851425
 MonoBehaviour:
@@ -5154,6 +5154,7 @@ MonoBehaviour:
   dashingCooldown: 1
   dashHealthCost: 5
   closestEnemy: {fileID: 0}
+  dashProjectile: {fileID: 852857912230753220, guid: f7c2bcee7d61ac945bc25673d644cfbf, type: 3}
   shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
   percentageMissingHealthShield: 0.25
   fixedShieldAmount: 10
