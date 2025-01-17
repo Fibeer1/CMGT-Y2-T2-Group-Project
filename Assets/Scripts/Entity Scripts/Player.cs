@@ -53,6 +53,7 @@ public class Player : Entity
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
     public float dashHealthCost = 5f;
+    public Enemy closestEnemy;
 
     [Header("Shield Variables")]
     [SerializeField] private GameObject shieldPrefab;
@@ -187,7 +188,7 @@ public class Player : Entity
         }
     }
 
-    private void Shoot(bool shouldDrainHealth = true)
+    private void Shoot(bool shouldDrainHealth = true, Transform target = null)
     {
         if (shouldDrainHealth)
         {
@@ -198,13 +199,22 @@ public class Player : Entity
             }
             ChangeHealth(healthCost, false);
         }
-
-        //Rotate the shooter transform towards the mouse
-        Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        Vector3 targetDirection = Vector3.zero;
+        if (target != null)
         {
-            shootRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
+            //Rotate the shooter transform towards the target
+            targetDirection = target.position - transform.position;
         }
+        else
+        {
+            //Rotate the shooter transform towards the mouse
+            Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            {
+                targetDirection = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);               
+            }
+        }
+        shootRotator.LookAt(targetDirection);
 
         //Spawn the projectile
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
@@ -303,6 +313,10 @@ public class Player : Entity
         isDashing = true;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * dashingPower;
         yield return new WaitForSeconds(dashingTime);
+        if (closestEnemy != null)
+        {
+            Shoot(false, closestEnemy.transform);
+        }
         isDashing = false;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
         yield return new WaitForSeconds(dashingCooldown);

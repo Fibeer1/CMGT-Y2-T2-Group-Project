@@ -4954,3 +4954,4 @@ MonoBehaviour:
   textFadeDuration: 0.1
   textLifetime: 0.5
   explosionPrefab: {fileID: 6754266822724907950, guid: 59614729a060d35469b303dfd345b98e, type: 3}
+  explosionDamage: 25

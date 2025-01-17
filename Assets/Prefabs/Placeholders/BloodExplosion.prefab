@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
-  damage: 50
+  damage: 25
   speed: 0
   lifeTime: 1
   textColor: {r: 0.35, g: 0, b: 0, a: 1}
