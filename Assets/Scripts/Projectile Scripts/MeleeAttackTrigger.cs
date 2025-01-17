@@ -19,13 +19,8 @@ public class MeleeAttackTrigger : Projectile
         HandleLifeTime();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    public override void OnHit(Entity victim, bool shouldDestroyProjectile = false)
     {
-        Entity collisionEntity = collision.transform.GetComponent<Entity>();
-        if (collisionEntity != null && origin.allegiance != collisionEntity.allegiance)
-        {
-            TextPopUp3D.PopUpText(collision.transform.position + Vector3.up / 2, damage.ToString(), textSize, textColor, textFadeDuration, textLifetime);
-            collisionEntity.ChangeHealth(damage);
-        }
+        base.OnHit(victim, shouldDestroyProjectile);
     }
 }

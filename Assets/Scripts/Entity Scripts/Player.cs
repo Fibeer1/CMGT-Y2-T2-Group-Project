@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
-{
+{    
     [Header("General Variables")]
     public Vector3 spawnPoint;
     private Camera playerCam;
@@ -13,6 +13,11 @@ public class Player : Entity
     public float meleeDamage = 25;
     public float rangedDamage = 50f;
     public float speed = 3f;
+
+    [Header("Keybindings")]
+    [SerializeField] private KeyCode dashKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode rangedAttackKey = KeyCode.Alpha1;
+    [SerializeField] private KeyCode shieldKey = KeyCode.Alpha2;
 
     [Header("Movement Variables")]
     private float horizontal;
@@ -47,6 +52,7 @@ public class Player : Entity
     [SerializeField] private float dashingPower = 16f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
+    public float dashHealthCost = 5f;
 
     [Header("Shield Variables")]
     [SerializeField] private GameObject shieldPrefab;
@@ -126,7 +132,8 @@ public class Player : Entity
 
     public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true)
     {
-        if (shieldDamage)
+        //If healthChange > 0 the entity loses health and vice versa
+        if (healthChangeValue > 0 && shieldDamage)
         {
             if (currentShieldInstance != null)
             {
@@ -174,26 +181,31 @@ public class Player : Entity
             rangedAttackCDTimer -= Time.deltaTime;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(rangedAttackKey))
         {
             Shoot();
         }
     }
 
-    private void Shoot()
+    private void Shoot(bool shouldDrainHealth = true)
     {
+        if (shouldDrainHealth)
+        {
+            float healthCost = health * rangedAttackCost;
+            if (healthCost > health)
+            {
+                return;
+            }
+            ChangeHealth(healthCost, false);
+        }
+
         //Rotate the shooter transform towards the mouse
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             shootRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
         }
-        float healthCost = health * rangedAttackCost;
-        if (healthCost > health)
-        {
-            return;
-        }
-        ChangeHealth(healthCost, false);
+
         //Spawn the projectile
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
         GameObject rangedProjectileInstance = Instantiate(rangedProjectilePrefab,
@@ -244,7 +256,7 @@ public class Player : Entity
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(shieldKey))
         {
             GenerateShield();
         }
@@ -273,9 +285,14 @@ public class Player : Entity
     }
 
     private void HandleDashing()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+    {        
+        if (Input.GetKeyDown(dashKey) && canDash)
         {
+            float remainingHealth = health - dashHealthCost;
+            if (remainingHealth <= 0)
+            {
+                return;
+            }
             StartCoroutine(Dash());
         }
     }
@@ -284,7 +301,6 @@ public class Player : Entity
     {
         canDash = false;
         isDashing = true;
-        //hud.dashCooldown = 0;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * dashingPower;
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;

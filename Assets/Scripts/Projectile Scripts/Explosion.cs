@@ -25,12 +25,8 @@ public class Explosion : Projectile
         transform.Rotate(new Vector3(0, rotationSpeed, 0), Space.World);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    public override void OnHit(Entity victim, bool shouldDestroyProjectile = false)
     {
-        Entity collisionEntity = collision.GetComponent<Entity>();
-        if (collisionEntity != null && collisionEntity.allegiance != origin.allegiance)
-        {
-            collisionEntity.ChangeHealth(damage);
-        }
+        base.OnHit(victim, shouldDestroyProjectile);
     }
 }

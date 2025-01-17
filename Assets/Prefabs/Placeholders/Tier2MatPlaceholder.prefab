@@ -303,7 +303,7 @@ MonoBehaviour:
   materialName: Platinum
   materialTierIndex: 1
   materialCount: 1
-  textColor: {r: 0.35, g: 0.35, b: 0.35, a: 1}
+  textColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   textSize: 3
   textFadeDuration: 0.1
   textLifetime: 1

@@ -136,7 +136,7 @@ public class Enemy : Entity
 
     private void LaunchPickupable(GameObject pickupablePrefab, float pickupableSpeed, float minYVelocity, float maxYVelocity)
     {
-        Vector3 objectMoveDirection = Random.insideUnitCircle.normalized * pickupableSpeed;
+        Vector3 objectMoveDirection = Random.insideUnitSphere.normalized * pickupableSpeed;
         objectMoveDirection.y = Random.Range(minYVelocity, maxYVelocity);
         GameObject currentOrbInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
         currentOrbInstance.GetComponent<Rigidbody>().velocity = objectMoveDirection;

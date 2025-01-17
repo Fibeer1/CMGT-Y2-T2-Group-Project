@@ -6,7 +6,7 @@ public class BloodBullet : Projectile
 {
     [SerializeField] private GameObject explosionPrefab;
 
-    public override void OnHit(Entity victim)
+    public override void OnHit(Entity victim, bool shouldDestroyProjectile = true)
     {
         Explosion explosionInstance = Instantiate(explosionPrefab, transform.position, 
             explosionPrefab.transform.rotation).GetComponent<Explosion>();

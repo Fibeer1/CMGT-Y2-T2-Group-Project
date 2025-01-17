@@ -107,7 +107,7 @@ MonoBehaviour:
   shouldMove: 1
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
   bloodOrbsOnDeath: 3
-  pickupableSpawnSpeed: 5
+  pickupableSpawnSpeed: 2
   materialPrefabs:
   - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
   - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
