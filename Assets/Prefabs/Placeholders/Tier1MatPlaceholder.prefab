@@ -299,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   moveSpeed: 10
-  smoothTime: 0.2
+  smoothTime: 0.1
   materialName: Iron
   materialTierIndex: 0
   materialCount: 1

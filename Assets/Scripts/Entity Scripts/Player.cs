@@ -171,6 +171,10 @@ public class Player : Entity
         health = 0;
         rb.velocity = Vector2.zero;
         GetComponent<Collider>().enabled = false;
+        if (currentShieldInstance != null)
+        {
+            currentShieldInstance.gameObject.SetActive(false);
+        }
         yield return new WaitForSecondsRealtime(1);
         GameOverScreen.DeathAnimation();
         enabled = false;
@@ -201,14 +205,15 @@ public class Player : Entity
             rangedAttackCDTimer = rangedAttackCD;
             ChangeHealth(healthCost, false);
         }
-        Vector3 targetDirection = Vector3.zero;
+        
         if (target != null)
         {
             //Rotate the shooter transform towards the target
-            shootRotator.LookAt(target);
+            shootRotator.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         }
         else
         {
+            Vector3 targetDirection = Vector3.zero;
             //Rotate the shooter transform towards the mouse
             Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
@@ -305,6 +310,7 @@ public class Player : Entity
             {
                 return;
             }
+            ChangeHealth(dashHealthCost);
             StartCoroutine(Dash());
         }
     }

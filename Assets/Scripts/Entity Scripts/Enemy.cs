@@ -5,10 +5,10 @@ using UnityEngine;
 public class Enemy : Entity
 {
     [Header("General Variables")]    
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private bool shouldMove = true;
-    private Player player;
-    private Rigidbody rb;
+    [SerializeField] private protected float moveSpeed;
+    [SerializeField] private protected bool shouldMove = true;
+    private protected Player player;
+    private protected Rigidbody rb;
 
     [Header("Material Drop Variables")]
     [SerializeField] private GameObject bloodOrbPrefab;
@@ -20,16 +20,17 @@ public class Enemy : Entity
     [Header("Combat Variables")]
     [SerializeField] private GameObject enemyAttackPrefab;
     [SerializeField] private Transform enemyAttackRotator;
+    [SerializeField] private protected float damage;
     [SerializeField] private float attackCDTimer;
     [SerializeField] private float attackCD;
-    [SerializeField] private float damage;
-    [SerializeField] private float aggroRange = 10f;
-    [SerializeField] private float deAggroRange = 20f;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private float attackRangeOffset = 0.2f;
     [SerializeField] private float attackDelay = 0.1f;
-    [SerializeField] private bool aggroed = false;
-    [SerializeField] private bool isAttacking = false;
+    [SerializeField] private protected float aggroRange = 10f;
+    [SerializeField] private protected float deAggroRange = 20f;
+    [SerializeField] private protected bool aggroed = false;
+    [SerializeField] private protected bool isAttacking = false;
+    private protected float distanceToPlayer;
 
     private void Start()
     {
@@ -42,37 +43,41 @@ public class Enemy : Entity
         HandlePlayerTargeting();
     }
 
-    private void HandlePlayerTargeting()
+    private protected void HandlePlayerTargeting()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance < aggroRange && shouldMove)
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceToPlayer < aggroRange && shouldMove)
         {
             aggroed = true;
-            
         }
-        if (distance > deAggroRange)
+        if (distanceToPlayer > deAggroRange)
         {
             aggroed = false;
             rb.velocity = Vector3.zero;
         }
         if (aggroed)
         {
-            Vector3 diff = player.transform.position - transform.position;
-            rb.velocity = new Vector3(diff.x, 0, diff.z).normalized * moveSpeed;
-            if (distance < attackRange)
-            {
-                shouldMove = false;
-                rb.velocity = Vector3.zero;
-                AttackPlayer();
-            }
-            else if (!isAttacking)
-            {
-                shouldMove = true;
-            }
+            HandleAggroState();            
         }
         if (attackCDTimer > 0)
         {
             attackCDTimer -= Time.deltaTime;
+        }
+    }
+
+    public virtual void HandleAggroState()
+    {
+        Vector3 diff = player.transform.position - transform.position;
+        rb.velocity = new Vector3(diff.x, 0, diff.z).normalized * moveSpeed;
+        if (distanceToPlayer < attackRange)
+        {
+            shouldMove = false;
+            rb.velocity = Vector3.zero;
+            AttackPlayer();
+        }
+        else if (!isAttacking)
+        {
+            shouldMove = true;
         }
     }
 
@@ -82,11 +87,11 @@ public class Enemy : Entity
         {
             return;
         }
-        StartCoroutine(HandleAttack());        
+        StartCoroutine(HandleAttack());
     }
 
     private IEnumerator HandleAttack()
-    {        
+    {
         isAttacking = true;
         attackCDTimer = attackCD;
         yield return new WaitForSeconds(attackDelay);
@@ -96,7 +101,7 @@ public class Enemy : Entity
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
             enemyAttackRotator.position + enemyAttackRotator.forward * attackRangeOffset, enemyAttackRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
-        
+
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
         isAttacking = false;
