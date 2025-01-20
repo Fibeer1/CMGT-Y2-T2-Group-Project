@@ -51,11 +51,11 @@ MonoBehaviour:
   - {fileID: 125692600370886296, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
   enemyUnitParent: {fileID: 0}
   spawnLocation: {fileID: 6337117648421310333}
-  maxEnemies: 10
+  maxEnemies: 15
   enemies: []
   minSpawnDistance: 1
   maxSpawnDistance: 5
-  enemySpawnTime: 30
+  enemySpawnTime: 15
   enemySpawnTimer: 0
   shouldSpawnEnemies: 1
   shouldDrawSpawnCircle: 1
