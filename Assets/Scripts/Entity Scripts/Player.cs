@@ -129,10 +129,10 @@ public class Player : Entity
             return;
         }
         //If bloodDrainDivider is 3, health loss will be 0.3/sec
-        ChangeHealth(Time.deltaTime / bloodDrainDivider, false);
+        ChangeHealth(Time.deltaTime / bloodDrainDivider, false, false);
     }
 
-    public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true)
+    public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true, bool shouldAccountForArmor = true)
     {
         //If healthChange > 0 the entity loses health and vice versa
         if (healthChangeValue > 0 && shieldDamage)
@@ -150,12 +150,12 @@ public class Player : Entity
             }
             else
             {
-                base.ChangeHealth(healthChangeValue, false);
+                base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor);
             }
         }
         else
         {
-            base.ChangeHealth(healthChangeValue, false);
+            base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor);
         }
     }
 

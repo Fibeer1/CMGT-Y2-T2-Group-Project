@@ -17,9 +17,12 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void ChangeHealth(float healthChangeValue, bool shieldDamage = true)
+    public virtual void ChangeHealth(float healthChangeValue, bool shieldDamage = true, bool shouldAccountForArmor = true)
     {
-        healthChangeValue *= armor;
+        if (shouldAccountForArmor)
+        {
+            healthChangeValue *= armor;
+        }        
         health -= healthChangeValue;
 
         if (health > maxHealth)
