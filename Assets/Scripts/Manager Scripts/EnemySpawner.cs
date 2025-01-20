@@ -71,23 +71,24 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+        Gizmos.color = Color.red;
+        DrawSpawnCircle(minSpawnDistance);
         Gizmos.color = Color.yellow;
-
-        DrawSpawnCircle();
+        DrawSpawnCircle(maxSpawnDistance);
     }
 
-    private void DrawSpawnCircle()
+    private void DrawSpawnCircle(float radius)
     {
         int segments = 100;
         float angleStep = 360f / segments;
-        Vector3 previousPoint = spawnLocation.position + new Vector3(maxSpawnDistance, 0, 0);
+        Vector3 previousPoint = spawnLocation.position + new Vector3(radius, 0, 0);
 
         for (int i = 0; i <= segments; i++)
         {
             float angle = i * angleStep * Mathf.Deg2Rad;
             Vector3 nextPoint = spawnLocation.position + 
-                new Vector3(Mathf.Cos(angle) * maxSpawnDistance, 0, 
-                Mathf.Sin(angle) * maxSpawnDistance);
+                new Vector3(Mathf.Cos(angle) * radius, 0, 
+                Mathf.Sin(angle) * radius);
             Gizmos.DrawLine(previousPoint, nextPoint);
             previousPoint = nextPoint;
         }
