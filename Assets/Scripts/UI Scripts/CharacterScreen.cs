@@ -6,7 +6,7 @@ using System.Text;
 public class CharacterScreen : MonoBehaviour
 {
     [SerializeField] private GameObject characterScreen;
-    private bool isMenuOpen = false;
+    public bool isMenuOpen = false;
     private Player player;
 
     [SerializeField] private string[] rarities;
@@ -16,27 +16,22 @@ public class CharacterScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ironCountText;
     [SerializeField] private TextMeshProUGUI platinumCountText;
     [SerializeField] private TextMeshProUGUI bloodiumCountText;
+    private Pause pauseMenu;
 
     private UIGearPiece currentGearPiece;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        pauseMenu = GetComponent<Pause>();
         characterScreen.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.paused)
         {
-            if (isMenuOpen)
-            {
-                ToggleCharacterScreen(false);
-            }
-            else
-            {
-                ToggleCharacterScreen(true);
-            }
+            ToggleCharacterScreen(!isMenuOpen);
         }
         ironCountText.text = player.materialCounts[0] + "x";
         platinumCountText.text = player.materialCounts[1] + "x";

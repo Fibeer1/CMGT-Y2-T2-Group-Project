@@ -9,11 +9,13 @@ public class Pause : MonoBehaviour
 {
     public bool paused = false;
     public GameObject pauseMenu;
+    private CharacterScreen characterScreen;
     private Player player;
 
     private void Start()
     {
         pauseMenu.SetActive(false);
+        characterScreen = GetComponent<CharacterScreen>();
         player = FindObjectOfType<Player>();
     }
 
@@ -21,6 +23,11 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (characterScreen.isMenuOpen)
+            {
+                characterScreen.ToggleCharacterScreen(false);
+                return;
+            }
             if (paused)
             {
                 Resume();
