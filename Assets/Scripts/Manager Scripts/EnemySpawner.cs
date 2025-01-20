@@ -12,8 +12,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float maxSpawnDistance;
     [SerializeField] private float minSpawnDistance;
     [SerializeField] private float enemySpawnTime;
-    private float enemySpawnTimer;
-    [SerializeField] private bool shouldSpawnEnemies = false;
+    [SerializeField] private float enemySpawnTimer;
+    [SerializeField] private bool shouldSpawnEnemies = true;
 
     private void Start()
     {
@@ -54,10 +54,12 @@ public class EnemySpawner : MonoBehaviour
         float angle = Random.Range(-360, 360);
         Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
         Vector3 position = spawnLocation.position + (Random.Range(minSpawnDistance, maxSpawnDistance) * direction);
+        position.y = 0.25f;
 
         GameObject enemyInstance = Instantiate(enemyPrefabs[enemyIndex], position, Quaternion.identity, enemyUnitParent);
         Enemy enemyScript = enemyInstance.GetComponent<Enemy>();
         enemies.Add(enemyScript);
         GameManager.enemies.Add(enemyScript);
+        enemyScript.originSpawner = this;
     }
 }
