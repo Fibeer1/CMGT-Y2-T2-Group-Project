@@ -12,8 +12,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float maxSpawnDistance;
     [SerializeField] private float minSpawnDistance;
     [SerializeField] private float enemySpawnTime;
-    private float enemySpawnTimer;
-    [SerializeField] private bool shouldSpawnEnemies = false;
+    [SerializeField] private float enemySpawnTimer;
+    [SerializeField] private bool shouldSpawnEnemies = true;
 
     private void Start()
     {
@@ -59,5 +59,6 @@ public class EnemySpawner : MonoBehaviour
         Enemy enemyScript = enemyInstance.GetComponent<Enemy>();
         enemies.Add(enemyScript);
         GameManager.enemies.Add(enemyScript);
+        enemyScript.originSpawner = this;
     }
 }
