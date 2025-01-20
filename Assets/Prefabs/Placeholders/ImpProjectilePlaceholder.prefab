@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
   damage: 10
-  speed: 8
+  speed: 15
   lifeTime: 2
   textColor: {r: 0.35, g: 0, b: 0, a: 1}
   textSize: 3
