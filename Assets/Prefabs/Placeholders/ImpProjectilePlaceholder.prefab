@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8932402982316918193}
   - component: {fileID: 8426775612344663666}
   - component: {fileID: 2208101756941489170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ImpProjectilePlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

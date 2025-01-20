@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2193213769714008861}
   - component: {fileID: 6562513911237521355}
   - component: {fileID: -5291536448028089885}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BloodProjectilePlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

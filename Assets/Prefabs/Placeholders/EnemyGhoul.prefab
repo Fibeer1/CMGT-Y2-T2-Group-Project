@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8955245629922050093}
   - component: {fileID: 981791864129212585}
   - component: {fileID: 6887255062776279691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyGhoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
