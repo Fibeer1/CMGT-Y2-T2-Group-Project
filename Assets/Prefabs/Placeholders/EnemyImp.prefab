@@ -74,7 +74,7 @@ MonoBehaviour:
   isDead: 0
   health: 75
   maxHealth: 75
-  armor: 0
+  armor: 1
   shouldMove: 1
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
