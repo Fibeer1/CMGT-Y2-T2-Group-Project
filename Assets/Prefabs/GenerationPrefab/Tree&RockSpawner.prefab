@@ -48,5 +48,5 @@ MonoBehaviour:
   - {fileID: 8320870423206404607, guid: 85b07b125ae2afa41902806d93bf42bc, type: 3}
   - {fileID: 1132784644856769065, guid: 63684b2f2c39b2e43a80c88482cc60cf, type: 3}
   spawnAreaSize: {x: 200, y: 200}
-  objectCount: 100
+  objectCount: 150
   minSpacing: 10
