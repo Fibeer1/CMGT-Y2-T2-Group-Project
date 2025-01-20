@@ -126005,7 +126005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 125692600370886296, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 140998754220963780, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -126046,6 +126046,10 @@ PrefabInstance:
     - target: {fileID: 140998754220963780, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148408205229310829, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
+      propertyPath: minAttackDistance
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -126353,6 +126357,10 @@ PrefabInstance:
     - target: {fileID: 3840070204490057809, guid: bfc655d47cae1cd408d9584ff9568f0e, type: 3}
       propertyPath: m_Name
       value: EnemyGhoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840070204490057809, guid: bfc655d47cae1cd408d9584ff9568f0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4097444177194900160, guid: bfc655d47cae1cd408d9584ff9568f0e, type: 3}
       propertyPath: m_LocalPosition.x

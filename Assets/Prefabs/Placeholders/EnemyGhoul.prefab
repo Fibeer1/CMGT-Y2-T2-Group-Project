@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4097444177194900160
 Transform:
   m_ObjectHideFlags: 0
@@ -174,8 +174,12 @@ MonoBehaviour:
   attackCDTimer: 0
   attackCD: 1
   attackRange: 1
-  attackRangeOffset: 0.5
+  attackOffset: 0.2
+  closeAttackOffset: 0.25
+  normalAttackOffset: 0.5
   minAttackDistance: 0.9
+  fleeMoveSpeed: 1
+  normalMoveSpeed: 1
   attackDelay: 0.1
   aggroRange: 7.5
   deAggroRange: 20

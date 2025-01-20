@@ -27,6 +27,8 @@ public class Enemy : Entity
     [SerializeField] private float closeAttackOffset = 0.5f;
     [SerializeField] private float normalAttackOffset = 0.5f;
     [SerializeField] private float minAttackDistance = 0.9f;
+    [SerializeField] private float fleeMoveSpeed;
+    [SerializeField] private float normalMoveSpeed;
     [SerializeField] private float attackDelay = 0.1f;
     [SerializeField] private protected float aggroRange = 10f;
     [SerializeField] private protected float deAggroRange = 20f;
@@ -41,6 +43,7 @@ public class Enemy : Entity
         player = FindObjectOfType<Player>();
         meshAgent = GetComponent<NavMeshAgent>();
         attackOffset = normalAttackOffset;
+        meshAgent.speed = normalMoveSpeed;
     }
 
     private void Update()
@@ -82,12 +85,14 @@ public class Enemy : Entity
                 Vector3 diff = transform.position - player.transform.position;
                 Vector3 targetPosition = transform.position + diff;
                 meshAgent.SetDestination(targetPosition);
+                meshAgent.speed = fleeMoveSpeed;
             }
             else
             {
                 shouldMove = false;
                 meshAgent.destination = transform.position;
                 attackOffset = normalAttackOffset;
+                meshAgent.speed = normalMoveSpeed;
             }            
             AttackPlayer();
         }
