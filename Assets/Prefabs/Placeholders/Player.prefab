@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3093081760360376451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35,11 +35,11 @@ RectTransform:
   - {fileID: 4222414762552747102}
   m_Father: {fileID: 4916381009420616498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 863, y: 60}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -40, y: 530}
   m_SizeDelta: {x: 120, y: 120}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &8291447896879857712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 3472816270537259611}
   - component: {fileID: 1363602653532412114}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Melee CD Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5624,7 +5624,7 @@ GameObject:
   - component: {fileID: 5192576233115736213}
   - component: {fileID: 7916868903151649966}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Dash CD Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8108,7 +8108,7 @@ GameObject:
   - component: {fileID: 572169652111134830}
   - component: {fileID: 2187934448897581119}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Ranged CD Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
