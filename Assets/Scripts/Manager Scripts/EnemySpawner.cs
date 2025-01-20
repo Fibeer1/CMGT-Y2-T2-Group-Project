@@ -9,11 +9,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private int maxEnemies = 10;
     public List<Enemy> enemies = new List<Enemy>();
-    [SerializeField] private float maxSpawnDistance;
     [SerializeField] private float minSpawnDistance;
+    [SerializeField] private float maxSpawnDistance;
     [SerializeField] private float enemySpawnTime;
     [SerializeField] private float enemySpawnTimer;
     [SerializeField] private bool shouldSpawnEnemies = true;
+    [SerializeField] private bool shouldDrawSpawnCircle = false;
 
     private void Start()
     {
@@ -61,5 +62,34 @@ public class EnemySpawner : MonoBehaviour
         enemies.Add(enemyScript);
         GameManager.enemies.Add(enemyScript);
         enemyScript.originSpawner = this;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (spawnLocation == null || !shouldDrawSpawnCircle)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.yellow;
+
+        DrawSpawnCircle();
+    }
+
+    private void DrawSpawnCircle()
+    {
+        int segments = 100;
+        float angleStep = 360f / segments;
+        Vector3 previousPoint = spawnLocation.position + new Vector3(maxSpawnDistance, 0, 0);
+
+        for (int i = 0; i <= segments; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 nextPoint = spawnLocation.position + 
+                new Vector3(Mathf.Cos(angle) * maxSpawnDistance, 0, 
+                Mathf.Sin(angle) * maxSpawnDistance);
+            Gizmos.DrawLine(previousPoint, nextPoint);
+            previousPoint = nextPoint;
+        }
     }
 }

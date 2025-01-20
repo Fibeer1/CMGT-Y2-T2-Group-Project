@@ -49,6 +49,10 @@ public class EnemyProximityRange : MonoBehaviour
         float closestEnemyDistance = Mathf.Infinity;
         foreach (Enemy enemy in enemies)
         {
+            if (enemy == null)
+            {
+                continue;
+            }
             float distance = Vector2.Distance(player.transform.position, enemy.transform.position);
             if (distance < closestEnemyDistance)
             {
