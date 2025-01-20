@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         }
         //Spawn the enemy in a radius around the spawn location
         float angle = Random.Range(-360, 360);
-        Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+        Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         Vector3 position = spawnLocation.position + (Random.Range(minSpawnDistance, maxSpawnDistance) * direction);
         position.y = 0.25f;
 
