@@ -98,8 +98,8 @@ MonoBehaviour:
   fleeMoveSpeed: 0.5
   normalMoveSpeed: 1
   attackDelay: 0.1
-  aggroRange: 15
-  deAggroRange: 25
+  aggroRange: 10
+  deAggroRange: 20
   aggroed: 0
   isAttacking: 0
 --- !u!195 &1730138799474534964
