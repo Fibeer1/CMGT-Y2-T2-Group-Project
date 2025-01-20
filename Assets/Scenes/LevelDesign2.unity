@@ -25961,7 +25961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51aa1a7cd64a98641930572cc0e42fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemiesValue: 30
+  maxEnemiesValue: 300
 --- !u!4 &258822023
 Transform:
   m_ObjectHideFlags: 0
