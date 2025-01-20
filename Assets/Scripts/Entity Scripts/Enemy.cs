@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : Entity
 {
-    [Header("General Variables")]    
-    [SerializeField] private protected float moveSpeed;
+    [Header("General Variables")]
     [SerializeField] private protected bool shouldMove = true;
     private protected Player player;
-    private protected Rigidbody rb;
 
     [Header("Material Drop Variables")]
     [SerializeField] private GameObject bloodOrbPrefab;
@@ -25,6 +24,7 @@ public class Enemy : Entity
     [SerializeField] private float attackCD;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private float attackRangeOffset = 0.2f;
+    [SerializeField] private float minAttackDistance = 0.9f;
     [SerializeField] private float attackDelay = 0.1f;
     [SerializeField] private protected float aggroRange = 10f;
     [SerializeField] private protected float deAggroRange = 20f;
@@ -32,10 +32,12 @@ public class Enemy : Entity
     [SerializeField] private protected bool isAttacking = false;
     private protected float distanceToPlayer;
 
+    private NavMeshAgent meshAgent;
+
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        rb = GetComponent<Rigidbody>();
+        meshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -53,11 +55,11 @@ public class Enemy : Entity
         if (distanceToPlayer > deAggroRange)
         {
             aggroed = false;
-            rb.velocity = Vector3.zero;
+            meshAgent.destination = transform.position;
         }
         if (aggroed)
         {
-            HandleAggroState();            
+            HandleAggroState();
         }
         if (attackCDTimer > 0)
         {
@@ -67,12 +69,11 @@ public class Enemy : Entity
 
     public virtual void HandleAggroState()
     {
-        Vector3 diff = player.transform.position - transform.position;
-        rb.velocity = new Vector3(diff.x, 0, diff.z).normalized * moveSpeed;
+        meshAgent.SetDestination(player.transform.position);
         if (distanceToPlayer < attackRange)
         {
             shouldMove = false;
-            rb.velocity = Vector3.zero;
+            meshAgent.destination = transform.position;
             AttackPlayer();
         }
         else if (!isAttacking)

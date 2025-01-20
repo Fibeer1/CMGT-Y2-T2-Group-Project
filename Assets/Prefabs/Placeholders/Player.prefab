@@ -1630,6 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 3094373768753597483}
+  isMenuOpen: 0
   rarities:
   - Common
   - Uncommon
@@ -5132,7 +5133,7 @@ MonoBehaviour:
   rangedDamage: 50
   speed: 3
   dashKey: 304
-  rangedAttackKey: 49
+  rangedAttackKey: 324
   shieldKey: 50
   shouldDrainBlood: 1
   bloodDrainDivider: 1.5
