@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        maxEnemies = maxEnemiesValue;
     }
 
     private void Update()
