@@ -105,7 +105,7 @@ public class Player : Entity
     public void UpdatePlayerStats(float maxHealthGrowth, float armorGrowth, float moveSpeedGrowth, float damageGrowth)
     {
         maxHealth += maxHealthGrowth;
-        armor += armorGrowth;
+        armor -= armorGrowth;
         speed += moveSpeedGrowth;
         meleeDamage += damageGrowth;
 

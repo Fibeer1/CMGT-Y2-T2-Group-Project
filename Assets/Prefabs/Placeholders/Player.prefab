@@ -4894,7 +4894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
   healthGrowth: 25
-  armorGrowth: 5
+  armorGrowth: 0.05
   moveSpeedGrowth: 0
   meleeDamageGrowth: 0
   currentRarityIndex: 0
@@ -7743,7 +7743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
   healthGrowth: 5
-  armorGrowth: 2
+  armorGrowth: 0.01
   moveSpeedGrowth: 0.1
   meleeDamageGrowth: 0
   currentRarityIndex: 0
@@ -8714,7 +8714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
   healthGrowth: 10
-  armorGrowth: 3
+  armorGrowth: 0.025
   moveSpeedGrowth: 0
   meleeDamageGrowth: 0
   currentRarityIndex: 0

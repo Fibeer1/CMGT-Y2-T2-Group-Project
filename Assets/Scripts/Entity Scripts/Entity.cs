@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
     public bool isDead = false;
     public float health = 100;
     public float maxHealth = 100;
-    public float armor = 0;
+    public float armor = 1;
 
     public virtual void InitializeEntity()
     {
@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
 
     public virtual void ChangeHealth(float healthChangeValue, bool shieldDamage = true)
     {
-        healthChangeValue -= armor;
+        healthChangeValue *= armor;
         health -= healthChangeValue;
 
         if (health > maxHealth)
