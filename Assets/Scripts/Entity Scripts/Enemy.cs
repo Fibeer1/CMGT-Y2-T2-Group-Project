@@ -8,6 +8,7 @@ public class Enemy : Entity
     [Header("General Variables")]
     [SerializeField] private protected bool shouldMove = true;
     private protected Player player;
+    public EnemySpawner originSpawner;
 
     [Header("Material Drop Variables")]
     [SerializeField] private GameObject bloodOrbPrefab;
@@ -135,6 +136,8 @@ public class Enemy : Entity
         {
             yield break;
         }
+        GameManager.enemies.Remove(this);
+        originSpawner.enemies.Remove(this);
         DropPickupables();
         StartCoroutine(base.DeathSequence());
     }
