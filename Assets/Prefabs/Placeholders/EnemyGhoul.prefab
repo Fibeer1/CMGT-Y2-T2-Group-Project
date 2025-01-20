@@ -181,7 +181,7 @@ MonoBehaviour:
   minAttackDistance: 0.9
   fleeMoveSpeed: 1
   normalMoveSpeed: 1
-  attackDelay: 0.1
+  attackDelay: 0.4
   aggroRange: 7.5
   deAggroRange: 20
   aggroed: 0

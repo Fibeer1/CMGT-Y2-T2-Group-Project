@@ -109,7 +109,7 @@ MonoBehaviour:
   textLifetime: 0.5
   rotationSpeed: 1
   maxSize: 5
-  sizeIncreaseMultiplier: 3
+  sizeIncreaseMultiplier: 10
 --- !u!54 &1162838740890960017
 Rigidbody:
   m_ObjectHideFlags: 0

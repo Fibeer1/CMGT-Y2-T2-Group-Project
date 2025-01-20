@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8932402982316918193}
   - component: {fileID: 2193213769714008861}
   - component: {fileID: 6562513911237521355}
-  - component: {fileID: -5291536448028089885}
+  - component: {fileID: 4265592337041544602}
   m_Layer: 0
   m_Name: DashProjectilePlaceholder
   m_TagString: Untagged
@@ -4933,7 +4933,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-5291536448028089885
+--- !u!114 &4265592337041544602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4942,7 +4942,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 852857912230753220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a5c4e4bb3f6434d9f2caf9f43acf8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 06a656558a3eff8428e3ec74863305d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
@@ -4953,5 +4953,3 @@ MonoBehaviour:
   textSize: 3
   textFadeDuration: 0.1
   textLifetime: 0.5
-  explosionPrefab: {fileID: 6754266822724907950, guid: 59614729a060d35469b303dfd345b98e, type: 3}
-  explosionDamage: 25
