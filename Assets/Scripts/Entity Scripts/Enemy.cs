@@ -23,7 +23,9 @@ public class Enemy : Entity
     [SerializeField] private float attackCDTimer;
     [SerializeField] private float attackCD;
     [SerializeField] private float attackRange = 1f;
-    [SerializeField] private float attackRangeOffset = 0.2f;
+    [SerializeField] private float attackOffset = 0.2f;
+    [SerializeField] private float closeAttackOffset = 0.5f;
+    [SerializeField] private float normalAttackOffset = 0.5f;
     [SerializeField] private float minAttackDistance = 0.9f;
     [SerializeField] private float attackDelay = 0.1f;
     [SerializeField] private protected float aggroRange = 10f;
@@ -38,6 +40,7 @@ public class Enemy : Entity
     {
         player = FindObjectOfType<Player>();
         meshAgent = GetComponent<NavMeshAgent>();
+        attackOffset = normalAttackOffset;
     }
 
     private void Update()
@@ -72,10 +75,23 @@ public class Enemy : Entity
         meshAgent.SetDestination(player.transform.position);
         if (distanceToPlayer < attackRange)
         {
-            shouldMove = false;
-            meshAgent.destination = transform.position;
+            if (distanceToPlayer < minAttackDistance)
+            {
+                //Move away from the player when he is too close
+                attackOffset = closeAttackOffset;
+                Vector3 diff = transform.position - player.transform.position;
+                Vector3 targetPosition = transform.position + diff;
+                meshAgent.SetDestination(targetPosition);
+            }
+            else
+            {
+                shouldMove = false;
+                meshAgent.destination = transform.position;
+                attackOffset = normalAttackOffset;
+            }            
             AttackPlayer();
         }
+        
         else if (!isAttacking)
         {
             shouldMove = true;
@@ -100,7 +116,7 @@ public class Enemy : Entity
 
         //Spawn the attack effect
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
-            enemyAttackRotator.position + enemyAttackRotator.forward * attackRangeOffset, enemyAttackRotator.rotation, transform);
+            enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
 
         //Attack duration is half the attack cooldown
