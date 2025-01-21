@@ -313,7 +313,7 @@ public class Player : Entity
             {
                 return;
             }
-            ChangeHealth(dashHealthCost);
+            ChangeHealth(dashHealthCost, false, false, false);
             StartCoroutine(Dash());
         }
         //Purely used for the HUD
