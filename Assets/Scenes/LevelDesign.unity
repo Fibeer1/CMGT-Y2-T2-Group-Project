@@ -126485,6 +126485,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee CD Overlay
       objectReference: {fileID: 0}
+    - target: {fileID: 576816247815879285, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1.5702556
+      objectReference: {fileID: 0}
+    - target: {fileID: 576816247815879285, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5702556
+      objectReference: {fileID: 0}
+    - target: {fileID: 576816247815879285, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5702556
+      objectReference: {fileID: 0}
+    - target: {fileID: 637436711226137589, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1.7207711
+      objectReference: {fileID: 0}
+    - target: {fileID: 637436711226137589, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7207711
+      objectReference: {fileID: 0}
+    - target: {fileID: 637436711226137589, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7207711
+      objectReference: {fileID: 0}
+    - target: {fileID: 749335312205407522, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58ee56d814e5f7441b059c8237218695, type: 3}
     - target: {fileID: 822878749130828628, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -126557,6 +126585,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 370
       objectReference: {fileID: 0}
+    - target: {fileID: 2722742252981689700, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0719a43b65be0154d9eb8cd3338d6f9f, type: 3}
+    - target: {fileID: 3488617926791559098, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562798569898459972, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -126583,11 +126623,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -40
+      value: -38
       objectReference: {fileID: 0}
     - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388897084623096613, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496675149266096680, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5503558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496675149266096680, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5503558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496675149266096680, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5503558
       objectReference: {fileID: 0}
     - target: {fileID: 4720070912491676103, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -126601,6 +126657,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5059705262232924197, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6152
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059705262232924197, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6152
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059705262232924197, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6152
+      objectReference: {fileID: 0}
     - target: {fileID: 5073769891939309264, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Name
       value: Dash CD Overlay
@@ -126609,6 +126677,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6865401119825564032, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2428852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865401119825564032, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2428852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865401119825564032, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2428852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900058950532447371, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f77224575606d374b9d2d9127da31e6f, type: 3}
+    - target: {fileID: 7066160969565141843, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 377a9dbd044df15469f0cf7618e495c0, type: 3}
+    - target: {fileID: 7716628503286621401, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79914178894d47a499779b3a819eb484, type: 3}
     - target: {fileID: 7917816076442923012, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Name
       value: Ranged CD Overlay
@@ -126651,6 +126743,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8048304551033911683, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490411714922248338, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
