@@ -4771,7 +4771,7 @@ GameObject:
   - component: {fileID: 6137179208571049494}
   - component: {fileID: 3675133578781367319}
   - component: {fileID: 2442031466491825762}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: FaderBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4819,7 +4819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
