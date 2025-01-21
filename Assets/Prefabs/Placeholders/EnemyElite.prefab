@@ -89,7 +89,7 @@ MonoBehaviour:
   - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
   - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
   - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
-  materialChances: 640000006400000064000000
+  materialChances: 320000003200000064000000
   enemyAttackPrefab: {fileID: 6664643138578975943, guid: c051a82d15189fd4c88dc6127774422d, type: 3}
   enemyAttackRotator: {fileID: 151221076889105181}
   damage: 30
@@ -103,8 +103,8 @@ MonoBehaviour:
   fleeMoveSpeed: 0
   normalMoveSpeed: 0.7
   attackDelay: 0.7
-  aggroRange: 8
-  deAggroRange: 15
+  aggroRange: 10
+  deAggroRange: 18
   aggroed: 0
   isAttacking: 0
 --- !u!195 &3096548063755689734

@@ -89,7 +89,7 @@ MonoBehaviour:
   - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
   - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
   - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
-  materialChances: 640000006400000064000000
+  materialChances: 0a0000000a00000000000000
   enemyAttackPrefab: {fileID: 852857912230753220, guid: 47465eb1239d70e478c75a6a2ccdc1d0, type: 3}
   enemyAttackRotator: {fileID: 6718667339481537443}
   damage: 5
