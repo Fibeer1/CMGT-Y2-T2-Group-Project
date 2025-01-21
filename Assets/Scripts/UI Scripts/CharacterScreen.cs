@@ -33,9 +33,9 @@ public class CharacterScreen : MonoBehaviour
         {
             ToggleCharacterScreen(!isMenuOpen);
         }
-        ironCountText.text = player.materialCounts[0] + "x";
-        platinumCountText.text = player.materialCounts[1] + "x";
-        bloodiumCountText.text = player.materialCounts[2] + "x";
+        ironCountText.text = player.materialCounts[0].ToString();
+        platinumCountText.text = player.materialCounts[1].ToString();
+        bloodiumCountText.text = player.materialCounts[2].ToString();
     }
 
     public void ToggleCharacterScreen(bool shouldEnableScreen)

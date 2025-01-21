@@ -40,7 +40,8 @@ public class Entity : MonoBehaviour
         }
         if (shouldDisplayDamageText)
         {
-            string healthChangeText = (healthChangeValue < 0 ? "+" : "") + Mathf.Abs(healthChangeValue).ToString();
+            string healthChangeText = (healthChangeValue < 0 ? "+" : "") + 
+                Mathf.Abs(healthChangeValue).ToString();
             TextPopUp3D.PopUpText(transform.position + Vector3.up / 2, healthChangeText,
             textSize, textColor, textFadeDuration, textLifeTime);
         }        
