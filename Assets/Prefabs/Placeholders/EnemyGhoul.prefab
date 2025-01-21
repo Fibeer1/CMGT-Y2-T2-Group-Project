@@ -185,7 +185,7 @@ MonoBehaviour:
   normalAttackOffset: 0.5
   minFleeDistance: 0.9
   fleeMoveSpeed: 1
-  normalMoveSpeed: 1
+  normalMoveSpeed: 1.2
   attackDelay: 0.4
   aggroRange: 10
   deAggroRange: 20

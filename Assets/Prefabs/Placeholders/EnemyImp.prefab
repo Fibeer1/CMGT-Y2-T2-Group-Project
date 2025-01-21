@@ -92,7 +92,7 @@ MonoBehaviour:
   materialChances: 140000001400000000000000
   enemyAttackPrefab: {fileID: 852857912230753220, guid: 47465eb1239d70e478c75a6a2ccdc1d0, type: 3}
   enemyAttackRotator: {fileID: 6718667339481537443}
-  damage: 5
+  damage: 7
   attackCDTimer: 0
   attackCD: 1.5
   attackRange: 5
