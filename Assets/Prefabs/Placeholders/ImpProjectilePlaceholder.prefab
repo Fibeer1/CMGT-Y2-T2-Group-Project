@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
   damage: 10
-  speed: 10
+  speed: 8
   lifeTime: 2
   destroyProjectileOnHit: 1
 --- !u!96 &2208101756941489170

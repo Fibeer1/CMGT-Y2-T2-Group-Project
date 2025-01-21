@@ -94,7 +94,7 @@ MonoBehaviour:
   enemyAttackRotator: {fileID: 6718667339481537443}
   damage: 5
   attackCDTimer: 0
-  attackCD: 1
+  attackCD: 1.5
   attackRange: 5
   attackOffset: 0.2
   closeAttackOffset: 0.5
