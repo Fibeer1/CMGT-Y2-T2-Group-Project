@@ -126477,14 +126477,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 223627292106104699, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 289718459608750250, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Name
-      value: Melee CD Overlay
-      objectReference: {fileID: 0}
     - target: {fileID: 576816247815879285, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_LocalScale.x
       value: -1.5702556
@@ -126521,70 +126513,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Pivot.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 969050035793866373, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 210
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Pivot.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 370
-      objectReference: {fileID: 0}
     - target: {fileID: 2722742252981689700, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -126598,36 +126526,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Pivot.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -38
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4388897084623096613, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -126669,10 +126569,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.6152
       objectReference: {fileID: 0}
-    - target: {fileID: 5073769891939309264, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Name
-      value: Dash CD Overlay
-      objectReference: {fileID: 0}
     - target: {fileID: 5414110946162122300, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -126701,10 +126597,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 79914178894d47a499779b3a819eb484, type: 3}
-    - target: {fileID: 7917816076442923012, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
-      propertyPath: m_Name
-      value: Ranged CD Overlay
-      objectReference: {fileID: 0}
     - target: {fileID: 8048304551033911683, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
