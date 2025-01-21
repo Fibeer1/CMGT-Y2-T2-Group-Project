@@ -40,7 +40,8 @@ public class CharacterScreen : MonoBehaviour
 
     public void ToggleCharacterScreen(bool shouldEnableScreen)
     {
-        Time.timeScale = shouldEnableScreen ? 0 : 1;
+        player.enabled = !shouldEnableScreen;
+        Time.timeScale = shouldEnableScreen ? 0f : 1f;
         isMenuOpen = shouldEnableScreen;
         characterScreen.SetActive(shouldEnableScreen);
     }

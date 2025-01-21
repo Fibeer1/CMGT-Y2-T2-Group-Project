@@ -1685,7 +1685,6 @@ GameObject:
   - component: {fileID: 5408127161714720929}
   - component: {fileID: 2074777577211254120}
   - component: {fileID: 1877420898450217844}
-  - component: {fileID: 7555303449471035316}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1878,20 +1877,6 @@ MonoBehaviour:
   ironCountText: {fileID: 4276025735537607167}
   platinumCountText: {fileID: 8163024953363917034}
   bloodiumCountText: {fileID: 7259143748471129479}
---- !u!114 &7555303449471035316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710204213666963238}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d833901010bb449bd34f92fab5b0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectingUI: 0
-  eventSystem: {fileID: 4855971150290881578}
 --- !u!1 &1760464162903167939
 GameObject:
   m_ObjectHideFlags: 0
