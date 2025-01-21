@@ -102,7 +102,8 @@ public class CharacterScreen : MonoBehaviour
     }
 
     private void UpdateGearPiece()
-    {        
+    {
+        Debug.Log(currentGearPiece.name + " clicked.");
         string nextRarity = GetNextRarity(rarities[currentGearPiece.currentRarityIndex]);
         if (currentGearPiece.currentRarityIndex == rarities.Length - 1)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4732119811779608262}
   - component: {fileID: 6048129706833909914}
   - component: {fileID: 1443747693400122537}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132784644856769065}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.86, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3731246, y: 1.2369345, z: 1.0896761}
-  m_Center: {x: 0.11901617, y: 0.39082962, z: 0.13}
+  m_Size: {x: 1.3731246, y: 1.2369345, z: 0.79036987}
+  m_Center: {x: 0.11901617, y: 0.39082962, z: -0.019653127}
 --- !u!208 &1443747693400122537
 NavMeshObstacle:
   m_ObjectHideFlags: 0
