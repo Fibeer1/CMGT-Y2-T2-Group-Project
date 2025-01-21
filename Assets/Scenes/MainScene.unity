@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 138484605}
   - component: {fileID: 138484607}
   - component: {fileID: 138484606}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25967,7 +25967,7 @@ GameObject:
   - component: {fileID: 255114721}
   - component: {fileID: 255114723}
   - component: {fileID: 255114722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26168,7 +26168,7 @@ GameObject:
   - component: {fileID: 332035041}
   - component: {fileID: 332035043}
   - component: {fileID: 332035042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26239,7 +26239,7 @@ GameObject:
   - component: {fileID: 359218324}
   - component: {fileID: 359218326}
   - component: {fileID: 359218325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26310,7 +26310,7 @@ GameObject:
   - component: {fileID: 450276537}
   - component: {fileID: 450276539}
   - component: {fileID: 450276538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127159,7 +127159,7 @@ GameObject:
   - component: {fileID: 1549934959}
   - component: {fileID: 1549934961}
   - component: {fileID: 1549934960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127230,7 +127230,7 @@ GameObject:
   - component: {fileID: 2084395214}
   - component: {fileID: 2084395216}
   - component: {fileID: 2084395215}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Column1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127571,6 +127571,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock
       objectReference: {fileID: 0}
+    - target: {fileID: 8320870423206404607, guid: 85b07b125ae2afa41902806d93bf42bc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -127587,6 +127591,10 @@ PrefabInstance:
     - target: {fileID: 1132784644856769065, guid: 63684b2f2c39b2e43a80c88482cc60cf, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132784644856769065, guid: 63684b2f2c39b2e43a80c88482cc60cf, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4732119811779608262, guid: 63684b2f2c39b2e43a80c88482cc60cf, type: 3}
       propertyPath: m_LocalPosition.x

@@ -28,7 +28,7 @@ public class Entity : MonoBehaviour
         bool shouldAccountForArmor = true, bool shouldDisplayDamageText = true)
     {
         Color textColor = healthChangeValue >= 0 ? damageTextColor : healTextColor;
-        if (shouldAccountForArmor)
+        if (healthChangeValue >= 0 && shouldAccountForArmor)
         {
             healthChangeValue *= armor;
         }        

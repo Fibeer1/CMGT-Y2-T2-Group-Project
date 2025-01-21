@@ -12,30 +12,24 @@ public class BloodBullet : Projectile
     {
         //Spawn explosion when the bullet hits an obstacle/enemy
 
-
         Entity entityScript = other.transform.GetComponent<Entity>();
         if (entityScript != null && !entitiesHit.Contains(entityScript) && entityScript.allegiance != origin.allegiance)
         {
+            SpawnExplosion();
             OnHit(entityScript);
         }
 
-        if (other.gameObject.layer == obstacleLayer)
+        if (LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) == obstacleLayer)
         {
-            Explosion explosionInstance = Instantiate(explosionPrefab, transform.position,
-            explosionPrefab.transform.rotation).GetComponent<Explosion>();
-            explosionInstance.InitializeProjectile(origin, explosionDamage);
+            SpawnExplosion();
             DestroyProjectile();
-        }        
-        
+        }
     }
 
-    public override void OnHit(Entity victim)
+    private void SpawnExplosion()
     {
-        if (entitiesHit.Contains(victim))
-        {
-            return;
-        }
-        entitiesHit.Add(victim);
-        victim.ChangeHealth(damage);
+        Explosion explosionInstance = Instantiate(explosionPrefab, transform.position,
+            explosionPrefab.transform.rotation).GetComponent<Explosion>();
+        explosionInstance.InitializeProjectile(origin, explosionDamage);
     }
 }
