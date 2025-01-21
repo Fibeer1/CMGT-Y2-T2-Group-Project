@@ -9,6 +9,7 @@ public class Player : Entity
     private Camera playerCam;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private LayerMask groundLayer;
+    private CanvasRaycastChecker canvasRaycastChecker;
 
     [Header("Stat Variables")]
     public float meleeDamage = 25;
@@ -78,6 +79,7 @@ public class Player : Entity
         spawnPoint = transform.position;
         playerCam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
+        canvasRaycastChecker = FindObjectOfType<CanvasRaycastChecker>();
         swordSwingCDTimer = swordSwingCD;
     }
 
@@ -198,6 +200,10 @@ public class Player : Entity
 
     private void Shoot(GameObject projectilePrefab, bool shouldDrainHealth = true, Transform target = null)
     {
+        if (canvasRaycastChecker.detectingUI)
+        {
+            return;
+        }
         if (shouldDrainHealth)
         {
             float healthCost = health * rangedAttackCost;
@@ -253,6 +259,10 @@ public class Player : Entity
 
     private void SwingSword()
     {
+        if (canvasRaycastChecker.detectingUI)
+        {
+            return;
+        }
         //Rotate the sword swing transform towards the mouse
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 1000, groundLayer))
