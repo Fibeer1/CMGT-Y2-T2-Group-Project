@@ -54,7 +54,7 @@ MonoBehaviour:
   enemies: []
   minSpawnDistance: 1
   maxSpawnDistance: 5
-  enemySpawnTime: 15
+  enemySpawnTime: 30
   enemySpawnTimer: 0
   shouldSpawnEnemies: 1
   shouldDrawSpawnCircle: 1
