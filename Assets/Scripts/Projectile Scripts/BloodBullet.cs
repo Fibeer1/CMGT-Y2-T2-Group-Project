@@ -9,6 +9,7 @@ public class BloodBullet : Projectile
 
     public override void OnHit(Entity victim)
     {
+        victim.ChangeHealth(damage);
         Explosion explosionInstance = Instantiate(explosionPrefab, transform.position,
             explosionPrefab.transform.rotation).GetComponent<Explosion>();
         explosionInstance.InitializeProjectile(origin, explosionDamage);
