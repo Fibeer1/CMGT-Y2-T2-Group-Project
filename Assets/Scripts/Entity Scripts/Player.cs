@@ -32,7 +32,7 @@ public class Player : Entity
     [SerializeField] private GameObject swordSwingPrefab;
     [SerializeField] private Transform swordSwingRotator;
     public float swordSwingCDTimer;
-    [SerializeField] private float swordSwingCooldown = 0.75f;
+    public float swordSwingCD = 0.75f;
     [SerializeField] private float attackRangeOffset = 0.4f;
     [SerializeField] private bool autoswing = false;
 
@@ -43,7 +43,7 @@ public class Player : Entity
     [SerializeField] private Transform shootRotator;
     [SerializeField] private float rangedAttackOffset;
     public float rangedAttackCDTimer;
-    [SerializeField] private float rangedAttackCD;
+    public float rangedAttackCD;
     [SerializeField] private float rangedAttackCost = 0.1f; //% of current health
 
     [Header("Dash Variables")]   
@@ -51,7 +51,8 @@ public class Player : Entity
     private bool canDash = true;
     [SerializeField] private float dashingPower = 16f;
     public float dashingTime = 0.2f;
-    public float dashingCooldown = 1f;
+    public float dashCDTimer = 1f;
+    public float dashCD = 1f;
     public float dashHealthCost = 5f;
     public Enemy closestEnemy;
     [SerializeField] private GameObject dashProjectile;
@@ -63,7 +64,7 @@ public class Player : Entity
     public float fixedShieldAmount = 10;
     [SerializeField] private float shieldDuration;
     public float shieldCDTimer;
-    [SerializeField] private float shieldCD;
+    public float shieldCD;
     [SerializeField] private float shieldMaxHPCost = 0.45f; //% of max health
 
     [Header("Material Variables")]
@@ -76,7 +77,7 @@ public class Player : Entity
         spawnPoint = transform.position;
         playerCam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
-        swordSwingCDTimer = swordSwingCooldown;
+        swordSwingCDTimer = swordSwingCD;
     }
 
     private void Update()
@@ -262,7 +263,7 @@ public class Player : Entity
         GameObject swordSwingInstance = Instantiate(swordSwingPrefab,
             spawnPosition, swordSwingRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, meleeDamage);
-        swordSwingCDTimer = swordSwingCooldown;
+        swordSwingCDTimer = swordSwingCD;
     }
 
     private void HandleShieldMechanics()
@@ -313,6 +314,11 @@ public class Player : Entity
             ChangeHealth(dashHealthCost);
             StartCoroutine(Dash());
         }
+        //Purely used for the HUD
+        if (dashCDTimer > 0)
+        {
+            dashCDTimer -= Time.deltaTime;
+        }
     }
 
     private IEnumerator Dash()
@@ -325,9 +331,10 @@ public class Player : Entity
         {
             Shoot(dashProjectile, false, closestEnemy.transform);
         }
+        dashCDTimer = dashCD;
         isDashing = false;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
-        yield return new WaitForSeconds(dashingCooldown);
+        yield return new WaitForSeconds(dashCD);
         canDash = true;
     }
 }
