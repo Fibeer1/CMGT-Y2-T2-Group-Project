@@ -25747,7 +25747,7 @@ GameObject:
   - component: {fileID: 242832718}
   - component: {fileID: 242832717}
   - component: {fileID: 242832716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundNavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25988,6 +25988,7 @@ Transform:
   - {fileID: 1137421681}
   - {fileID: 1630117698}
   - {fileID: 302036843}
+  - {fileID: 1561816953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &302036843 stripped
@@ -126525,6 +126526,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6337117648421310333, guid: c562c9c90a16f9c4ba249acbac7c2bcc, type: 3}
   m_PrefabInstance: {fileID: 1245460050}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1241710407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 258822023}
+    m_Modifications:
+    - target: {fileID: 1349953546258787477, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: maxEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349953546258787477, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: enemySpawnTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766729986456165567, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_Name
+      value: EliteEnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.19168405
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
 --- !u!1001 &1245460050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126608,6 +126674,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6168271334939802686, guid: 85b07b125ae2afa41902806d93bf42bc, type: 3}
   m_PrefabInstance: {fileID: 5742063232175694237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1561816953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6337117648421310333, guid: ac040c95a1150404fa4216cfdd980896, type: 3}
+  m_PrefabInstance: {fileID: 1241710407}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1573726335 stripped
 Transform:
@@ -127113,6 +127184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee CD Overlay
       objectReference: {fileID: 0}
+    - target: {fileID: 289718459608750250, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 822878749130828628, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -127184,6 +127259,18 @@ PrefabInstance:
     - target: {fileID: 1164592613596212211, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 370
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363602653532412114, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363602653532412114, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363602653532412114, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Pivot.x
