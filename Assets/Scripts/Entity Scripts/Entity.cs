@@ -25,15 +25,18 @@ public class Entity : MonoBehaviour
     }
 
     public virtual void ChangeHealth(float healthChangeValue, bool shieldDamage = true, 
-        bool shouldAccountForArmor = true, bool shouldDisplayDamageText = true)
+        bool shouldAccountForArmor = true, bool shouldDisplayDamageText = true, bool shouldPlaySound = true)
     {
         Color textColor = healthChangeValue >= 0 ? damageTextColor : healTextColor;
         if (healthChangeValue >= 0 && shouldAccountForArmor)
         {
             healthChangeValue *= armor;
-        }        
+        }
         health -= healthChangeValue;
-
+        if (shouldPlaySound)
+        {
+            //Play sound
+        }
         if (health > maxHealth)
         {
             health = maxHealth; 

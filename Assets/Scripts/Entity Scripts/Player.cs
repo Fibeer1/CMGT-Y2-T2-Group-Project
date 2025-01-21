@@ -136,11 +136,11 @@ public class Player : Entity
         }
         healthDrainTimer = healthDrainTickRate;
         float healthChange = maxHealth * healthDrainPercent;
-        ChangeHealth(healthChange, false, false, false);
+        ChangeHealth(healthChange, false, false, false, false);
     }
 
     public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true, 
-        bool shouldAccountForArmor = true, bool shouldDisplayDamageText = true)
+        bool shouldAccountForArmor = true, bool shouldDisplayDamageText = true, bool shouldPlaySound = true)
     {
         //If healthChange > 0 the entity loses health and vice versa
         if (healthChangeValue > 0 && shieldDamage)
@@ -158,12 +158,14 @@ public class Player : Entity
             }
             else
             {
-                base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, shouldDisplayDamageText);
+                base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, 
+                    shouldDisplayDamageText, shouldPlaySound);
             }
         }
         else
         {
-            base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, shouldDisplayDamageText);
+            base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, 
+                shouldDisplayDamageText, shouldPlaySound);
         }
     }
 
