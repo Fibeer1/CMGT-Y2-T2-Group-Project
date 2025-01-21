@@ -7,11 +7,11 @@ public class BloodBullet : Projectile
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private float explosionDamage;
 
-    public override void OnCollision(Collision collision)
+    public override void OnHit(Entity victim)
     {
-        Explosion explosionInstance = Instantiate(explosionPrefab, transform.position, 
+        Explosion explosionInstance = Instantiate(explosionPrefab, transform.position,
             explosionPrefab.transform.rotation).GetComponent<Explosion>();
         explosionInstance.InitializeProjectile(origin, explosionDamage);
-        base.OnCollision(collision);
+        DestroyProjectile();
     }
 }

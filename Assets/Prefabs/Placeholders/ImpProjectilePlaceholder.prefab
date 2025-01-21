@@ -102,7 +102,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 256
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -151,10 +151,7 @@ MonoBehaviour:
   damage: 10
   speed: 10
   lifeTime: 2
-  textColor: {r: 0.35, g: 0, b: 0, a: 1}
-  textSize: 3
-  textFadeDuration: 0.1
-  textLifetime: 0.5
+  destroyProjectileOnHit: 1
 --- !u!96 &2208101756941489170
 TrailRenderer:
   serializedVersion: 3

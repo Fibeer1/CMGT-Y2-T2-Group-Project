@@ -18,9 +18,4 @@ public class MeleeAttackTrigger : Projectile
     {
         HandleLifeTime();
     }
-
-    public override void OnHit(Entity victim, bool shouldDestroyProjectile = false)
-    {
-        base.OnHit(victim, shouldDestroyProjectile);
-    }
 }

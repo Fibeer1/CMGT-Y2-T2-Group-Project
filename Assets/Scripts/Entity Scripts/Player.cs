@@ -8,6 +8,7 @@ public class Player : Entity
     public Vector3 spawnPoint;
     private Camera playerCam;
     [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private LayerMask groundLayer;
 
     [Header("Stat Variables")]
     public float meleeDamage = 25;
@@ -130,10 +131,11 @@ public class Player : Entity
             return;
         }
         //If bloodDrainDivider is 3, health loss will be 0.3/sec
-        ChangeHealth(Time.deltaTime / bloodDrainDivider, false, false);
+        ChangeHealth(Time.deltaTime / bloodDrainDivider, false, false, false);
     }
 
-    public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true, bool shouldAccountForArmor = true)
+    public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true, 
+        bool shouldAccountForArmor = true, bool shouldDisplayDamageText = true)
     {
         //If healthChange > 0 the entity loses health and vice versa
         if (healthChangeValue > 0 && shieldDamage)
@@ -151,12 +153,12 @@ public class Player : Entity
             }
             else
             {
-                base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor);
+                base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, shouldDisplayDamageText);
             }
         }
         else
         {
-            base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor);
+            base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, shouldDisplayDamageText);
         }
     }
 
@@ -204,7 +206,7 @@ public class Player : Entity
                 return;
             }
             rangedAttackCDTimer = rangedAttackCD;
-            ChangeHealth(healthCost, false);
+            ChangeHealth(healthCost, false, false, false);
         }
         
         if (target != null)
@@ -217,7 +219,7 @@ public class Player : Entity
             Vector3 targetDirection = Vector3.zero;
             //Rotate the shooter transform towards the mouse
             Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 1000, groundLayer))
             {
                 targetDirection = new Vector3(raycastHit.point.x, shootRotator.position.y, raycastHit.point.z);
             }
@@ -253,7 +255,7 @@ public class Player : Entity
     {
         //Rotate the sword swing transform towards the mouse
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 1000, groundLayer))
         {
             swordSwingRotator.LookAt(new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z));
         }
@@ -290,7 +292,7 @@ public class Player : Entity
         }
         shieldCDTimer = shieldCD;
         float shieldHealth = fixedShieldAmount + missingHP;
-        ChangeHealth(healthCost);
+        ChangeHealth(healthCost, false, false, false);
         currentShieldInstance = Instantiate(shieldPrefab, transform.position, 
             Quaternion.identity, transform).GetComponent<Shield>();        
         currentShieldInstance.InitializeShield(this, shieldHealth, shieldDuration);

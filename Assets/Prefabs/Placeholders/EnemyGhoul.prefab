@@ -159,6 +159,11 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   armor: 1
+  healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
+  damageTextColor: {r: 0.35, g: 0, b: 0, a: 1}
+  textSize: 3
+  textFadeDuration: 0.1
+  textLifeTime: 0.5
   shouldMove: 1
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
@@ -178,7 +183,7 @@ MonoBehaviour:
   attackOffset: 0.2
   closeAttackOffset: 0.25
   normalAttackOffset: 0.5
-  minAttackDistance: 0.9
+  minFleeDistance: 0.9
   fleeMoveSpeed: 1
   normalMoveSpeed: 1
   attackDelay: 0.4

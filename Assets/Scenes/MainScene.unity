@@ -25815,7 +25815,7 @@ MonoBehaviour:
   enemies: []
   minSpawnDistance: 15
   maxSpawnDistance: 25
-  enemySpawnTime: 30
+  enemySpawnTime: 2
   enemySpawnTimer: 0
   shouldSpawnEnemies: 1
   shouldDrawSpawnCircle: 1
@@ -25832,7 +25832,7 @@ GameObject:
   - component: {fileID: 242832718}
   - component: {fileID: 242832717}
   - component: {fileID: 242832716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundNavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127409,6 +127409,10 @@ PrefabInstance:
     - target: {fileID: 3093081760360376451, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 530
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329649715335850037, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3930421970648800830, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Pivot.x

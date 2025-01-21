@@ -24,9 +24,4 @@ public class Explosion : Projectile
         transform.localScale = new Vector3(size, size, 1);
         transform.Rotate(new Vector3(0, rotationSpeed, 0), Space.World);
     }
-
-    public override void OnHit(Entity victim, bool shouldDestroyProjectile = false)
-    {
-        base.OnHit(victim, shouldDestroyProjectile);
-    }
 }

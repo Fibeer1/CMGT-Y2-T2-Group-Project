@@ -6,12 +6,6 @@ public class BloodOrb : Pickupable
 {
     [SerializeField] private float bloodGainAmount = 5;
 
-    [Header("Text Variables")]
-    [SerializeField] private Color textColor = new Color(0.35f, 0, 0);
-    [SerializeField] private float textSize = 3;
-    [SerializeField] private float textFadeDuration = 0.1f;
-    [SerializeField] private float textLifetime = 0.5f;
-
     private void Update()
     {
         HandleMoving();
@@ -19,8 +13,6 @@ public class BloodOrb : Pickupable
 
     public override void OnCollision(Player player)
     {
-        TextPopUp3D.PopUpText(player.transform.position + Vector3.up / 2, bloodGainAmount.ToString(),
-                textSize, textColor, textFadeDuration, textLifetime);
         player.ChangeHealth(-bloodGainAmount);
         //Negative value because if it's positive it would hurt the entity
         Destroy(gameObject);

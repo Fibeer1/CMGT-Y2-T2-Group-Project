@@ -27,7 +27,7 @@ public class Enemy : Entity
     [SerializeField] private float attackOffset = 0.2f;
     [SerializeField] private float closeAttackOffset = 0.5f;
     [SerializeField] private float normalAttackOffset = 0.5f;
-    [SerializeField] private float minAttackDistance = 0.9f;
+    [SerializeField] private float minFleeDistance = 0.9f;
     [SerializeField] private float fleeMoveSpeed;
     [SerializeField] private float normalMoveSpeed;
     [SerializeField] private float attackDelay = 0.1f;
@@ -79,7 +79,7 @@ public class Enemy : Entity
         meshAgent.SetDestination(player.transform.position);
         if (distanceToPlayer < attackRange)
         {
-            if (distanceToPlayer < minAttackDistance)
+            if (distanceToPlayer < minFleeDistance)
             {
                 //Move away from the player when he is too close
                 attackOffset = closeAttackOffset;
@@ -166,9 +166,13 @@ public class Enemy : Entity
 
     private void LaunchPickupable(GameObject pickupablePrefab, float pickupableSpeed, float minYVelocity, float maxYVelocity)
     {
-        Vector3 objectMoveDirection = Random.insideUnitSphere.normalized * pickupableSpeed;
-        objectMoveDirection.y = Random.Range(minYVelocity, maxYVelocity);
+        float angle = Random.Range(-360, 360);
+        Vector3 direction = new Vector3(Mathf.Cos(angle), 
+            Random.Range(minYVelocity, maxYVelocity), 
+            Mathf.Sin(angle)).normalized * pickupableSpeed;
         GameObject currentOrbInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
-        currentOrbInstance.GetComponent<Rigidbody>().velocity = objectMoveDirection;
+        currentOrbInstance.GetComponent<Rigidbody>().velocity = direction;
+
+        
     }
 }

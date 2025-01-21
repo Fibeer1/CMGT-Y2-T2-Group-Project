@@ -6191,8 +6191,16 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   armor: 1
+  healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
+  damageTextColor: {r: 0.35, g: 0, b: 0, a: 1}
+  textSize: 3
+  textFadeDuration: 0.1
+  textLifeTime: 0.5
   spawnPoint: {x: 0, y: 0, z: 0}
   playerSprite: {fileID: 8591423304846837510}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   meleeDamage: 25
   rangedDamage: 50
   speed: 3
@@ -9611,7 +9619,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

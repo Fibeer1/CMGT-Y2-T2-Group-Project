@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1040346943991169416}
   - component: {fileID: 7822698449745467711}
   - component: {fileID: 2638425739846339233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tier3MatPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ Rigidbody:
   m_GameObject: {fileID: 5772003449127996387}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 2
   m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
