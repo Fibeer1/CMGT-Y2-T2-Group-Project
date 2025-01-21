@@ -4950,5 +4950,8 @@ MonoBehaviour:
   speed: 10
   lifeTime: 2
   destroyProjectileOnHit: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   explosionPrefab: {fileID: 6754266822724907950, guid: 59614729a060d35469b303dfd345b98e, type: 3}
   explosionDamage: 25

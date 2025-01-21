@@ -152,6 +152,9 @@ MonoBehaviour:
   speed: 8
   lifeTime: 2
   destroyProjectileOnHit: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!96 &2208101756941489170
 TrailRenderer:
   serializedVersion: 3

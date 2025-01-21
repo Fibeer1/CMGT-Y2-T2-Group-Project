@@ -104,7 +104,10 @@ MonoBehaviour:
   speed: 0
   lifeTime: 1
   destroyProjectileOnHit: 0
-  rotationSpeed: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  rotationSpeed: 2
   maxSize: 5
   sizeIncreaseMultiplier: 10
 --- !u!54 &1162838740890960017
