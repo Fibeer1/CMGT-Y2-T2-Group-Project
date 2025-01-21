@@ -48,7 +48,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -99,13 +99,11 @@ MonoBehaviour:
   damage: 1
   speed: 0
   lifeTime: 0.25
-  swingAnimationName: SwordSwing
-  spawnTransform: {fileID: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
   textColor: {r: 0.35, g: 0, b: 0, a: 1}
   textSize: 3
   textFadeDuration: 0.1
   textLifetime: 0.5
+  swingAnimationName: SwordSwing
 --- !u!1 &6355086960641883520
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +176,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1514229289
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -115459034, guid: 7219e07b37d2bd647acf600954993484, type: 3}
   m_Color: {r: 0.3886792, g: 0, b: 0, a: 1}

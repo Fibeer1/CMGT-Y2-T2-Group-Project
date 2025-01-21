@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5482708610041981366}
   - component: {fileID: 7569791796133242936}
   m_Layer: 0
-  m_Name: EnemySpawner1
+  m_Name: EliteEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,11 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 3840070204490057809, guid: bfc655d47cae1cd408d9584ff9568f0e, type: 3}
-  - {fileID: 125692600370886296, guid: 402929e542bd50a46bdb9cf77383e06a, type: 3}
+  - {fileID: 3123433927205347779, guid: 289d9c78f323410478a0bf55649c0ea6, type: 3}
   enemyUnitParent: {fileID: 0}
   spawnLocation: {fileID: 6337117648421310333}
-  maxEnemies: 15
+  maxEnemies: 5
   enemies: []
   minSpawnDistance: 1
   maxSpawnDistance: 5

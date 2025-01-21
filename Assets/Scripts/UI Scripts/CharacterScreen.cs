@@ -133,15 +133,15 @@ public class CharacterScreen : MonoBehaviour
         int bloodCost = GetUpgradeCosts()[2];
         if (ironCost > 0)
         {
-            costsText.Append($"{ironCost}x Iron\n");
+            costsText.Append($"{ironCost} Iron\n");
         }
         if (platinumCost > 0)
         {
-            costsText.Append($"{platinumCost}x Platinum\n");
+            costsText.Append($"{platinumCost} Platinum\n");
         }
         if (bloodCost > 0)
         {
-            costsText.Append($"{bloodCost}x Blood\n");
+            costsText.Append($"{bloodCost} Blood\n");
         }
         UpdateUI(nextRarity, stats.ToString(), costsText.ToString());
     }
