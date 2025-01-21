@@ -107,7 +107,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
-  rotationSpeed: 2
+  rotationSpeed: 1
   maxSize: 5
   sizeIncreaseMultiplier: 10
 --- !u!54 &1162838740890960017
