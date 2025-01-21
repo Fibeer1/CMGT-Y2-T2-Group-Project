@@ -31,7 +31,7 @@ public class Player : Entity
     [Header("Sword Swing Variables")]
     [SerializeField] private GameObject swordSwingPrefab;
     [SerializeField] private Transform swordSwingRotator;
-    [SerializeField] private float swordSwingCDTimer;
+    public float swordSwingCDTimer;
     [SerializeField] private float swordSwingCooldown = 0.75f;
     [SerializeField] private float attackRangeOffset = 0.4f;
     [SerializeField] private bool autoswing = false;
@@ -42,7 +42,7 @@ public class Player : Entity
     [SerializeField] private GameObject rangedProjectilePrefab;
     [SerializeField] private Transform shootRotator;
     [SerializeField] private float rangedAttackOffset;
-    [SerializeField] private float rangedAttackCDTimer;
+    public float rangedAttackCDTimer;
     [SerializeField] private float rangedAttackCD;
     [SerializeField] private float rangedAttackCost = 0.1f; //% of current health
 
@@ -62,7 +62,7 @@ public class Player : Entity
     public float percentageMissingHealthShield = 0.25f; //% of missing health
     public float fixedShieldAmount = 10;
     [SerializeField] private float shieldDuration;
-    [SerializeField] private float shieldCDTimer;
+    public float shieldCDTimer;
     [SerializeField] private float shieldCD;
     [SerializeField] private float shieldMaxHPCost = 0.45f; //% of max health
 

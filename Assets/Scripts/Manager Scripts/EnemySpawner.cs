@@ -53,10 +53,9 @@ public class EnemySpawner : MonoBehaviour
         }
         //Spawn the enemy in a radius around the spawn location
         float angle = Random.Range(-360, 360);
-        Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        Vector3 direction = new Vector3(Mathf.Cos(angle), 0.25f, Mathf.Sin(angle));
         Vector3 position = spawnLocation.position + (Random.Range(minSpawnDistance, maxSpawnDistance) * direction);
-        position.y = 0.25f;
-
+        position.y = 0;
         GameObject enemyInstance = Instantiate(enemyPrefabs[enemyIndex], position, Quaternion.identity, enemyUnitParent);
         Enemy enemyScript = enemyInstance.GetComponent<Enemy>();
         enemies.Add(enemyScript);
