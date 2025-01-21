@@ -127377,6 +127377,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3329649715335850037, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: shouldDrainBlood
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329649715335850037, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: healthDrainPercent
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329649715335850037, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: healthDrainTickRate
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4720070912491676103, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

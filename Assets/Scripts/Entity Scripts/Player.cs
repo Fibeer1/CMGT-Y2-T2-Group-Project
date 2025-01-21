@@ -9,7 +9,6 @@ public class Player : Entity
     private Camera playerCam;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private LayerMask groundLayer;
-    private CanvasRaycastChecker canvasRaycastChecker;
 
     [Header("Stat Variables")]
     public float meleeDamage = 25;
@@ -28,7 +27,9 @@ public class Player : Entity
 
     [Header("Blood Drain Variables")]
     [SerializeField] private bool shouldDrainBlood = true;
-    [SerializeField] private float bloodDrainDivider = 3f;
+    [SerializeField] private float healthDrainPercent = 0.01f; //1% of max health per tick
+    [SerializeField] private float healthDrainTickRate = 0.1f;
+    private float healthDrainTimer;
 
     [Header("Sword Swing Variables")]
     [SerializeField] private GameObject swordSwingPrefab;
@@ -79,8 +80,8 @@ public class Player : Entity
         spawnPoint = transform.position;
         playerCam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
-        canvasRaycastChecker = FindObjectOfType<CanvasRaycastChecker>();
         swordSwingCDTimer = swordSwingCD;
+        healthDrainTimer = healthDrainTickRate;
     }
 
     private void Update()
@@ -128,12 +129,14 @@ public class Player : Entity
 
     private void HandleBloodDrain()
     {
-        if (!shouldDrainBlood)
+        if (!shouldDrainBlood || healthDrainTimer > 0)
         {
+            healthDrainTimer -= Time.deltaTime;
             return;
         }
-        //If bloodDrainDivider is 3, health loss will be 0.3/sec
-        ChangeHealth(Time.deltaTime / bloodDrainDivider, false, false, false);
+        healthDrainTimer = healthDrainTickRate;
+        float healthChange = maxHealth * healthDrainPercent;
+        ChangeHealth(healthChange, false, false, false);
     }
 
     public override void ChangeHealth(float healthChangeValue, bool shieldDamage = true, 
@@ -200,10 +203,6 @@ public class Player : Entity
 
     private void Shoot(GameObject projectilePrefab, bool shouldDrainHealth = true, Transform target = null)
     {
-        if (canvasRaycastChecker.detectingUI)
-        {
-            return;
-        }
         if (shouldDrainHealth)
         {
             float healthCost = health * rangedAttackCost;
@@ -259,10 +258,6 @@ public class Player : Entity
 
     private void SwingSword()
     {
-        if (canvasRaycastChecker.detectingUI)
-        {
-            return;
-        }
         //Rotate the sword swing transform towards the mouse
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 1000, groundLayer))

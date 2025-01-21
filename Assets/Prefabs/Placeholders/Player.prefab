@@ -6050,7 +6050,8 @@ MonoBehaviour:
   rangedAttackKey: 324
   shieldKey: 113
   shouldDrainBlood: 1
-  bloodDrainDivider: 1.5
+  healthDrainPercent: 0.001
+  healthDrainTickRate: 0.1
   swordSwingPrefab: {fileID: 6664643138578975943, guid: 5bd67172b88a7c34b92a918fe9122d1a, type: 3}
   swordSwingRotator: {fileID: 8218634187496514979}
   swordSwingCDTimer: 0
