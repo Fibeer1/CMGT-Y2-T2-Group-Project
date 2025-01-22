@@ -9,6 +9,8 @@ public class UIGearPiece : MonoBehaviour
     public float armorGrowth;
     public float moveSpeedGrowth;
     public float meleeDamageGrowth;
+    public string gearPieceName;
+    [SerializeField] private bool shouldSelectOnStart = false;
 
     public int currentRarityIndex;
 
@@ -26,10 +28,9 @@ public class UIGearPiece : MonoBehaviour
         materialCosts.Add(rareUpgradeMaterialCosts);
         materialCosts.Add(epicUpgradeMaterialCosts);
         materialCosts.Add(legendaryUpgradeMaterialCosts);
-    }
-
-    public void OnClick()
-    {
-
+        if (shouldSelectOnStart)
+        {
+            characterScreen.OnGearPieceClick(gameObject);
+        }
     }
 }

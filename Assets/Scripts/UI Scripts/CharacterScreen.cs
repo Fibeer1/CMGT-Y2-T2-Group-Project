@@ -10,9 +10,10 @@ public class CharacterScreen : MonoBehaviour
     private Player player;
 
     [SerializeField] private string[] rarities;
-    public TextMeshProUGUI rarityText;
-    public TextMeshProUGUI statsText;
-    public TextMeshProUGUI costText;
+    [SerializeField] private TextMeshProUGUI rarityText;
+    [SerializeField] private TextMeshProUGUI statsText;
+    [SerializeField] private TextMeshProUGUI costText;
+    [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI ironCountText;
     [SerializeField] private TextMeshProUGUI platinumCountText;
     [SerializeField] private TextMeshProUGUI bloodiumCountText;
@@ -46,8 +47,9 @@ public class CharacterScreen : MonoBehaviour
         characterScreen.SetActive(shouldEnableScreen);
     }
 
-    public void UpdateUI(string rarity, string stats, string cost)
+    public void UpdateUI(string itemName, string rarity, string stats, string cost)
     {
+        itemNameText.text = itemName;
         rarityText.text = rarity;
         statsText.text = stats;
         costText.text = cost;
@@ -108,7 +110,7 @@ public class CharacterScreen : MonoBehaviour
         string nextRarity = GetNextRarity(rarities[currentGearPiece.currentRarityIndex]);
         if (currentGearPiece.currentRarityIndex == rarities.Length - 1)
         {
-            UpdateUI(nextRarity, string.Empty, string.Empty);
+            UpdateUI(currentGearPiece.gearPieceName, nextRarity, string.Empty, string.Empty);
             return;
         }
 
@@ -130,6 +132,7 @@ public class CharacterScreen : MonoBehaviour
             stats.Append($"Melee Damage: +{currentGearPiece.meleeDamageGrowth}\n");
         }
         StringBuilder costsText = new StringBuilder();
+        costsText.Append("Cost:\n");
         int ironCost = GetUpgradeCosts()[0];
         int platinumCost = GetUpgradeCosts()[1];
         int bloodCost = GetUpgradeCosts()[2];
@@ -145,7 +148,7 @@ public class CharacterScreen : MonoBehaviour
         {
             costsText.Append($"{bloodCost} Blood\n");
         }
-        UpdateUI(nextRarity, stats.ToString(), costsText.ToString());
+        UpdateUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
     }
 
     private bool CheckMaterialsAndUpgrade(int ironRequired, int platinumRequired, int tier3Required)
