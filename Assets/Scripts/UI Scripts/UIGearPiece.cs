@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIGearPiece : MonoBehaviour
 {
     [SerializeField] private CharacterScreen characterScreen;
+    public List<float[]> statArrays = new List<float[]>();
     public float[] healthGrowthValues;
     public float[] armorGrowthValues;
     public float[] moveSpeedGrowthValues;
@@ -24,6 +25,11 @@ public class UIGearPiece : MonoBehaviour
 
     private void Start()
     {
+        statArrays.Add(healthGrowthValues);
+        statArrays.Add(armorGrowthValues);
+        statArrays.Add(moveSpeedGrowthValues);
+        statArrays.Add(meleeDamageGrowthValues);
+
         materialCosts.Add(uncommonUpgradeMaterialCosts);
         materialCosts.Add(rareUpgradeMaterialCosts);
         materialCosts.Add(epicUpgradeMaterialCosts);

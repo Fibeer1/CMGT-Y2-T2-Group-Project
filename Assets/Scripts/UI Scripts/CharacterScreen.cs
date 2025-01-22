@@ -96,11 +96,13 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("Missing required materials to upgrade.");
             return;
         }
+        float healthStat = CheckGearStat(0);
+        float armorStat = CheckGearStat(1);
+        float moveSpeedStat = CheckGearStat(2);
+        float meleeDamageStat = CheckGearStat(3);
+
+        player.UpdatePlayerStats(healthStat, armorStat, moveSpeedStat, meleeDamageStat);
         currentGearPiece.currentRarityIndex++;
-        player.UpdatePlayerStats(currentGearPiece.healthGrowthValues[currentGearPiece.currentRarityIndex], 
-                        currentGearPiece.armorGrowthValues[currentGearPiece.currentRarityIndex],
-                        currentGearPiece.moveSpeedGrowthValues[currentGearPiece.currentRarityIndex], 
-                        currentGearPiece.meleeDamageGrowthValues[currentGearPiece.currentRarityIndex]);        
         UpdateGearPiece();
     }
 
@@ -115,21 +117,26 @@ public class CharacterScreen : MonoBehaviour
         }
 
         StringBuilder stats = new StringBuilder();
-        if (currentGearPiece.healthGrowthValues[currentGearPiece.currentRarityIndex] > 0)
+        float healthGrowth = CheckGearStat(0);
+        float armorGrowth = CheckGearStat(1);
+        float moveSpeedGrowth = CheckGearStat(2);
+        float meleeDamageGrowth = CheckGearStat(3);
+
+        if (healthGrowth > 0)
         {
-            stats.Append($"Health: +{currentGearPiece.healthGrowthValues[currentGearPiece.currentRarityIndex]}\n");
+            stats.Append($"Health: +{healthGrowth}\n");
         }
-        if (currentGearPiece.armorGrowthValues[currentGearPiece.currentRarityIndex] > 0)
+        if (armorGrowth > 0)
         {
-            stats.Append($"Armor: +{(100 * currentGearPiece.armorGrowthValues[currentGearPiece.currentRarityIndex]).ToString("0.00")}%\n");
+            stats.Append($"Armor: +{(100 * armorGrowth).ToString("0.00")}%\n");
         }
-        if (currentGearPiece.moveSpeedGrowthValues[currentGearPiece.currentRarityIndex] > 0)
+        if (moveSpeedGrowth > 0)
         {
-            stats.Append($"Speed: +{currentGearPiece.moveSpeedGrowthValues[currentGearPiece.currentRarityIndex]}\n");
+            stats.Append($"Speed: +{moveSpeedGrowth}\n");
         }
-        if (currentGearPiece.meleeDamageGrowthValues[currentGearPiece.currentRarityIndex] > 0)
+        if (meleeDamageGrowth > 0)
         {
-            stats.Append($"Melee Damage: +{currentGearPiece.meleeDamageGrowthValues[currentGearPiece.currentRarityIndex]}\n");
+            stats.Append($"Melee Damage: +{meleeDamageGrowth}\n");
         }
         StringBuilder costsText = new StringBuilder();
         costsText.Append("Cost:\n");
@@ -149,6 +156,18 @@ public class CharacterScreen : MonoBehaviour
             costsText.Append($"{bloodCost} Blood\n");
         }
         UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
+    }
+
+    private float CheckGearStat(int statIndex)
+    {
+        if (currentGearPiece.currentRarityIndex < currentGearPiece.statArrays[statIndex].Length)
+        {
+            return currentGearPiece.statArrays[statIndex][currentGearPiece.currentRarityIndex];
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public void UpdateAbilityUI(string itemName, string level, string stats, string cost)
