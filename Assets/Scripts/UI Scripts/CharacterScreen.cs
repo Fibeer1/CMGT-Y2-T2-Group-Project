@@ -265,7 +265,14 @@ public class CharacterScreen : MonoBehaviour
         }
         if (bloodCost > 0)
         {
-            costsText.Append($"{bloodCost} Crystals\n");
+            if (bloodCost == 1)
+            {
+                costsText.Append($"{bloodCost} Crystal\n");
+            }
+            else
+            {
+                costsText.Append($"{bloodCost} Crystals\n");
+            }
         }
         UpdateAbilityUI(currentAbility.abilityName, nextLevel.ToString(), 
             stats.ToString(), costsText.ToString());
