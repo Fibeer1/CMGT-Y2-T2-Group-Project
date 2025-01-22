@@ -153,10 +153,10 @@ public class CharacterScreen : MonoBehaviour
 
     public void UpdateAbilityUI(string itemName, string level, string stats, string cost)
     {
-        gearPieceTexts[0].text = itemName;
-        gearPieceTexts[1].text = level;
-        gearPieceTexts[2].text = stats;
-        gearPieceTexts[3].text = cost;
+        abilityTexts[0].text = itemName;
+        abilityTexts[1].text = "Level: " + level;
+        abilityTexts[2].text = stats;
+        abilityTexts[3].text = cost;
     }
 
     public void OnAbilityClick(GameObject gearPiece)
