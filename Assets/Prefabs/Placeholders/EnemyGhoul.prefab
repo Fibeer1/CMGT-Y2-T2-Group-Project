@@ -174,9 +174,10 @@ MonoBehaviour:
   - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
   - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
   materialChances: 140000001400000000000000
-  enemyAttackPrefab: {fileID: 4919045626839232044, guid: 017ad231964213140b6d41ba7b09ee7d, type: 3}
+  enemyAttackPrefab: {fileID: 6664643138578975943, guid: b6a5a1ac594a7eb4cb946eba323bcc3d, type: 3}
   enemyAttackRotator: {fileID: 9098057276296455932}
   damage: 10
+  attackParent: {fileID: 4097444177194900160}
   attackCDTimer: 0
   attackCD: 1
   attackRange: 1

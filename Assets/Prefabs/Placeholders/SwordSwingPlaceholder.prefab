@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4290315068385973274}
   - component: {fileID: 7313745202444929238}
-  - component: {fileID: 7532207672526817782}
   m_Layer: 0
   m_Name: SpriteAnimator
   m_TagString: Untagged
@@ -72,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1514229289
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -115459034, guid: 7219e07b37d2bd647acf600954993484, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7532207672526817782
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753191235828367651}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 52675c8c675ef934aada8d1e0b617791, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6664643138578975943
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,9 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6868578362032354159}
-  - component: {fileID: 4349518477506782492}
+  - component: {fileID: 1301369388972184608}
   - component: {fileID: 6233367527956134246}
   - component: {fileID: 8062271739724949885}
+  - component: {fileID: 8287041551090856004}
   m_Layer: 0
   m_Name: SwordSwingPlaceholder
   m_TagString: Untagged
@@ -141,8 +120,8 @@ Transform:
   - {fileID: 4290315068385973274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4349518477506782492
-BoxCollider:
+--- !u!135 &1301369388972184608
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7247155, y: 0.35980994, z: 0.44104928}
-  m_Center: {x: 0, y: 0, z: 0.27947536}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6233367527956134246
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,10 +184,29 @@ MonoBehaviour:
   damage: 1
   speed: 0
   lifeTime: 0.25
+  destroyProjectileOnHit: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
   swingAnimationName: SwordSwing
-  spawnTransform: {fileID: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
-  textColor: {r: 0.35, g: 0, b: 0, a: 1}
-  textSize: 3
-  textFadeDuration: 0.1
-  textLifetime: 0.5
+--- !u!95 &8287041551090856004
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664643138578975943}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52675c8c675ef934aada8d1e0b617791, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -41,10 +41,11 @@ public class Entity : MonoBehaviour
         {
             health = maxHealth; 
         }
+        bool isValueFloat = Mathf.Abs(healthChangeValue) % 1 != 0;
         if (shouldDisplayDamageText)
         {
             string healthChangeText = (healthChangeValue < 0 ? "+" : "") + 
-                Mathf.Abs(healthChangeValue).ToString();
+                Mathf.Abs(healthChangeValue).ToString(isValueFloat ? "0.0" : "0");
             TextPopUp3D.PopUpText(transform.position + Vector3.up / 2, healthChangeText,
             textSize, textColor, textFadeDuration, textLifeTime);
         }        

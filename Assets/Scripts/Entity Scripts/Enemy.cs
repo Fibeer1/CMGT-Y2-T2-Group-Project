@@ -21,6 +21,7 @@ public class Enemy : Entity
     [SerializeField] private GameObject enemyAttackPrefab;
     [SerializeField] private Transform enemyAttackRotator;
     [SerializeField] private protected float damage;
+    [SerializeField] private Transform attackParent;
     [SerializeField] private float attackCDTimer;
     [SerializeField] private float attackCD;
     [SerializeField] private float attackRange = 1f;
@@ -122,7 +123,7 @@ public class Enemy : Entity
 
         //Spawn the attack effect
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
-            enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, transform);
+            enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
 
         //Attack duration is half the attack cooldown

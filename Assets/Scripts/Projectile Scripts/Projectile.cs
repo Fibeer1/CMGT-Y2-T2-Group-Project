@@ -51,12 +51,18 @@ public class Projectile : MonoBehaviour
         {
             OnHit(entityScript);
         }
+        if (LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) == obstacleLayer)
+        {
+            //Destroy projectile if it hits an obstacle
+            DestroyProjectile();
+        }
     }
 
     public virtual void OnHit(Entity victim)
     {
         if (entitiesHit.Contains(victim))
         {
+            Debug.Log("Enemy already hit");
             return;
         }
         entitiesHit.Add(victim);
