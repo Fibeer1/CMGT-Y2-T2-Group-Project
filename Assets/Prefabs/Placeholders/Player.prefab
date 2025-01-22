@@ -3221,10 +3221,10 @@ MonoBehaviour:
   gearPieceName: Sword
   shouldSelectOnStart: 0
   currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 010000000100000000000000
-  rareUpgradeMaterialCosts: 030000000200000000000000
-  epicUpgradeMaterialCosts: 040000000300000001000000
-  legendaryUpgradeMaterialCosts: 050000000300000002000000
+  uncommonUpgradeMaterialCosts: 0a0000000a00000003000000
+  rareUpgradeMaterialCosts: 1e0000001e00000008000000
+  epicUpgradeMaterialCosts: 3c0000003c0000000d000000
+  legendaryUpgradeMaterialCosts: 640000006400000014000000
 --- !u!1 &3203201045719165509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4528,10 +4528,10 @@ MonoBehaviour:
   gearPieceName: Chestplate
   shouldSelectOnStart: 1
   currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 010000000100000000000000
-  rareUpgradeMaterialCosts: 030000000200000000000000
-  epicUpgradeMaterialCosts: 040000000300000001000000
-  legendaryUpgradeMaterialCosts: 050000000300000002000000
+  uncommonUpgradeMaterialCosts: 080000000500000000000000
+  rareUpgradeMaterialCosts: 120000000c00000001000000
+  epicUpgradeMaterialCosts: 1e0000001200000003000000
+  legendaryUpgradeMaterialCosts: 3c0000001e00000005000000
 --- !u!1 &4574797405247475935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5379,7 +5379,7 @@ MonoBehaviour:
   meleeDamage: 25
   rangedDamage: 25
   dashProjectileDamage: 50
-  speed: 3
+  speed: 2.6
   dashKey: 304
   rangedAttackKey: 324
   shieldKey: 113
@@ -7344,10 +7344,10 @@ MonoBehaviour:
   gearPieceName: Boots
   shouldSelectOnStart: 0
   currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 010000000100000000000000
-  rareUpgradeMaterialCosts: 030000000200000000000000
-  epicUpgradeMaterialCosts: 040000000300000001000000
-  legendaryUpgradeMaterialCosts: 050000000300000002000000
+  uncommonUpgradeMaterialCosts: 040000000600000000000000
+  rareUpgradeMaterialCosts: 0b0000001000000001000000
+  epicUpgradeMaterialCosts: 120000001c00000003000000
+  legendaryUpgradeMaterialCosts: 1e0000003700000005000000
 --- !u!1 &7718655055081161230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8557,10 +8557,10 @@ MonoBehaviour:
   gearPieceName: Leggings
   shouldSelectOnStart: 0
   currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 010000000100000000000000
-  rareUpgradeMaterialCosts: 030000000200000000000000
-  epicUpgradeMaterialCosts: 040000000300000001000000
-  legendaryUpgradeMaterialCosts: 050000000300000002000000
+  uncommonUpgradeMaterialCosts: 050000000600000000000000
+  rareUpgradeMaterialCosts: 0b0000000c00000001000000
+  epicUpgradeMaterialCosts: 140000001600000003000000
+  legendaryUpgradeMaterialCosts: 280000002d00000005000000
 --- !u!1 &8357226084755256641
 GameObject:
   m_ObjectHideFlags: 0
