@@ -404,7 +404,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1396227344599380373}
+  m_TargetGraphic: {fileID: 8173374884694527435}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3250,30 +3250,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  healthGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  armorGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  moveSpeedGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  healthGrowthValues: []
+  armorGrowthValues: []
+  moveSpeedGrowthValues: []
   meleeDamageGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 15
+  - 25
+  - 35
+  - 50
   gearPieceName: Sword
   shouldSelectOnStart: 0
   currentRarityIndex: 0
@@ -4578,29 +4562,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
   healthGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 8
+  - 20
+  - 30
+  - 60
   armorGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  moveSpeedGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  meleeDamageGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.02
+  - 0.04
+  - 0.055
+  - 0.08
+  moveSpeedGrowthValues: []
+  meleeDamageGrowthValues: []
   gearPieceName: Chestplate
   shouldSelectOnStart: 1
   currentRarityIndex: 0
@@ -6803,7 +6775,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1396227344599380373}
+  m_TargetGraphic: {fileID: 1605363490825764973}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7414,29 +7386,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
   healthGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 5
+  - 12
+  - 20
+  - 35
   armorGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.01
+  - 0.025
+  - 0.045
+  - 0.06
   moveSpeedGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  meleeDamageGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.2
+  meleeDamageGrowthValues: []
   gearPieceName: Boots
   shouldSelectOnStart: 0
   currentRarityIndex: 0
@@ -8647,29 +8611,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
   healthGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 6
+  - 12
+  - 20
+  - 40
   armorGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  moveSpeedGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  meleeDamageGrowthValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.015
+  - 0.03
+  - 0.05
+  - 0.07
+  moveSpeedGrowthValues: []
+  meleeDamageGrowthValues: []
   gearPieceName: Leggings
   shouldSelectOnStart: 0
   currentRarityIndex: 0
