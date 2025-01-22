@@ -13,6 +13,7 @@ public class Player : Entity
     [Header("Stat Variables")]
     public float meleeDamage = 25;
     public float rangedDamage = 50f;
+    public float dashProjectileDamage = 50f;
     public float speed = 3f;
 
     [Header("Keybindings")]
@@ -199,11 +200,11 @@ public class Player : Entity
         }
         if (Input.GetKeyDown(rangedAttackKey))
         {
-            Shoot(rangedProjectilePrefab);
+            Shoot(rangedProjectilePrefab, rangedDamage);
         }
     }
 
-    private void Shoot(GameObject projectilePrefab, bool shouldDrainHealth = true, Transform target = null)
+    private void Shoot(GameObject projectilePrefab, float projectileDamage, bool shouldDrainHealth = true, Transform target = null)
     {
         if (shouldDrainHealth)
         {
@@ -238,7 +239,7 @@ public class Player : Entity
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
         GameObject projectileInstance = Instantiate(projectilePrefab,
             spawnPosition, shootRotator.rotation);
-        projectileInstance.GetComponent<Projectile>().InitializeProjectile(this, rangedDamage);
+        projectileInstance.GetComponent<Projectile>().InitializeProjectile(this, projectileDamage);
     }
 
     private void HandleSwordSwing()
@@ -338,7 +339,7 @@ public class Player : Entity
         yield return new WaitForSeconds(dashingTime);
         if (closestEnemy != null)
         {
-            Shoot(dashProjectile, false, closestEnemy.transform);
+            Shoot(dashProjectile, dashProjectileDamage, false, closestEnemy.transform);
         }
         dashCDTimer = dashCD;
         isDashing = false;
