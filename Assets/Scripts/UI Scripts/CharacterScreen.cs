@@ -186,8 +186,8 @@ public class CharacterScreen : MonoBehaviour
         }
 
         currentAbility.UpgradePlayerAbility(currentAbility.abilityName);
-        currentGearPiece.currentRarityIndex++;
-        UpdateGearPiece();
+        currentAbility.currentLevelIndex++;
+        UpdateAbility();
     }
 
     private void UpdateAbility()

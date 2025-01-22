@@ -30,7 +30,7 @@ public class UIAbility : MonoBehaviour
         materialCosts.Add(level3UpgradeMaterialCosts);
         if (shouldSelectOnStart)
         {
-            characterScreen.OnGearPieceClick(gameObject);
+            characterScreen.OnAbilityClick(gameObject);
         }        
     }
 

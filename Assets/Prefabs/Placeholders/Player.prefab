@@ -3214,10 +3214,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  healthGrowthValues: []
-  armorGrowthValues: []
-  moveSpeedGrowthValues: []
-  meleeDamageGrowthValues: []
+  healthGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  armorGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  moveSpeedGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  meleeDamageGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   gearPieceName: Sword
   shouldSelectOnStart: 0
   currentRarityIndex: 0
@@ -4521,10 +4541,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  healthGrowthValues: []
-  armorGrowthValues: []
-  moveSpeedGrowthValues: []
-  meleeDamageGrowthValues: []
+  healthGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  armorGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  moveSpeedGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  meleeDamageGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   gearPieceName: Chestplate
   shouldSelectOnStart: 1
   currentRarityIndex: 0
@@ -7337,10 +7377,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  healthGrowthValues: []
-  armorGrowthValues: []
-  moveSpeedGrowthValues: []
-  meleeDamageGrowthValues: []
+  healthGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  armorGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  moveSpeedGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  meleeDamageGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   gearPieceName: Boots
   shouldSelectOnStart: 0
   currentRarityIndex: 0
@@ -8550,10 +8610,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  healthGrowthValues: []
-  armorGrowthValues: []
-  moveSpeedGrowthValues: []
-  meleeDamageGrowthValues: []
+  healthGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  armorGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  moveSpeedGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  meleeDamageGrowthValues:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   gearPieceName: Leggings
   shouldSelectOnStart: 0
   currentRarityIndex: 0
