@@ -547,7 +547,7 @@ MonoBehaviour:
   abilityCostGrowth: -0.01
   abilityDamageGrowth: 10
   abilityName: Blood Shield
-  shouldSelectOnStart: 1
+  shouldSelectOnStart: 0
   currentLevelIndex: 0
   level1UpgradeMaterialCosts: 000000000000000001000000
   level2UpgradeMaterialCosts: 000000000000000002000000
@@ -6849,7 +6849,7 @@ MonoBehaviour:
   abilityCostGrowth: -0.01
   abilityDamageGrowth: 10
   abilityName: Blood Projectile
-  shouldSelectOnStart: 1
+  shouldSelectOnStart: 0
   currentLevelIndex: 0
   level1UpgradeMaterialCosts: 000000000000000001000000
   level2UpgradeMaterialCosts: 000000000000000002000000
@@ -8196,7 +8196,7 @@ MonoBehaviour:
   abilityCostGrowth: -0.01
   abilityDamageGrowth: 10
   abilityName: Dash
-  shouldSelectOnStart: 1
+  shouldSelectOnStart: 0
   currentLevelIndex: 0
   level1UpgradeMaterialCosts: 000000000000000001000000
   level2UpgradeMaterialCosts: 000000000000000002000000
