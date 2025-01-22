@@ -10,7 +10,7 @@ public class CharacterScreen : MonoBehaviour
     private Player player;
 
     [SerializeField] private int maxAbilityLevel;
-    [SerializeField] private string[] rarities;
+    public string[] gearPieceRarities;
     [SerializeField] private TextMeshProUGUI[] materialCountTexts;
     [SerializeField] private TextMeshProUGUI[] gearPieceTexts; //0 item name, 1 rarity, 2 stats, 3 costs
     [SerializeField] private TextMeshProUGUI[] abilityTexts; //0 ability name, 1 level, 2 stats, 3 costs
@@ -54,21 +54,12 @@ public class CharacterScreen : MonoBehaviour
         gearPieceTexts[3].text = cost;
     }
 
-    private string GetNextGearPieceRarity(string currentRarity)
+    public void UpdateAbilityUI(string itemName, string level, string stats, string cost)
     {
-        switch (currentRarity)
-        {
-            case "Common":
-                return "<color=#696969>Common</color> -> <color=#2E8B57>Uncommon</color>";
-            case "Uncommon":
-                return "<color=#2E8B57>Uncommon</color> -> <color=blue>Rare</color>";
-            case "Rare":
-                return "<color=blue>Rare</color> -> <color=purple>Epic</color>";
-            case "Epic":
-                return "<color=purple>Epic</color> -> <color=yellow>Legendary</color>";
-            default:
-                return "<color=yellow>Legendary (MAX)</color>";
-        }
+        abilityTexts[0].text = itemName;
+        abilityTexts[1].text = level;
+        abilityTexts[2].text = stats;
+        abilityTexts[3].text = cost;
     }
 
     public void OnGearPieceClick(GameObject gearPiece)
@@ -81,116 +72,40 @@ public class CharacterScreen : MonoBehaviour
     {
         if (currentGearPiece == null ||
             (currentGearPiece != null &&
-            currentGearPiece.currentRarityIndex == rarities.Length - 1))
+            currentGearPiece.currentLevelIndex == gearPieceRarities.Length - 1))
         {
             Debug.Log("No equipment part selected for upgrade.");
             return;
         }
-        int ironCost = GetGearUpgradeCosts()[0];
-        int platinumCost = GetGearUpgradeCosts()[1];
-        int bloodCost = GetGearUpgradeCosts()[2];
-        bool canUpgrade = CheckMaterialsAndUpgrade(ironCost, platinumCost, bloodCost);
+        int[] materialCosts = currentGearPiece.GetMaterialCosts(currentGearPiece.currentLevelIndex);
+        bool canUpgrade = CheckMaterialsAndUpgrade(materialCosts);
 
         if (!canUpgrade)
         {
             Debug.Log("Missing required materials to upgrade.");
             return;
         }
-        float healthStat = CheckGearStat(0);
-        float armorStat = CheckGearStat(1);
-        float moveSpeedStat = CheckGearStat(2);
-        float meleeDamageStat = CheckGearStat(3);
 
-        player.UpdatePlayerStats(healthStat, armorStat, moveSpeedStat, meleeDamageStat);
-        currentGearPiece.currentRarityIndex++;
+        currentGearPiece.UpgradePlayerStats();
         UpdateGearPiece();
     }
 
     private void UpdateGearPiece()
     {
-        Debug.Log(currentGearPiece.name + " clicked.");
-        string nextRarity = GetNextGearPieceRarity(rarities[currentGearPiece.currentRarityIndex]);
-        if (currentGearPiece.currentRarityIndex == rarities.Length - 1)
+        string nextRarity = currentGearPiece.GetLevel();
+        string stats = currentGearPiece.GetStats();
+
+        if (currentGearPiece.currentLevelIndex == gearPieceRarities.Length - 1)
         {
-            UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, string.Empty, string.Empty);
+            UpdateGearPieceUI(currentGearPiece.itemName, nextRarity, stats, string.Empty);
             return;
         }
 
-        StringBuilder stats = new StringBuilder();
-        float healthGrowth = CheckGearStat(0);
-        float armorGrowth = CheckGearStat(1);
-        float moveSpeedGrowth = CheckGearStat(2);
-        float meleeDamageGrowth = CheckGearStat(3);
-
-        if (healthGrowth > 0)
-        {
-            stats.Append($"Health: +{healthGrowth}\n");
-        }
-        if (armorGrowth > 0)
-        {
-            stats.Append($"Armor: +{(100 * armorGrowth).ToString("0.00")}%\n");
-        }
-        if (moveSpeedGrowth > 0)
-        {
-            stats.Append($"Speed: +{moveSpeedGrowth}\n");
-        }
-        if (meleeDamageGrowth > 0)
-        {
-            stats.Append($"Melee Damage: +{meleeDamageGrowth}\n");
-        }
-        StringBuilder costsText = new StringBuilder();
-        costsText.Append("Cost:\n");
-        int ironCost = GetGearUpgradeCosts()[0];
-        int platinumCost = GetGearUpgradeCosts()[1];
-        int bloodCost = GetGearUpgradeCosts()[2];
-        if (ironCost > 0)
-        {
-            costsText.Append($"{ironCost} Iron\n");
-        }
-        if (platinumCost > 0)
-        {
-            costsText.Append($"{platinumCost} Platinum\n");
-        }
-        if (bloodCost > 0)
-        {
-            costsText.Append($"{bloodCost} Crystals\n");
-        }
-        UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
-    }
-
-    private float CheckGearStat(int statIndex)
-    {
-        if (currentGearPiece.currentRarityIndex < currentGearPiece.statArrays[statIndex].Length)
-        {
-            return currentGearPiece.statArrays[statIndex][currentGearPiece.currentRarityIndex];
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    private int[] GetGearUpgradeCosts()
-    {
-        if (currentGearPiece != null)
-        {
-            return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
-        }
-        else
-        {
-            Debug.Log("ERROR: No gear piece to get costs from.");
-            return new int[3];
-        }
-
-    }
-
-    public void UpdateAbilityUI(string itemName, string level, string stats, string cost)
-    {
-        abilityTexts[0].text = itemName;
-        abilityTexts[1].text = "Level: " + level;
-        abilityTexts[2].text = stats;
-        abilityTexts[3].text = cost;
-    }
+        
+        int[] materialCosts = currentGearPiece.GetMaterialCosts(currentGearPiece.currentLevelIndex);
+        string materialCostsText = MatCostsToText(materialCosts);
+        UpdateGearPieceUI(currentGearPiece.itemName, nextRarity, stats.ToString(), materialCostsText);
+    }  
 
     public void OnAbilityClick(GameObject gearPiece)
     {
@@ -207,10 +122,8 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("No ability selected for upgrade.");
             return;
         }
-        int ironCost = GetAbilityUpgradeCosts()[0];
-        int platinumCost = GetAbilityUpgradeCosts()[1];
-        int bloodCost = GetAbilityUpgradeCosts()[2];
-        bool canUpgrade = CheckMaterialsAndUpgrade(ironCost, platinumCost, bloodCost);
+        int[] materialCosts = currentAbility.GetMaterialCosts(currentAbility.currentLevelIndex);
+        bool canUpgrade = CheckMaterialsAndUpgrade(materialCosts);
 
         if (!canUpgrade)
         {
@@ -218,101 +131,63 @@ public class CharacterScreen : MonoBehaviour
             return;
         }
 
-        currentAbility.UpgradePlayerAbility(currentAbility.abilityName);
-        currentAbility.currentLevelIndex++;
-        currentAbility.SetCurrentPlayerStats();
+        currentAbility.UpgradePlayerStats();
         UpdateAbility();
     }
 
     private void UpdateAbility()
     {
-        Debug.Log(currentAbility.name + " clicked.");
-        int nextLevel = currentAbility.currentLevelIndex + 1;
-        if (nextLevel >= maxAbilityLevel)
+        string stats = currentAbility.GetStats();
+        if (currentAbility.currentLevelIndex == maxAbilityLevel)
         {
-            UpdateAbilityUI(currentAbility.abilityName, 
-                nextLevel.ToString(), string.Empty, string.Empty);
+            UpdateAbilityUI(currentAbility.itemName, 
+                "Level: " + currentAbility.currentLevelIndex.ToString(), stats, string.Empty);
             return;
         }
-        currentAbility.SetCurrentPlayerStats();
-        StringBuilder stats = new StringBuilder();
-        float currentAbilityCooldown = CheckAbilityStat(0);
-        float currentAbilityCost = CheckAbilityStat(1);
-        float currentAbilityDamage = CheckAbilityStat(2);
-        if (currentAbilityCooldown > 0)
-        {
-            stats.Append($"Cooldown Duration: {currentAbility.playerCurrentCD} -> {currentAbilityCooldown}\n");
-        }
-        if (currentAbilityCost > 0)
-        {
-            stats.Append($"Health Cost: {currentAbility.playerCurrentCost} -> {currentAbilityCost}\n");
-        }
-        if (currentAbilityDamage > 0)
-        {
-            stats.Append($"Damage: {currentAbility.playerCurrentDamage} -> {currentAbilityDamage}\n");
-        }
+        
+        int[] materialCosts = currentAbility.GetMaterialCosts(currentAbility.currentLevelIndex);
+        string materialCostsText = MatCostsToText(materialCosts);
+        
+        UpdateAbilityUI(currentAbility.itemName, "Level: " + currentAbility.currentLevelIndex.ToString(), 
+            stats.ToString(), materialCostsText);
+    }
+
+    private string MatCostsToText(int[] matCosts)
+    {
         StringBuilder costsText = new StringBuilder();
         costsText.Append("Cost:\n");
-        int ironCost = GetAbilityUpgradeCosts()[0];
-        int platinumCost = GetAbilityUpgradeCosts()[1];
-        int bloodCost = GetAbilityUpgradeCosts()[2];
-        if (ironCost > 0)
+
+        if (matCosts[0] > 0)
         {
-            costsText.Append($"{ironCost} Iron\n");
+            costsText.Append($"{matCosts[0]} Iron\n");
         }
-        if (platinumCost > 0)
+        if (matCosts[1] > 0)
         {
-            costsText.Append($"{platinumCost} Platinum\n");
+            costsText.Append($"{matCosts[1]} Platinum\n");
         }
-        if (bloodCost > 0)
+        if (matCosts[2] > 0)
         {
-            if (bloodCost == 1)
+            if (matCosts[2] == 1)
             {
-                costsText.Append($"{bloodCost} Crystal\n");
+                costsText.Append($"{matCosts[2]} Crystal\n");
             }
             else
             {
-                costsText.Append($"{bloodCost} Crystals\n");
+                costsText.Append($"{matCosts[2]} Crystals\n");
             }
         }
-        UpdateAbilityUI(currentAbility.abilityName, nextLevel.ToString(), 
-            stats.ToString(), costsText.ToString());
+        return costsText.ToString();
     }
 
-    private float CheckAbilityStat(int statIndex)
+    private bool CheckMaterialsAndUpgrade(int[] materials)
     {
-        if (currentAbility.currentLevelIndex < currentAbility.statArrays[statIndex].Length)
+        if (player.materialCounts[0] >= materials[0] &&
+            player.materialCounts[1] >= materials[1] &&
+            player.materialCounts[2] >= materials[2])
         {
-            return currentAbility.statArrays[statIndex][currentAbility.currentLevelIndex];
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    private int[] GetAbilityUpgradeCosts()
-    {
-        if (currentAbility != null)
-        {
-            return currentAbility.materialCosts[currentAbility.currentLevelIndex];
-        }
-        else
-        {
-            Debug.Log("ERROR: No ability to get costs from.");
-            return new int[3];
-        }
-    }
-
-    private bool CheckMaterialsAndUpgrade(int ironRequired, int platinumRequired, int tier3Required)
-    {
-        if (player.materialCounts[0] >= ironRequired &&
-            player.materialCounts[1] >= platinumRequired &&
-            player.materialCounts[2] >= tier3Required)
-        {
-            player.materialCounts[0] -= ironRequired;
-            player.materialCounts[1] -= platinumRequired;
-            player.materialCounts[2] -= tier3Required;
+            player.materialCounts[0] -= materials[0];
+            player.materialCounts[1] -= materials[1];
+            player.materialCounts[2] -= materials[2];
             return true;
         }
         return false;

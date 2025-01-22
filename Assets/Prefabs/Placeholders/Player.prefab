@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 5071919157698462341}
   - component: {fileID: 8173374884694527435}
   - component: {fileID: 822705811643851468}
-  - component: {fileID: 2969036887369472824}
+  - component: {fileID: 8401421129569122067}
   m_Layer: 5
   m_Name: ShieldButton
   m_TagString: Untagged
@@ -420,7 +420,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2969036887369472824
+--- !u!114 &8401421129569122067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -429,28 +429,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 390186808167587198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc53b332d027da41a7b54414825b678, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ef2bb1bd146c1b44a89d55409d71070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  playerCurrentCD: 0
-  playerCurrentCost: 0
-  playerCurrentDamage: 0
-  abilityCDGrowthValues:
+  currentLevelIndex: 0
+  itemName: Shield
+  shouldSelectOnStart: 0
+  level1UpgradeMaterialCosts: 030000000200000001000000
+  level2UpgradeMaterialCosts: 040000000300000002000000
+  level3UpgradeMaterialCosts: 050000000400000003000000
+  shieldCDValues:
+  - 0.25
+  - 0.5
+  - 0.75
+  shieldCostValues:
+  - 0.05
+  - 0.1
+  - 0.15
+  shieldFlatValues:
   - 5
   - 10
   - 15
-  abilityCostGrowthValues:
-  - 0.5
-  - 0.7
-  - 0.9
-  abilityDamageGrowthValues: []
-  abilityName: Blood Shield
-  shouldSelectOnStart: 0
-  currentLevelIndex: 0
-  level1UpgradeMaterialCosts: 000000000000000001000000
-  level2UpgradeMaterialCosts: 000000000000000002000000
-  level3UpgradeMaterialCosts: 000000000000000003000000
 --- !u!1 &770008840397705712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1711,7 @@ MonoBehaviour:
   characterScreen: {fileID: 3094373768753597483}
   isMenuOpen: 0
   maxAbilityLevel: 3
-  rarities:
+  gearPieceRarities:
   - Common
   - Uncommon
   - Rare
@@ -3115,7 +3115,7 @@ GameObject:
   - component: {fileID: 5113660402029052275}
   - component: {fileID: 1327923296557392576}
   - component: {fileID: 2321598242416415713}
-  - component: {fileID: 7614819775210126122}
+  - component: {fileID: 5584950390563630089}
   m_Layer: 5
   m_Name: Melee
   m_TagString: Untagged
@@ -3237,7 +3237,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7614819775210126122
+--- !u!114 &5584950390563630089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3246,25 +3246,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 3171423439377682344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7785c68d2df5d4a8e6484c3c1ec227, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ddf1f2ee7b2cbf4085a84f872085cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  healthGrowthValues: []
-  armorGrowthValues: []
-  moveSpeedGrowthValues: []
+  currentLevelIndex: 0
+  itemName: Sword
+  shouldSelectOnStart: 0
+  uncommonUpgradeMaterialCosts: 0a0000000a00000003000000
+  rareUpgradeMaterialCosts: 1e0000001e00000008000000
+  epicUpgradeMaterialCosts: 3c0000003c0000000d000000
+  legendaryUpgradeMaterialCosts: 640000006400000014000000
   meleeDamageGrowthValues:
   - 15
   - 25
   - 35
   - 50
-  gearPieceName: Sword
-  shouldSelectOnStart: 0
-  currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 0a0000000a00000003000000
-  rareUpgradeMaterialCosts: 1e0000001e00000008000000
-  epicUpgradeMaterialCosts: 3c0000003c0000000d000000
-  legendaryUpgradeMaterialCosts: 640000006400000014000000
 --- !u!1 &3203201045719165509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,7 +4423,7 @@ GameObject:
   - component: {fileID: 4106447683956200575}
   - component: {fileID: 1249557797255135557}
   - component: {fileID: 7446906057064732066}
-  - component: {fileID: 6080245096183795987}
+  - component: {fileID: 8827855896985897794}
   m_Layer: 5
   m_Name: Chestplate
   m_TagString: Untagged
@@ -4548,7 +4545,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6080245096183795987
+--- !u!114 &8827855896985897794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4557,10 +4554,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4532755830261732234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7785c68d2df5d4a8e6484c3c1ec227, type: 3}
+  m_Script: {fileID: 11500000, guid: b4fa4b2cbf1b96a4a84a3e4ae24fa8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
+  currentLevelIndex: 0
+  itemName: Chestplate
+  shouldSelectOnStart: 1
+  uncommonUpgradeMaterialCosts: 080000000500000000000000
+  rareUpgradeMaterialCosts: 120000000c00000001000000
+  epicUpgradeMaterialCosts: 1e0000001200000003000000
+  legendaryUpgradeMaterialCosts: 3c0000001e00000005000000
   healthGrowthValues:
   - 8
   - 20
@@ -4571,15 +4575,6 @@ MonoBehaviour:
   - 0.04
   - 0.055
   - 0.08
-  moveSpeedGrowthValues: []
-  meleeDamageGrowthValues: []
-  gearPieceName: Chestplate
-  shouldSelectOnStart: 1
-  currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 080000000500000000000000
-  rareUpgradeMaterialCosts: 120000000c00000001000000
-  epicUpgradeMaterialCosts: 1e0000001200000003000000
-  legendaryUpgradeMaterialCosts: 3c0000001e00000005000000
 --- !u!1 &4574797405247475935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,6 +5443,7 @@ MonoBehaviour:
   rangedAttackCDTimer: 0
   rangedAttackCD: 1
   rangedAttackCost: 0.12
+  rangedAttackVelocity: 10
   isDashing: 0
   dashingPower: 8
   dashingTime: 0.2
@@ -5463,7 +5459,7 @@ MonoBehaviour:
   shieldCDTimer: 0
   shieldCD: 30
   shieldMaxHPCost: 0.1
-  materialCounts: 000000000000000000000000
+  materialCounts: f4010000f4010000f4010000
 --- !u!1 &5529142531545337427
 GameObject:
   m_ObjectHideFlags: 0
@@ -6672,7 +6668,7 @@ GameObject:
   - component: {fileID: 5733065545324296948}
   - component: {fileID: 1605363490825764973}
   - component: {fileID: 5311010249312684913}
-  - component: {fileID: 7777011661625986075}
+  - component: {fileID: 6909129293380660774}
   m_Layer: 5
   m_Name: BulletButton
   m_TagString: Untagged
@@ -6793,7 +6789,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7777011661625986075
+--- !u!114 &6909129293380660774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6802,31 +6798,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 7273373701760457065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc53b332d027da41a7b54414825b678, type: 3}
+  m_Script: {fileID: 11500000, guid: 3db5f8bc25af87548b3f2653699abae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  playerCurrentCD: 0
-  playerCurrentCost: 0
-  playerCurrentDamage: 0
-  abilityCDGrowthValues:
-  - 5
-  - 10
-  - 15
-  abilityCostGrowthValues:
-  - 0.5
-  - 0.7
-  - 0.9
-  abilityDamageGrowthValues:
-  - 5
-  - 10
-  - 15
-  abilityName: Blood Projectile
-  shouldSelectOnStart: 0
   currentLevelIndex: 0
-  level1UpgradeMaterialCosts: 000000000000000001000000
-  level2UpgradeMaterialCosts: 000000000000000002000000
-  level3UpgradeMaterialCosts: 000000000000000003000000
+  itemName: Blood Bullet
+  shouldSelectOnStart: 0
+  level1UpgradeMaterialCosts: 030000000200000001000000
+  level2UpgradeMaterialCosts: 040000000300000002000000
+  level3UpgradeMaterialCosts: 050000000400000003000000
+  bulletCDValues:
+  - 0.25
+  - 0.5
+  - 0.75
+  bulletCostValues:
+  - 0.05
+  - 0.1
+  - 0.15
+  bulletDamageValues:
+  - 5
+  - 10
+  - 15
+  bulletVelocityValues:
+  - 1
+  - 2
+  - 5
+  bulletExplosionDamageValues:
+  - 25
+  - 50
+  - 75
 --- !u!1 &7286789191854067063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7255,7 +7256,7 @@ GameObject:
   - component: {fileID: 2208504538458698504}
   - component: {fileID: 7799936461751049374}
   - component: {fileID: 8554974372591305073}
-  - component: {fileID: 523063996874021557}
+  - component: {fileID: 7750735335877039634}
   m_Layer: 5
   m_Name: Boots
   m_TagString: Untagged
@@ -7377,7 +7378,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &523063996874021557
+--- !u!114 &7750735335877039634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7386,10 +7387,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7608381427257593806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7785c68d2df5d4a8e6484c3c1ec227, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fc1146e918729b45ba311d2433b1b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
+  currentLevelIndex: 0
+  itemName: Boots
+  shouldSelectOnStart: 0
+  uncommonUpgradeMaterialCosts: 040000000600000000000000
+  rareUpgradeMaterialCosts: 0b0000001000000001000000
+  epicUpgradeMaterialCosts: 120000001c00000003000000
+  legendaryUpgradeMaterialCosts: 1e0000003700000005000000
   healthGrowthValues:
   - 5
   - 12
@@ -7405,14 +7413,6 @@ MonoBehaviour:
   - 0.1
   - 0.1
   - 0.2
-  meleeDamageGrowthValues: []
-  gearPieceName: Boots
-  shouldSelectOnStart: 0
-  currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 040000000600000000000000
-  rareUpgradeMaterialCosts: 0b0000001000000001000000
-  epicUpgradeMaterialCosts: 120000001c00000003000000
-  legendaryUpgradeMaterialCosts: 1e0000003700000005000000
 --- !u!1 &7718655055081161230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,7 +8055,7 @@ GameObject:
   - component: {fileID: 831605119029010407}
   - component: {fileID: 1396227344599380373}
   - component: {fileID: 6396002973772079432}
-  - component: {fileID: 8027952050046257601}
+  - component: {fileID: 8817818405079094219}
   m_Layer: 5
   m_Name: DashButton
   m_TagString: Untagged
@@ -8176,7 +8176,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8027952050046257601
+--- !u!114 &8817818405079094219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8185,31 +8185,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7941826403331050593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc53b332d027da41a7b54414825b678, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cbd6786495be4b40807cb2047008d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
-  playerCurrentCD: 0
-  playerCurrentCost: 0
-  playerCurrentDamage: 0
-  abilityCDGrowthValues:
-  - 15
-  - 17
-  - 20
-  abilityCostGrowthValues:
-  - 0.5
-  - 0.7
-  - 0.9
-  abilityDamageGrowthValues:
-  - 5
-  - 10
-  - 15
-  abilityName: Dash
-  shouldSelectOnStart: 1
   currentLevelIndex: 0
-  level1UpgradeMaterialCosts: 000000000000000001000000
-  level2UpgradeMaterialCosts: 000000000000000002000000
-  level3UpgradeMaterialCosts: 000000000000000003000000
+  itemName: Dash
+  shouldSelectOnStart: 1
+  level1UpgradeMaterialCosts: 010000000100000001000000
+  level2UpgradeMaterialCosts: 020000000200000002000000
+  level3UpgradeMaterialCosts: 030000000300000003000000
+  dashCDValues:
+  - 0.5
+  - 0.75
+  - 1
+  dashCostValues:
+  - 0.05
+  - 0.5
+  - 0.75
+  dashDamageValues:
+  - 5
+  - 7
+  - 10
 --- !u!1 &8042757693944468627
 GameObject:
   m_ObjectHideFlags: 0
@@ -8483,7 +8480,7 @@ GameObject:
   - component: {fileID: 2667677620200529628}
   - component: {fileID: 3007966365170133660}
   - component: {fileID: 7689668261430929982}
-  - component: {fileID: 1243054598348223020}
+  - component: {fileID: 6787802145493090284}
   m_Layer: 5
   m_Name: Leggings
   m_TagString: Untagged
@@ -8605,7 +8602,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1243054598348223020
+--- !u!114 &6787802145493090284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8614,10 +8611,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8317698587871059009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7785c68d2df5d4a8e6484c3c1ec227, type: 3}
+  m_Script: {fileID: 11500000, guid: b4fa4b2cbf1b96a4a84a3e4ae24fa8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
+  currentLevelIndex: 0
+  itemName: Leggings
+  shouldSelectOnStart: 0
+  uncommonUpgradeMaterialCosts: 050000000600000000000000
+  rareUpgradeMaterialCosts: 0b0000000c00000001000000
+  epicUpgradeMaterialCosts: 140000001600000003000000
+  legendaryUpgradeMaterialCosts: 280000002d00000005000000
   healthGrowthValues:
   - 6
   - 12
@@ -8628,15 +8632,6 @@ MonoBehaviour:
   - 0.03
   - 0.05
   - 0.07
-  moveSpeedGrowthValues: []
-  meleeDamageGrowthValues: []
-  gearPieceName: Leggings
-  shouldSelectOnStart: 0
-  currentRarityIndex: 0
-  uncommonUpgradeMaterialCosts: 050000000600000000000000
-  rareUpgradeMaterialCosts: 0b0000000c00000001000000
-  epicUpgradeMaterialCosts: 140000001600000003000000
-  legendaryUpgradeMaterialCosts: 280000002d00000005000000
 --- !u!1 &8357226084755256641
 GameObject:
   m_ObjectHideFlags: 0
@@ -9110,7 +9105,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -36, y: 30}
-  m_SizeDelta: {x: 227.39, y: 50}
+  m_SizeDelta: {x: 275, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1638977612634309525
 CanvasRenderer:
@@ -9167,8 +9162,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

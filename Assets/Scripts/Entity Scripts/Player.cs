@@ -51,6 +51,7 @@ public class Player : Entity
     public float rangedAttackCDTimer;
     public float rangedAttackCD;
     public float rangedAttackCost = 0.1f; //% of current health
+    public float rangedAttackVelocity = 10f;
 
     [Header("Dash Variables")]   
     public bool isDashing;
@@ -108,20 +109,6 @@ public class Player : Entity
             return;
         }
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
-    }
-
-    public void UpdatePlayerStats(float maxHealthGrowth, float armorGrowth, float moveSpeedGrowth, float damageGrowth)
-    {
-        maxHealth += maxHealthGrowth;
-        armor -= armorGrowth;
-        speed += moveSpeedGrowth;
-        meleeDamage += damageGrowth;
-
-        health += maxHealthGrowth;
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
     }
 
     private void HandleMovementInput()
@@ -242,6 +229,7 @@ public class Player : Entity
         GameObject projectileInstance = Instantiate(projectilePrefab,
             spawnPosition, shootRotator.rotation);
         projectileInstance.GetComponent<Projectile>().InitializeProjectile(this, projectileDamage);
+        projectileInstance.GetComponent<Projectile>().speed = rangedAttackVelocity;
         BloodBullet bloodBulletScript = projectileInstance.GetComponent<BloodBullet>();
         if (bloodBulletScript != null)
         {
