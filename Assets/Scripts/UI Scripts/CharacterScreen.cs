@@ -153,7 +153,7 @@ public class CharacterScreen : MonoBehaviour
         }
         if (bloodCost > 0)
         {
-            costsText.Append($"{bloodCost} Blood\n");
+            costsText.Append($"{bloodCost} Crystals\n");
         }
         UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
     }
@@ -168,6 +168,20 @@ public class CharacterScreen : MonoBehaviour
         {
             return 0;
         }
+    }
+
+    private int[] GetGearUpgradeCosts()
+    {
+        if (currentGearPiece != null)
+        {
+            return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
+        }
+        else
+        {
+            Debug.Log("ERROR: No gear piece to get costs from.");
+            return new int[3];
+        }
+
     }
 
     public void UpdateAbilityUI(string itemName, string level, string stats, string cost)
@@ -251,10 +265,23 @@ public class CharacterScreen : MonoBehaviour
         }
         if (bloodCost > 0)
         {
-            costsText.Append($"{bloodCost} Blood\n");
+            costsText.Append($"{bloodCost} Crystals\n");
         }
         UpdateAbilityUI(currentAbility.abilityName, nextLevel.ToString(), 
             stats.ToString(), costsText.ToString());
+    }   
+
+    private int[] GetAbilityUpgradeCosts()
+    {
+        if (currentAbility != null)
+        {
+            return currentAbility.materialCosts[currentAbility.currentLevelIndex];
+        }
+        else
+        {
+            Debug.Log("ERROR: No ability to get costs from.");
+            return new int[3];
+        }
     }
 
     private bool CheckMaterialsAndUpgrade(int ironRequired, int platinumRequired, int tier3Required)
@@ -269,32 +296,5 @@ public class CharacterScreen : MonoBehaviour
             return true;
         }
         return false;
-    }
-
-    private int[] GetGearUpgradeCosts()
-    {
-        if (currentGearPiece != null)
-        {
-            return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
-        }
-        else
-        {
-            Debug.Log("ERROR: No gear piece to get costs from.");
-            return new int[3];
-        }
-
-    }
-
-    private int[] GetAbilityUpgradeCosts()
-    {
-        if (currentAbility != null)
-        {
-            return currentAbility.materialCosts[currentAbility.currentLevelIndex];
-        }
-        else
-        {
-            Debug.Log("ERROR: No ability to get costs from.");
-            return new int[3];
-        }
     }
 }
