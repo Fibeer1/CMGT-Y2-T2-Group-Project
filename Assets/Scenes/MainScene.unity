@@ -127369,9 +127369,153 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 822878749130828628, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822878749130828628, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668914119891700969, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[1]
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[2]
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969036887369472824, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720070912491676103, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720070912491676103, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720070912491676103, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5414110946162122300, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073767407363600068, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_text
+      value: 'Ability Cost:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[1]
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[2]
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777011661625986075, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: shouldSelectOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[0]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[1]
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCDGrowthValues.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[1]
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityCostGrowthValues.Array.data[2]
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027952050046257601, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: abilityDamageGrowthValues.Array.data[2]
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8048304551033911683, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -127412,6 +127556,18 @@ PrefabInstance:
     - target: {fileID: 8048304551033911683, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688645154391069508, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_text
+      value: Ability Stats
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688645154391069508, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688645154391069508, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

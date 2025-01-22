@@ -5,6 +5,10 @@ using UnityEngine;
 public class UIAbility : MonoBehaviour
 {
     [SerializeField] private CharacterScreen characterScreen;
+    public float playerCurrentCD;
+    public float playerCurrentCost;
+    public float playerCurrentDamage;
+    public List<float[]> statArrays = new List<float[]>();
     public float[] abilityCDGrowthValues;
     public float[] abilityCostGrowthValues;
     public float[] abilityDamageGrowthValues;
@@ -25,13 +29,17 @@ public class UIAbility : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        statArrays.Add(abilityCDGrowthValues);
+        statArrays.Add(abilityCostGrowthValues);
+        statArrays.Add(abilityDamageGrowthValues);
+
         materialCosts.Add(level1UpgradeMaterialCosts);
         materialCosts.Add(level2UpgradeMaterialCosts);
         materialCosts.Add(level3UpgradeMaterialCosts);
         if (shouldSelectOnStart)
         {
             characterScreen.OnAbilityClick(gameObject);
-        }        
+        }
     }
 
     public void UpgradePlayerAbility(string abilityName)
@@ -52,6 +60,27 @@ public class UIAbility : MonoBehaviour
         {
             player.shieldCD = abilityCDGrowthValues[currentLevelIndex];
             player.shieldMaxHPCost = abilityCostGrowthValues[currentLevelIndex];
+        }        
+    }
+
+    public void SetCurrentPlayerStats()
+    {
+        if (abilityName == "Dash")
+        {
+            playerCurrentCD = player.dashCD;
+            playerCurrentCost = player.dashHealthCost;
+            playerCurrentDamage = player.dashProjectileDamage;
+        }
+        else if (abilityName == "Blood Projectile")
+        {
+            playerCurrentCD = player.rangedAttackCD;
+            playerCurrentCost = player.rangedAttackCost;
+            playerCurrentDamage = player.rangedDamage;
+        }
+        else if (abilityName == "Blood Shield")
+        {
+            playerCurrentCD = player.shieldCD;
+            playerCurrentCost = player.shieldMaxHPCost;
         }
     }
 }

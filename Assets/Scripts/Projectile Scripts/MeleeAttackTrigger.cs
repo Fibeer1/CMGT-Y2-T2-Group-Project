@@ -18,4 +18,15 @@ public class MeleeAttackTrigger : Projectile
     {
         HandleLifeTime();
     }
+
+    public override void OnHit(Entity victim)
+    {
+        base.OnHit(victim);
+        Player playerOrigin = origin.GetComponent<Player>();
+        if (playerOrigin != null)
+        {
+            float healthChange = playerOrigin.maxHealth * playerOrigin.lifeStealPercentage;
+            playerOrigin.ChangeHealth(-healthChange, false, false, true, false);
+        }
+    }
 }

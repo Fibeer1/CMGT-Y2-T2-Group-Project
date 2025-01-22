@@ -14,6 +14,7 @@ public class Player : Entity
     public float meleeDamage = 25;
     public float rangedDamage = 50f;
     public float dashProjectileDamage = 50f;
+    public float rangedAttackExplosionDamage = 25f;
     public float speed = 3f;
 
     [Header("Keybindings")]
@@ -37,6 +38,7 @@ public class Player : Entity
     [SerializeField] private Transform swordSwingRotator;
     public float swordSwingCDTimer;
     public float swordSwingCD = 0.75f;
+    public float lifeStealPercentage = 0.05f;
     [SerializeField] private float attackRangeOffset = 0.4f;
     [SerializeField] private bool autoswing = false;
 
@@ -240,6 +242,11 @@ public class Player : Entity
         GameObject projectileInstance = Instantiate(projectilePrefab,
             spawnPosition, shootRotator.rotation);
         projectileInstance.GetComponent<Projectile>().InitializeProjectile(this, projectileDamage);
+        BloodBullet bloodBulletScript = projectileInstance.GetComponent<BloodBullet>();
+        if (bloodBulletScript != null)
+        {
+            bloodBulletScript.explosionDamage = rangedAttackExplosionDamage;
+        }
     }
 
     private void HandleSwordSwing()

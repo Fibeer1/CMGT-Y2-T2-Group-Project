@@ -220,6 +220,7 @@ public class CharacterScreen : MonoBehaviour
 
         currentAbility.UpgradePlayerAbility(currentAbility.abilityName);
         currentAbility.currentLevelIndex++;
+        currentAbility.SetCurrentPlayerStats();
         UpdateAbility();
     }
 
@@ -233,22 +234,22 @@ public class CharacterScreen : MonoBehaviour
                 nextLevel.ToString(), string.Empty, string.Empty);
             return;
         }
-
+        currentAbility.SetCurrentPlayerStats();
         StringBuilder stats = new StringBuilder();
-        float currentAbilityCooldown = currentAbility.abilityCDGrowthValues[currentAbility.currentLevelIndex];
-        float currentAbilityCost = currentAbility.abilityCostGrowthValues[currentAbility.currentLevelIndex];
-        float currentAbilityDamage = currentAbility.abilityDamageGrowthValues[currentAbility.currentLevelIndex];
+        float currentAbilityCooldown = CheckAbilityStat(0);
+        float currentAbilityCost = CheckAbilityStat(1);
+        float currentAbilityDamage = CheckAbilityStat(2);
         if (currentAbilityCooldown > 0)
         {
-            stats.Append($"Cooldown Duration: -{currentAbilityCooldown}\n");
+            stats.Append($"Cooldown Duration: {currentAbility.playerCurrentCD} -> {currentAbilityCooldown}\n");
         }
         if (currentAbilityCost > 0)
         {
-            stats.Append($"Health Cost: +{(100 * currentAbilityCost).ToString("0.00")}%\n");
+            stats.Append($"Health Cost: {currentAbility.playerCurrentCost} -> {currentAbilityCost}\n");
         }
         if (currentAbilityDamage > 0)
         {
-            stats.Append($"Damage: +{currentAbilityDamage}\n");
+            stats.Append($"Damage: {currentAbility.playerCurrentDamage} -> {currentAbilityDamage}\n");
         }
         StringBuilder costsText = new StringBuilder();
         costsText.Append("Cost:\n");
@@ -276,7 +277,19 @@ public class CharacterScreen : MonoBehaviour
         }
         UpdateAbilityUI(currentAbility.abilityName, nextLevel.ToString(), 
             stats.ToString(), costsText.ToString());
-    }   
+    }
+
+    private float CheckAbilityStat(int statIndex)
+    {
+        if (currentAbility.currentLevelIndex < currentAbility.statArrays[statIndex].Length)
+        {
+            return currentAbility.statArrays[statIndex][currentAbility.currentLevelIndex];
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
     private int[] GetAbilityUpgradeCosts()
     {

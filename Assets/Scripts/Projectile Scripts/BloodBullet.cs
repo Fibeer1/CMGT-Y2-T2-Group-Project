@@ -5,7 +5,7 @@ using UnityEngine;
 public class BloodBullet : Projectile
 {
     [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private float explosionDamage;
+    public float explosionDamage;
 
 
     public override void OnTriggerEnter(Collider other)

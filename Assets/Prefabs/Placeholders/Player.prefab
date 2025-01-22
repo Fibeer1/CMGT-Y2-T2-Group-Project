@@ -433,18 +433,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
+  playerCurrentCD: 0
+  playerCurrentCost: 0
+  playerCurrentDamage: 0
   abilityCDGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 5
+  - 10
+  - 15
   abilityCostGrowthValues:
-  - 0
-  - 0
-  - 0
-  abilityDamageGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 0.5
+  - 0.7
+  - 0.9
+  abilityDamageGrowthValues: []
   abilityName: Blood Shield
   shouldSelectOnStart: 0
   currentLevelIndex: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost:'
+  m_text: 'Ability Cost:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1765,7 +1765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72.5, y: -25}
+  m_AnchoredPosition: {x: 72.5, y: 1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1101275742952339029
@@ -1796,7 +1796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cooldown: +5'
+  m_text: Ability Stats
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1823,8 +1823,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5427,6 +5427,7 @@ MonoBehaviour:
   meleeDamage: 25
   rangedDamage: 25
   dashProjectileDamage: 50
+  rangedAttackExplosionDamage: 25
   speed: 2.6
   dashKey: 304
   rangedAttackKey: 324
@@ -5438,6 +5439,7 @@ MonoBehaviour:
   swordSwingRotator: {fileID: 8218634187496514979}
   swordSwingCDTimer: 0
   swordSwingCD: 0.75
+  lifeStealPercentage: 0.05
   attackRangeOffset: 0.4
   autoswing: 0
   rangedProjectilePrefab: {fileID: 852857912230753220, guid: e964c0c5ed3b1174bad991897803c608, type: 3}
@@ -6804,18 +6806,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
+  playerCurrentCD: 0
+  playerCurrentCost: 0
+  playerCurrentDamage: 0
   abilityCDGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 5
+  - 10
+  - 15
   abilityCostGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 0.5
+  - 0.7
+  - 0.9
   abilityDamageGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 5
+  - 10
+  - 15
   abilityName: Blood Projectile
   shouldSelectOnStart: 0
   currentLevelIndex: 0
@@ -8184,20 +8189,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterScreen: {fileID: 1877420898450217844}
+  playerCurrentCD: 0
+  playerCurrentCost: 0
+  playerCurrentDamage: 0
   abilityCDGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 15
+  - 17
+  - 20
   abilityCostGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 0.5
+  - 0.7
+  - 0.9
   abilityDamageGrowthValues:
-  - 0
-  - 0
-  - 0
+  - 5
+  - 10
+  - 15
   abilityName: Dash
-  shouldSelectOnStart: 0
+  shouldSelectOnStart: 1
   currentLevelIndex: 0
   level1UpgradeMaterialCosts: 000000000000000001000000
   level2UpgradeMaterialCosts: 000000000000000002000000
