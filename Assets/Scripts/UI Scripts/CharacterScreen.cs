@@ -118,7 +118,7 @@ public class CharacterScreen : MonoBehaviour
         }
         if (currentGearPiece.armorGrowth > 0)
         {
-            stats.Append($"Armor: +{(10 * currentGearPiece.armorGrowth).ToString("0.00")}%\n");
+            stats.Append($"Armor: +{currentGearPiece.armorGrowth.ToString("0.00")}%\n");
         }
         if (currentGearPiece.moveSpeedGrowth > 0)
         {
