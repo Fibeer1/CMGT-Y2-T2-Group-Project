@@ -127397,6 +127397,10 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 2084601671696055927, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -120
+      objectReference: {fileID: 0}
     - target: {fileID: 2604371821789931332, guid: cf6bdddd25f587245b42faa37830f7f6, type: 3}
       propertyPath: m_SizeDelta.y
       value: 25
