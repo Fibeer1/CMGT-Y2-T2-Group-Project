@@ -5,9 +5,9 @@ using UnityEngine;
 public class UIAbility : MonoBehaviour
 {
     [SerializeField] private CharacterScreen characterScreen;
-    [SerializeField] private float abilityCDGrowth;
-    [SerializeField] private float abilityCostGrowth;
-    [SerializeField] private float abilityDamageGrowth;
+    public float[] abilityCDGrowthValues;
+    public float[] abilityCostGrowthValues;
+    public float[] abilityDamageGrowthValues;
     public string abilityName;
     [SerializeField] private bool shouldSelectOnStart = false;
 
@@ -20,14 +20,38 @@ public class UIAbility : MonoBehaviour
     public int[] level2UpgradeMaterialCosts;
     public int[] level3UpgradeMaterialCosts;
 
+    private Player player;
+
     private void Start()
     {
+        player = FindObjectOfType<Player>();
         materialCosts.Add(level1UpgradeMaterialCosts);
         materialCosts.Add(level2UpgradeMaterialCosts);
         materialCosts.Add(level3UpgradeMaterialCosts);
         if (shouldSelectOnStart)
         {
             characterScreen.OnGearPieceClick(gameObject);
+        }        
+    }
+
+    public void UpgradePlayerAbility(string abilityName)
+    {
+        if (abilityName == "Dash")
+        {
+            player.dashCD = abilityCDGrowthValues[currentLevelIndex];
+            player.dashHealthCost = abilityCostGrowthValues[currentLevelIndex];
+            player.dashProjectileDamage = abilityDamageGrowthValues[currentLevelIndex];
+        }
+        else if (abilityName == "Blood Projectile")
+        {
+            player.rangedAttackCD = abilityCDGrowthValues[currentLevelIndex];
+            player.rangedAttackCost = abilityCostGrowthValues[currentLevelIndex];
+            player.rangedDamage = abilityDamageGrowthValues[currentLevelIndex];
+        }
+        else if (abilityName == "Blood Shield")
+        {
+            player.shieldCD = abilityCDGrowthValues[currentLevelIndex];
+            player.shieldMaxHPCost = abilityCostGrowthValues[currentLevelIndex];
         }
     }
 }

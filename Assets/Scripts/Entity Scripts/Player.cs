@@ -48,7 +48,7 @@ public class Player : Entity
     [SerializeField] private float rangedAttackOffset;
     public float rangedAttackCDTimer;
     public float rangedAttackCD;
-    [SerializeField] private float rangedAttackCost = 0.1f; //% of current health
+    public float rangedAttackCost = 0.1f; //% of current health
 
     [Header("Dash Variables")]   
     public bool isDashing;
@@ -69,7 +69,7 @@ public class Player : Entity
     [SerializeField] private float shieldDuration;
     public float shieldCDTimer;
     public float shieldCD;
-    [SerializeField] private float shieldMaxHPCost = 0.45f; //% of max health
+    public float shieldMaxHPCost = 0.45f; //% of max health
 
     [Header("Material Variables")]
     public int[] materialCounts;

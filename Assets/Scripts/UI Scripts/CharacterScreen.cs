@@ -9,6 +9,7 @@ public class CharacterScreen : MonoBehaviour
     public bool isMenuOpen = false;
     private Player player;
 
+    [SerializeField] private int maxAbilityLevel;
     [SerializeField] private string[] rarities;
     [SerializeField] private TextMeshProUGUI[] materialCountTexts;
     [SerializeField] private TextMeshProUGUI[] gearPieceTexts; //0 item name, 1 rarity, 2 stats, 3 costs
@@ -53,7 +54,7 @@ public class CharacterScreen : MonoBehaviour
         gearPieceTexts[3].text = cost;
     }
 
-    private string GetNextRarity(string currentRarity)
+    private string GetNextGearPieceRarity(string currentRarity)
     {
         switch (currentRarity)
         {
@@ -76,7 +77,7 @@ public class CharacterScreen : MonoBehaviour
         UpdateGearPiece();
     }
 
-    public void OnUpgradeButtonClicked()
+    public void OnGearPieceUpgradeButtonClicked()
     {
         if (currentGearPiece == null ||
             (currentGearPiece != null &&
@@ -95,17 +96,18 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("Missing required materials to upgrade.");
             return;
         }
-
-        player.UpdatePlayerStats(currentGearPiece.healthGrowth, currentGearPiece.armorGrowth,
-                        currentGearPiece.moveSpeedGrowth, currentGearPiece.meleeDamageGrowth);
         currentGearPiece.currentRarityIndex++;
+        player.UpdatePlayerStats(currentGearPiece.healthGrowthValues[currentGearPiece.currentRarityIndex], 
+                        currentGearPiece.armorGrowthValues[currentGearPiece.currentRarityIndex],
+                        currentGearPiece.moveSpeedGrowthValues[currentGearPiece.currentRarityIndex], 
+                        currentGearPiece.meleeDamageGrowthValues[currentGearPiece.currentRarityIndex]);        
         UpdateGearPiece();
     }
 
     private void UpdateGearPiece()
     {
         Debug.Log(currentGearPiece.name + " clicked.");
-        string nextRarity = GetNextRarity(rarities[currentGearPiece.currentRarityIndex]);
+        string nextRarity = GetNextGearPieceRarity(rarities[currentGearPiece.currentRarityIndex]);
         if (currentGearPiece.currentRarityIndex == rarities.Length - 1)
         {
             UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, string.Empty, string.Empty);
@@ -113,21 +115,21 @@ public class CharacterScreen : MonoBehaviour
         }
 
         StringBuilder stats = new StringBuilder();
-        if (currentGearPiece.healthGrowth > 0)
+        if (currentGearPiece.healthGrowthValues[currentGearPiece.currentRarityIndex] > 0)
         {
-            stats.Append($"Health: +{currentGearPiece.healthGrowth}\n");
+            stats.Append($"Health: +{currentGearPiece.healthGrowthValues[currentGearPiece.currentRarityIndex]}\n");
         }
-        if (currentGearPiece.armorGrowth > 0)
+        if (currentGearPiece.armorGrowthValues[currentGearPiece.currentRarityIndex] > 0)
         {
-            stats.Append($"Armor: +{(100 * currentGearPiece.armorGrowth).ToString("0.00")}%\n");
+            stats.Append($"Armor: +{(100 * currentGearPiece.armorGrowthValues[currentGearPiece.currentRarityIndex]).ToString("0.00")}%\n");
         }
-        if (currentGearPiece.moveSpeedGrowth > 0)
+        if (currentGearPiece.moveSpeedGrowthValues[currentGearPiece.currentRarityIndex] > 0)
         {
-            stats.Append($"Speed: +{currentGearPiece.moveSpeedGrowth}\n");
+            stats.Append($"Speed: +{currentGearPiece.moveSpeedGrowthValues[currentGearPiece.currentRarityIndex]}\n");
         }
-        if (currentGearPiece.meleeDamageGrowth > 0)
+        if (currentGearPiece.meleeDamageGrowthValues[currentGearPiece.currentRarityIndex] > 0)
         {
-            stats.Append($"Melee Damage: +{currentGearPiece.meleeDamageGrowth}\n");
+            stats.Append($"Melee Damage: +{currentGearPiece.meleeDamageGrowthValues[currentGearPiece.currentRarityIndex]}\n");
         }
         StringBuilder costsText = new StringBuilder();
         costsText.Append("Cost:\n");
@@ -147,6 +149,93 @@ public class CharacterScreen : MonoBehaviour
             costsText.Append($"{bloodCost} Blood\n");
         }
         UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
+    }
+
+    public void UpdateAbilityUI(string itemName, string level, string stats, string cost)
+    {
+        gearPieceTexts[0].text = itemName;
+        gearPieceTexts[1].text = level;
+        gearPieceTexts[2].text = stats;
+        gearPieceTexts[3].text = cost;
+    }
+
+    public void OnAbilityClick(GameObject gearPiece)
+    {
+        currentAbility = gearPiece.GetComponent<UIAbility>();
+        UpdateAbility();
+    }
+
+    public void OnAbilityUpgradeButtonClicked()
+    {
+        if (currentAbility == null ||
+            (currentAbility != null &&
+            currentAbility.currentLevelIndex == maxAbilityLevel))
+        {
+            Debug.Log("No ability selected for upgrade.");
+            return;
+        }
+        int ironCost = GetUpgradeCosts()[0];
+        int platinumCost = GetUpgradeCosts()[1];
+        int bloodCost = GetUpgradeCosts()[2];
+        bool canUpgrade = CheckMaterialsAndUpgrade(ironCost, platinumCost, bloodCost);
+
+        if (!canUpgrade)
+        {
+            Debug.Log("Missing required materials to upgrade.");
+            return;
+        }
+
+        currentAbility.UpgradePlayerAbility(currentAbility.abilityName);
+        currentGearPiece.currentRarityIndex++;
+        UpdateGearPiece();
+    }
+
+    private void UpdateAbility()
+    {
+        Debug.Log(currentAbility.name + " clicked.");
+        int nextLevel = currentAbility.currentLevelIndex + 1;
+        if (nextLevel >= maxAbilityLevel)
+        {
+            UpdateAbilityUI(currentAbility.abilityName, 
+                nextLevel.ToString(), string.Empty, string.Empty);
+            return;
+        }
+
+        StringBuilder stats = new StringBuilder();
+        float currentAbilityCooldown = currentAbility.abilityCDGrowthValues[currentAbility.currentLevelIndex];
+        float currentAbilityCost = currentAbility.abilityCostGrowthValues[currentAbility.currentLevelIndex];
+        float currentAbilityDamage = currentAbility.abilityDamageGrowthValues[currentAbility.currentLevelIndex];
+        if (currentAbilityCooldown > 0)
+        {
+            stats.Append($"Cooldown Duration: -{currentAbilityCooldown}\n");
+        }
+        if (currentAbilityCost > 0)
+        {
+            stats.Append($"Health Cost: +{(100 * currentAbilityCost).ToString("0.00")}%\n");
+        }
+        if (currentAbilityDamage > 0)
+        {
+            stats.Append($"Damage: +{currentAbilityDamage}\n");
+        }
+        StringBuilder costsText = new StringBuilder();
+        costsText.Append("Cost:\n");
+        int ironCost = GetUpgradeCosts()[0];
+        int platinumCost = GetUpgradeCosts()[1];
+        int bloodCost = GetUpgradeCosts()[2];
+        if (ironCost > 0)
+        {
+            costsText.Append($"{ironCost} Iron\n");
+        }
+        if (platinumCost > 0)
+        {
+            costsText.Append($"{platinumCost} Platinum\n");
+        }
+        if (bloodCost > 0)
+        {
+            costsText.Append($"{bloodCost} Blood\n");
+        }
+        UpdateAbilityUI(currentAbility.abilityName, nextLevel.ToString(), 
+            stats.ToString(), costsText.ToString());
     }
 
     private bool CheckMaterialsAndUpgrade(int ironRequired, int platinumRequired, int tier3Required)
