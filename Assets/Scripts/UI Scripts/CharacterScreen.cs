@@ -16,6 +16,7 @@ public class CharacterScreen : MonoBehaviour
     private Pause pauseMenu;
 
     private UIGearPiece currentGearPiece;
+    private UIAbility currentAbility;
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class CharacterScreen : MonoBehaviour
         characterScreen.SetActive(shouldEnableScreen);
     }
 
-    public void UpdateUI(string itemName, string rarity, string stats, string cost)
+    public void UpdateGearPieceUI(string itemName, string rarity, string stats, string cost)
     {
         gearPieceTexts[0].text = itemName;
         gearPieceTexts[1].text = rarity;
@@ -77,8 +78,8 @@ public class CharacterScreen : MonoBehaviour
 
     public void OnUpgradeButtonClicked()
     {
-        if (currentGearPiece == null || 
-            (currentGearPiece != null && 
+        if (currentGearPiece == null ||
+            (currentGearPiece != null &&
             currentGearPiece.currentRarityIndex == rarities.Length - 1))
         {
             Debug.Log("No equipment part selected for upgrade.");
@@ -107,7 +108,7 @@ public class CharacterScreen : MonoBehaviour
         string nextRarity = GetNextRarity(rarities[currentGearPiece.currentRarityIndex]);
         if (currentGearPiece.currentRarityIndex == rarities.Length - 1)
         {
-            UpdateUI(currentGearPiece.gearPieceName, nextRarity, string.Empty, string.Empty);
+            UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, string.Empty, string.Empty);
             return;
         }
 
@@ -118,7 +119,7 @@ public class CharacterScreen : MonoBehaviour
         }
         if (currentGearPiece.armorGrowth > 0)
         {
-            stats.Append($"Armor: +{currentGearPiece.armorGrowth.ToString("0.00")}%\n");
+            stats.Append($"Armor: +{(100 * currentGearPiece.armorGrowth).ToString("0.00")}%\n");
         }
         if (currentGearPiece.moveSpeedGrowth > 0)
         {
@@ -145,7 +146,7 @@ public class CharacterScreen : MonoBehaviour
         {
             costsText.Append($"{bloodCost} Blood\n");
         }
-        UpdateUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
+        UpdateGearPieceUI(currentGearPiece.gearPieceName, nextRarity, stats.ToString(), costsText.ToString());
     }
 
     private bool CheckMaterialsAndUpgrade(int ironRequired, int platinumRequired, int tier3Required)
@@ -164,6 +165,18 @@ public class CharacterScreen : MonoBehaviour
 
     private int[] GetUpgradeCosts()
     {
-        return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
+        if (currentGearPiece != null)
+        {
+            return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
+        }
+        if (currentAbility != null)
+        {
+            return currentAbility.materialCosts[currentAbility.currentLevelIndex];
+        }
+        else
+        {
+            Debug.Log("ERROR: No gear piece/ability to get costs from.");
+            return new int[3];
+        }
     }
 }
