@@ -4341,7 +4341,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5113396166266851425
 MonoBehaviour:
@@ -6049,7 +6049,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   meleeDamage: 25
-  rangedDamage: 50
+  rangedDamage: 25
   dashProjectileDamage: 50
   speed: 3
   dashKey: 304
@@ -6071,10 +6071,10 @@ MonoBehaviour:
   rangedAttackCD: 1
   rangedAttackCost: 0.12
   isDashing: 0
-  dashingPower: 7
+  dashingPower: 8
   dashingTime: 0.2
-  dashCDTimer: 1
-  dashCD: 1
+  dashCDTimer: 1.5
+  dashCD: 1.5
   dashHealthCost: 0.06
   closestEnemy: {fileID: 0}
   dashProjectile: {fileID: 852857912230753220, guid: f7c2bcee7d61ac945bc25673d644cfbf, type: 3}
