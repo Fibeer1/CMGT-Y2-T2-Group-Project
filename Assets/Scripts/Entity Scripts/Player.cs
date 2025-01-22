@@ -320,6 +320,7 @@ public class Player : Entity
             float remainingHealth = health - healthCost;
             if (remainingHealth <= 0)
             {
+                Debug.Log("Not enough health to dash.");
                 return;
             }
             ChangeHealth(healthCost, false, false, false);

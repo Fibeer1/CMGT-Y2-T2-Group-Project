@@ -6050,6 +6050,7 @@ MonoBehaviour:
     m_Bits: 8
   meleeDamage: 25
   rangedDamage: 50
+  dashProjectileDamage: 50
   speed: 3
   dashKey: 304
   rangedAttackKey: 324
@@ -6074,7 +6075,7 @@ MonoBehaviour:
   dashingTime: 0.2
   dashCDTimer: 1
   dashCD: 1
-  dashHealthCost: 6
+  dashHealthCost: 0.06
   closestEnemy: {fileID: 0}
   dashProjectile: {fileID: 852857912230753220, guid: f7c2bcee7d61ac945bc25673d644cfbf, type: 3}
   shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
