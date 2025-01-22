@@ -5,10 +5,10 @@ using UnityEngine;
 public class UIGearPiece : MonoBehaviour
 {
     [SerializeField] private CharacterScreen characterScreen;
-    public float healthGrowth;
-    public float armorGrowth;
-    public float moveSpeedGrowth;
-    public float meleeDamageGrowth;
+    public float[] healthGrowthValues;
+    public float[] armorGrowthValues;
+    public float[] moveSpeedGrowthValues;
+    public float[] meleeDamageGrowthValues;
     public string gearPieceName;
     [SerializeField] private bool shouldSelectOnStart = false;
 
