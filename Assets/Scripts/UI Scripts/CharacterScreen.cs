@@ -10,13 +10,9 @@ public class CharacterScreen : MonoBehaviour
     private Player player;
 
     [SerializeField] private string[] rarities;
-    [SerializeField] private TextMeshProUGUI rarityText;
-    [SerializeField] private TextMeshProUGUI statsText;
-    [SerializeField] private TextMeshProUGUI costText;
-    [SerializeField] private TextMeshProUGUI itemNameText;
-    [SerializeField] private TextMeshProUGUI ironCountText;
-    [SerializeField] private TextMeshProUGUI platinumCountText;
-    [SerializeField] private TextMeshProUGUI bloodiumCountText;
+    [SerializeField] private TextMeshProUGUI[] materialCountTexts;
+    [SerializeField] private TextMeshProUGUI[] gearPieceTexts; //0 item name, 1 rarity, 2 stats, 3 costs
+    [SerializeField] private TextMeshProUGUI[] abilityTexts; //0 ability name, 1 level, 2 stats, 3 costs
     private Pause pauseMenu;
 
     private UIGearPiece currentGearPiece;
@@ -34,9 +30,10 @@ public class CharacterScreen : MonoBehaviour
         {
             ToggleCharacterScreen(!isMenuOpen);
         }
-        ironCountText.text = player.materialCounts[0].ToString();
-        platinumCountText.text = player.materialCounts[1].ToString();
-        bloodiumCountText.text = player.materialCounts[2].ToString();
+        for (int i = 0; i < materialCountTexts.Length; i++)
+        {
+            materialCountTexts[i].text = player.materialCounts[i].ToString();
+        }
     }
 
     public void ToggleCharacterScreen(bool shouldEnableScreen)
@@ -49,10 +46,10 @@ public class CharacterScreen : MonoBehaviour
 
     public void UpdateUI(string itemName, string rarity, string stats, string cost)
     {
-        itemNameText.text = itemName;
-        rarityText.text = rarity;
-        statsText.text = stats;
-        costText.text = cost;
+        gearPieceTexts[0].text = itemName;
+        gearPieceTexts[1].text = rarity;
+        gearPieceTexts[2].text = stats;
+        gearPieceTexts[3].text = cost;
     }
 
     private string GetNextRarity(string currentRarity)
