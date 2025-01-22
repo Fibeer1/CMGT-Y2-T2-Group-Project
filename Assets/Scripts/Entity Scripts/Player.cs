@@ -57,7 +57,7 @@ public class Player : Entity
     public float dashingTime = 0.2f;
     public float dashCDTimer = 1f;
     public float dashCD = 1f;
-    public float dashHealthCost = 5f;
+    public float dashHealthCost = 0.06f;
     public Enemy closestEnemy;
     [SerializeField] private GameObject dashProjectile;
 
@@ -316,12 +316,13 @@ public class Player : Entity
     {        
         if (Input.GetKeyDown(dashKey) && canDash)
         {
-            float remainingHealth = health - dashHealthCost;
+            float healthCost = health * dashHealthCost;
+            float remainingHealth = health - healthCost;
             if (remainingHealth <= 0)
             {
                 return;
             }
-            ChangeHealth(dashHealthCost, false, false, false);
+            ChangeHealth(healthCost, false, false, false);
             StartCoroutine(Dash());
         }
         //Purely used for the HUD
