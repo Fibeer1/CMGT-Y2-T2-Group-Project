@@ -86,9 +86,9 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("No equipment part selected for upgrade.");
             return;
         }
-        int ironCost = GetUpgradeCosts()[0];
-        int platinumCost = GetUpgradeCosts()[1];
-        int bloodCost = GetUpgradeCosts()[2];
+        int ironCost = GetGearUpgradeCosts()[0];
+        int platinumCost = GetGearUpgradeCosts()[1];
+        int bloodCost = GetGearUpgradeCosts()[2];
         bool canUpgrade = CheckMaterialsAndUpgrade(ironCost, platinumCost, bloodCost);
 
         if (!canUpgrade)
@@ -140,9 +140,9 @@ public class CharacterScreen : MonoBehaviour
         }
         StringBuilder costsText = new StringBuilder();
         costsText.Append("Cost:\n");
-        int ironCost = GetUpgradeCosts()[0];
-        int platinumCost = GetUpgradeCosts()[1];
-        int bloodCost = GetUpgradeCosts()[2];
+        int ironCost = GetGearUpgradeCosts()[0];
+        int platinumCost = GetGearUpgradeCosts()[1];
+        int bloodCost = GetGearUpgradeCosts()[2];
         if (ironCost > 0)
         {
             costsText.Append($"{ironCost} Iron\n");
@@ -193,9 +193,9 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("No ability selected for upgrade.");
             return;
         }
-        int ironCost = GetUpgradeCosts()[0];
-        int platinumCost = GetUpgradeCosts()[1];
-        int bloodCost = GetUpgradeCosts()[2];
+        int ironCost = GetAbilityUpgradeCosts()[0];
+        int platinumCost = GetAbilityUpgradeCosts()[1];
+        int bloodCost = GetAbilityUpgradeCosts()[2];
         bool canUpgrade = CheckMaterialsAndUpgrade(ironCost, platinumCost, bloodCost);
 
         if (!canUpgrade)
@@ -238,9 +238,9 @@ public class CharacterScreen : MonoBehaviour
         }
         StringBuilder costsText = new StringBuilder();
         costsText.Append("Cost:\n");
-        int ironCost = GetUpgradeCosts()[0];
-        int platinumCost = GetUpgradeCosts()[1];
-        int bloodCost = GetUpgradeCosts()[2];
+        int ironCost = GetAbilityUpgradeCosts()[0];
+        int platinumCost = GetAbilityUpgradeCosts()[1];
+        int bloodCost = GetAbilityUpgradeCosts()[2];
         if (ironCost > 0)
         {
             costsText.Append($"{ironCost} Iron\n");
@@ -271,19 +271,29 @@ public class CharacterScreen : MonoBehaviour
         return false;
     }
 
-    private int[] GetUpgradeCosts()
+    private int[] GetGearUpgradeCosts()
     {
         if (currentGearPiece != null)
         {
             return currentGearPiece.materialCosts[currentGearPiece.currentRarityIndex];
         }
+        else
+        {
+            Debug.Log("ERROR: No gear piece to get costs from.");
+            return new int[3];
+        }
+
+    }
+
+    private int[] GetAbilityUpgradeCosts()
+    {
         if (currentAbility != null)
         {
             return currentAbility.materialCosts[currentAbility.currentLevelIndex];
         }
         else
         {
-            Debug.Log("ERROR: No gear piece/ability to get costs from.");
+            Debug.Log("ERROR: No ability to get costs from.");
             return new int[3];
         }
     }
