@@ -157,8 +157,8 @@ public class Enemy : Entity
 
     private void DropMaterial(int materialIndex)
     {
-        int randomNumber = Random.Range(materialChances[materialIndex], 100); //E.g. 1 to 100 -> 1% chance
-        if (randomNumber != materialChances[materialIndex])
+        int randomNumber = Random.Range(1, 101); //E.g. 1 to 100 -> 1% chance
+        if (randomNumber >= materialChances[materialIndex])
         {
             return;
         }
