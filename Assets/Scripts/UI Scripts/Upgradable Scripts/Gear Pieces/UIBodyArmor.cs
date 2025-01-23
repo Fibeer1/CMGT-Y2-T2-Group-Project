@@ -27,7 +27,7 @@ public class UIBodyArmor : UIGearPiece
         {
             int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
             float nextHealthGrowth = currentHealthGrowth + healthGrowthValues[currentIndex];
-            float nextArmorGrowth = Mathf.Abs(100 * (currentHealthGrowth - armorGrowthValues[currentIndex]));
+            float nextArmorGrowth = Mathf.Abs(100 * (currentArmorGrowth - armorGrowthValues[currentIndex]));
 
             string healthGrowthText = $"Health: +{nextHealthGrowth}\n";
             string armorGrowthText = $"Armor: +{nextArmorGrowth.ToString("0.0")}%\n";
@@ -35,8 +35,8 @@ public class UIBodyArmor : UIGearPiece
         }
         else
         {
-            float previousHealthGrowth = healthGrowthValues[currentLevelIndex - 1];
-            float previousArmorGrowth = 100 * armorGrowthValues[currentLevelIndex - 1];
+            float previousHealthGrowth = currentHealthGrowth;
+            float previousArmorGrowth = Mathf.Abs(100 * currentArmorGrowth);
 
             float nextHealthGrowth = currentHealthGrowth + healthGrowthValues[currentLevelIndex];
             float nextArmorGrowth = Mathf.Abs(100 * (currentArmorGrowth - armorGrowthValues[currentLevelIndex]));

@@ -5,11 +5,14 @@ using UnityEngine;
 public class UISword : UIGearPiece
 {
     [SerializeField] private float[] meleeDamageGrowthValues;
+    [SerializeField] private float[] lifeStealGrowthValues;
     public float currentDamageGrowth;
+    public float currentLifeStealGrowth;
 
     public override void UpgradePlayerStats()
     {
         currentDamageGrowth += meleeDamageGrowthValues[currentLevelIndex];
+        currentLifeStealGrowth += lifeStealGrowthValues[currentLevelIndex];
         base.UpgradePlayerStats();
     }
 
@@ -17,17 +20,19 @@ public class UISword : UIGearPiece
     {
         if (currentLevelIndex == 0 || currentLevelIndex == meleeDamageGrowthValues.Length)
         {
-            int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextMeleeGrowth = currentDamageGrowth + meleeDamageGrowthValues[currentIndex];
-            string meleeGrowthText = $"Melee Damage: +{nextMeleeGrowth}\n";
-            return meleeGrowthText;
+            float damageGrowth = currentLevelIndex == 0 ? meleeDamageGrowthValues[currentLevelIndex] : currentDamageGrowth;
+            float lifeStealGrowth = currentLevelIndex == 0 ? lifeStealGrowthValues[currentLevelIndex] : currentLifeStealGrowth;
+            string meleeGrowthText = $"Melee Damage: +{damageGrowth}\n";
+            string lifeStealText = $"Life Steal: +{lifeStealGrowth} hp\n";
+            return meleeGrowthText + lifeStealText;
         }
         else
         {
-            float previousMeleeGrowth = meleeDamageGrowthValues[currentLevelIndex - 1];
             float nextMeleeGrowth = currentDamageGrowth + meleeDamageGrowthValues[currentLevelIndex];
-            string meleeGrowthText = $"Melee Damage: +{previousMeleeGrowth} -> +{nextMeleeGrowth}\n";            
-            return meleeGrowthText;
+            float nextLifeStealGrowth = currentLifeStealGrowth + lifeStealGrowthValues[currentLevelIndex];
+            string meleeGrowthText = $"Melee Damage: +{currentDamageGrowth} -> +{nextMeleeGrowth}\n";
+            string lifeStealGrowthText = $"Life Steal: +{currentLifeStealGrowth} -> +{nextLifeStealGrowth} hp\n";
+            return meleeGrowthText + lifeStealGrowthText;
         }
     }
 }

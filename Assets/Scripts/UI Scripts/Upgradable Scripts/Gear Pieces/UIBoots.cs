@@ -29,24 +29,22 @@ public class UIBoots : UIGearPiece
     {
         if (currentLevelIndex == 0 || currentLevelIndex == healthGrowthValues.Length)
         {
-            int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextHealthGrowth = currentHealthGrowth + healthGrowthValues[currentIndex];
-            float nextArmorGrowth = 100 * (currentHealthGrowth - armorGrowthValues[currentIndex]);
-            float nextSpeedGrowth = currentSpeedGrowth + moveSpeedGrowthValues[currentIndex];
-
-            string healthGrowthText = $"Health Increase: +{nextHealthGrowth}\n";
-            string armorGrowthText = $"Armor: +{nextArmorGrowth.ToString("0.0")}%\n";
-            string speedGrowthText = $"Speed Increase: +{nextSpeedGrowth}\n";
+            float healthGrowth = currentLevelIndex == 0 ? healthGrowthValues[currentLevelIndex] : currentHealthGrowth;
+            float armorGrowth = Mathf.Abs(currentLevelIndex == 0 ? armorGrowthValues[currentLevelIndex] : currentArmorGrowth);
+            float speedGrowth = currentLevelIndex == 0 ? moveSpeedGrowthValues[currentLevelIndex] : currentSpeedGrowth;
+            string healthGrowthText = $"Health Increase: +{healthGrowth}\n";
+            string armorGrowthText = $"Armor: +{(100 * armorGrowth).ToString("0.0")}%\n";
+            string speedGrowthText = $"Speed Increase: +{speedGrowth}\n";
             return healthGrowthText + armorGrowthText + speedGrowthText;
         }
         else
         {
-            float previousHealthGrowth = healthGrowthValues[currentLevelIndex - 1];
-            float previousArmorGrowth = 100 * armorGrowthValues[currentLevelIndex - 1];
-            float previousSpeedGrowth = moveSpeedGrowthValues[currentLevelIndex - 1];
+            float previousHealthGrowth = currentHealthGrowth;
+            float previousArmorGrowth = Mathf.Abs(100 * currentArmorGrowth);
+            float previousSpeedGrowth = currentSpeedGrowth;
 
             float nextHealthGrowth = currentHealthGrowth + healthGrowthValues[currentLevelIndex];
-            float nextArmorGrowth = 100 * (currentArmorGrowth - armorGrowthValues[currentLevelIndex]);
+            float nextArmorGrowth = Mathf.Abs(100 * (currentArmorGrowth - armorGrowthValues[currentLevelIndex]));
             float nextSpeedGrowth = currentSpeedGrowth + moveSpeedGrowthValues[currentLevelIndex];
 
             string healthGrowthText = $"Health Increase: +{previousHealthGrowth} -> +{nextHealthGrowth}\n";

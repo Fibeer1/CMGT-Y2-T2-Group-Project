@@ -25,7 +25,7 @@ public class MeleeAttackTrigger : Projectile
         Player playerOrigin = origin.GetComponent<Player>();
         if (playerOrigin != null)
         {
-            float healthChange = playerOrigin.maxHealth * playerOrigin.lifeStealPercentage;
+            float healthChange = playerOrigin.lifeSteal;
             playerOrigin.ChangeHealth(-healthChange, false, false, true, false);
         }
     }

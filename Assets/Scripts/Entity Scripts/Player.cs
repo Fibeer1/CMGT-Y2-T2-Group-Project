@@ -38,7 +38,7 @@ public class Player : Entity
     [SerializeField] private Transform swordSwingRotator;
     public float swordSwingCDTimer;
     public float swordSwingCD = 0.75f;
-    public float lifeStealPercentage = 0.05f;
+    public float lifeSteal = 0.5f;
     [SerializeField] private float attackRangeOffset = 0.4f;
     [SerializeField] private bool autoswing = false;
 
@@ -69,7 +69,7 @@ public class Player : Entity
     private Shield currentShieldInstance;
     public float percentageMissingHealthShield = 0.25f; //% of missing health
     public float fixedShieldAmount = 10;
-    [SerializeField] private float shieldDuration;
+    public float shieldDuration;
     public float shieldCDTimer;
     public float shieldCD;
     public float shieldMaxHPCost = 0.45f; //% of max health
