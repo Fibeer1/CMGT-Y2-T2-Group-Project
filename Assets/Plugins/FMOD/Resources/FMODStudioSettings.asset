@@ -390,8 +390,10 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../GAME PROJECT/GAME PROJECT.fspro
-  sourceBankPath: ../../GAME PROJECT/Build
+  sourceProjectPath: ../../../../../users/gx/Desktop/New folder/CMGT-Y2-T2-Group-Project/Assets/GAME
+    PROJECT/GAME PROJECT.fspro
+  sourceBankPath: ../../../../../users/gx/Desktop/New folder/CMGT-Y2-T2-Group-Project/Assets/GAME
+    PROJECT/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
