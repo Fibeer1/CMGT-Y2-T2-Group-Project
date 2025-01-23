@@ -8,12 +8,16 @@ public class UIBoots : UIGearPiece
     [SerializeField] private float[] armorGrowthValues;
     [SerializeField] private float[] moveSpeedGrowthValues;
 
+    public float currentHealthGrowth;
+    public float currentArmorGrowth;
+    public float currentSpeedGrowth;
+
     public override void UpgradePlayerStats()
     {
-        player.maxHealth += healthGrowthValues[currentLevelIndex];
-        player.armor -= armorGrowthValues[currentLevelIndex];
-        player.speed += moveSpeedGrowthValues[currentLevelIndex];
-        player.health += healthGrowthValues[currentLevelIndex];
+        currentHealthGrowth += healthGrowthValues[currentLevelIndex];
+        currentArmorGrowth -= armorGrowthValues[currentLevelIndex];
+        currentSpeedGrowth += moveSpeedGrowthValues[currentLevelIndex];
+        player.health += currentHealthGrowth;
         if (player.health > player.maxHealth)
         {
             player.health = player.maxHealth;

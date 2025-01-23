@@ -7,12 +7,15 @@ public class UIDash : UIAbility
     [SerializeField] private float[] dashCDValues;
     [SerializeField] private float[] dashCostValues;
     [SerializeField] private float[] dashDamageValues;
+    public float currentDashCD;
+    public float currentDashCost;
+    public float currentDashDamage;
 
     public override void UpgradePlayerStats()
     {
-        player.dashCD -= dashCDValues[currentLevelIndex];
-        player.dashHealthCost -= dashCostValues[currentLevelIndex];
-        player.dashProjectileDamage += dashDamageValues[currentLevelIndex];
+        currentDashCD -= dashCDValues[currentLevelIndex];
+        currentDashCost -= dashCostValues[currentLevelIndex];
+        currentDashDamage += dashDamageValues[currentLevelIndex];
         base.UpgradePlayerStats();
     }
 

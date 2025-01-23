@@ -10,13 +10,19 @@ public class UIRangedAttack : UIAbility
     [SerializeField] private float[] bulletVelocityValues;
     [SerializeField] private float[] bulletExplosionDamageValues;
 
+    public float currentBulletCD;
+    public float currentBulletCost;
+    public float currentBulletDamage;
+    public float currentBulletVelocity;
+    public float currentBulletExplosionDamage;
+
     public override void UpgradePlayerStats()
     {
-        player.rangedAttackCD -= bulletCDValues[currentLevelIndex];
-        player.rangedAttackCost -= bulletCostValues[currentLevelIndex];
-        player.rangedDamage += bulletDamageValues[currentLevelIndex];
-        player.rangedAttackVelocity += bulletVelocityValues[currentLevelIndex];
-        player.rangedAttackExplosionDamage += bulletExplosionDamageValues[currentLevelIndex];
+        currentBulletCD -= bulletCDValues[currentLevelIndex];
+        currentBulletCost -= bulletCostValues[currentLevelIndex];
+        currentBulletDamage += bulletDamageValues[currentLevelIndex];
+        currentBulletVelocity += bulletVelocityValues[currentLevelIndex];
+        currentBulletExplosionDamage += bulletExplosionDamageValues[currentLevelIndex];
         base.UpgradePlayerStats();
     }
 

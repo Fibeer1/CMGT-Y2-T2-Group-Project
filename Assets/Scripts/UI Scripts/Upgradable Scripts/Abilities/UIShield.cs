@@ -8,11 +8,15 @@ public class UIShield : UIAbility
     [SerializeField] private float[] shieldCostValues;
     [SerializeField] private float[] shieldFlatValues;
 
+    public float currentShieldCD;
+    public float currentShieldCost;
+    public float currentShieldFlat;
+
     public override void UpgradePlayerStats()
     {
-        player.shieldCD -= shieldCDValues[currentLevelIndex];
-        player.shieldMaxHPCost -= shieldCostValues[currentLevelIndex];
-        player.fixedShieldAmount += shieldFlatValues[currentLevelIndex];
+        currentShieldCD -= shieldCDValues[currentLevelIndex];
+        currentShieldCost -= shieldCostValues[currentLevelIndex];
+        currentShieldFlat += shieldFlatValues[currentLevelIndex];
         base.UpgradePlayerStats();
     }
 

@@ -6,12 +6,14 @@ public class UIBodyArmor : UIGearPiece
 {
     [SerializeField] private float[] healthGrowthValues;
     [SerializeField] private float[] armorGrowthValues;
+    public float currentHealthGrowth;
+    public float currentArmorGrowth;
 
     public override void UpgradePlayerStats()
     {
-        player.maxHealth += healthGrowthValues[currentLevelIndex];
-        player.armor -= armorGrowthValues[currentLevelIndex];
-        player.health += healthGrowthValues[currentLevelIndex];
+        currentHealthGrowth += healthGrowthValues[currentLevelIndex];
+        currentArmorGrowth -= armorGrowthValues[currentLevelIndex];
+        player.health += currentHealthGrowth;
         if (player.health > player.maxHealth)
         {
             player.health = player.maxHealth;

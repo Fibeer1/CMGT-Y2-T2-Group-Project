@@ -440,9 +440,9 @@ MonoBehaviour:
   level2UpgradeMaterialCosts: 040000000300000002000000
   level3UpgradeMaterialCosts: 050000000400000003000000
   shieldCDValues:
+  - 0.1
   - 0.25
   - 0.5
-  - 0.75
   shieldCostValues:
   - 0.05
   - 0.1
@@ -451,6 +451,9 @@ MonoBehaviour:
   - 5
   - 10
   - 15
+  currentShieldCD: 0
+  currentShieldCost: 0
+  currentShieldFlat: 0
 --- !u!1 &770008840397705712
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +529,57 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &854552624924278413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3281866573984237663}
+  - component: {fileID: 1934368370443586888}
+  m_Layer: 6
+  m_Name: PlayerStatTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3281866573984237663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854552624924278413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8048304551033911683}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934368370443586888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854552624924278413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e8576b40f603c4494995f06f42cfdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestplate: {fileID: 8827855896985897794}
+  leggings: {fileID: 6787802145493090284}
+  boots: {fileID: 7750735335877039634}
+  sword: {fileID: 5584950390563630089}
+  dash: {fileID: 8817818405079094219}
+  rangedAttack: {fileID: 6909129293380660774}
+  shield: {fileID: 8401421129569122067}
 --- !u!1 &876244718736790676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3262,6 +3316,7 @@ MonoBehaviour:
   - 25
   - 35
   - 50
+  currentDamageGrowth: 0
 --- !u!1 &3203201045719165509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4575,6 +4630,8 @@ MonoBehaviour:
   - 0.04
   - 0.055
   - 0.08
+  currentHealthGrowth: 0
+  currentArmorGrowth: 0
 --- !u!1 &4574797405247475935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5340,6 +5397,7 @@ Transform:
   - {fileID: 2302666237565066484}
   - {fileID: 1036714070098962662}
   - {fileID: 9116218132811742325}
+  - {fileID: 3281866573984237663}
   - {fileID: 6404779622907385561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6809,13 +6867,13 @@ MonoBehaviour:
   level2UpgradeMaterialCosts: 040000000300000002000000
   level3UpgradeMaterialCosts: 050000000400000003000000
   bulletCDValues:
+  - 0.1
   - 0.25
   - 0.5
-  - 0.75
   bulletCostValues:
+  - 0.01
   - 0.05
   - 0.1
-  - 0.15
   bulletDamageValues:
   - 5
   - 10
@@ -6828,6 +6886,11 @@ MonoBehaviour:
   - 25
   - 50
   - 75
+  currentBulletCD: 0
+  currentBulletCost: 0
+  currentBulletDamage: 0
+  currentBulletVelocity: 0
+  currentBulletExplosionDamage: 0
 --- !u!1 &7286789191854067063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7413,6 +7476,9 @@ MonoBehaviour:
   - 0.1
   - 0.1
   - 0.2
+  currentHealthGrowth: 0
+  currentArmorGrowth: 0
+  currentSpeedGrowth: 0
 --- !u!1 &7718655055081161230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8196,17 +8262,20 @@ MonoBehaviour:
   level2UpgradeMaterialCosts: 020000000200000002000000
   level3UpgradeMaterialCosts: 030000000300000003000000
   dashCDValues:
+  - 0.1
+  - 0.25
   - 0.5
-  - 0.75
-  - 1
   dashCostValues:
   - 0.05
+  - 0.25
   - 0.5
-  - 0.75
   dashDamageValues:
   - 5
   - 7
   - 10
+  currentDashCD: 0
+  currentDashCost: 0
+  currentDashDamage: 0
 --- !u!1 &8042757693944468627
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,6 +8701,8 @@ MonoBehaviour:
   - 0.03
   - 0.05
   - 0.07
+  currentHealthGrowth: 0
+  currentArmorGrowth: 0
 --- !u!1 &8357226084755256641
 GameObject:
   m_ObjectHideFlags: 0

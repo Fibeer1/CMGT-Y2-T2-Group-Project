@@ -5,10 +5,11 @@ using UnityEngine;
 public class UISword : UIGearPiece
 {
     [SerializeField] private float[] meleeDamageGrowthValues;
+    public float currentDamageGrowth;
 
     public override void UpgradePlayerStats()
     {
-        player.meleeDamage += meleeDamageGrowthValues[currentLevelIndex];
+        currentDamageGrowth += meleeDamageGrowthValues[currentLevelIndex];
         base.UpgradePlayerStats();
     }
 
