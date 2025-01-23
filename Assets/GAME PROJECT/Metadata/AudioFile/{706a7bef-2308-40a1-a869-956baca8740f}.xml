@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{706a7bef-2308-40a1-a869-956baca8740f}">
+		<property name="assetPath">
+			<value>Witch Casting Spell - Sound Effect [HD] [UxcyNhdU3nw].mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.0416326530612245</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{39513945-7749-46c6-a1a4-64191fb3f25b}</destination>
+		</relationship>
+	</object>
+</objects>

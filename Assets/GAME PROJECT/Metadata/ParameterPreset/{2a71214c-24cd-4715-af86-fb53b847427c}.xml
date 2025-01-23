@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{2a71214c-24cd-4715-af86-fb53b847427c}">
+		<property name="name">
+			<value>Choir1</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f49fc1f0-a9bc-4799-a96c-b07ed1ef02a8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{cbecd740-ffe4-4d4c-a03d-333f54d5617d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{cbecd740-ffe4-4d4c-a03d-333f54d5617d}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.059999998658895493</value>
+		</property>
+		<property name="seekSpeedDescending">
+			<value>0.23999999463558197</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{8e7e37f0-40a1-4b3c-b951-9c71c9493f98}">
+		<property name="name">
+			<value>Kicks</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f49fc1f0-a9bc-4799-a96c-b07ed1ef02a8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1b985ce4-4256-4ba6-b202-92306e39d4d4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1b985ce4-4256-4ba6-b202-92306e39d4d4}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.059999998658895493</value>
+		</property>
+	</object>
+</objects>
