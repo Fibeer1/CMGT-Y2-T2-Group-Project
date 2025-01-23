@@ -183,10 +183,8 @@ public class Enemy : Entity
         float angle = Random.Range(-360, 360);
         Vector3 direction = new Vector3(Mathf.Cos(angle), 
             Random.Range(minYVelocity, maxYVelocity), 
-            Mathf.Sin(angle)) * pickupableSpeed;
+            Mathf.Sin(angle));
         GameObject currentOrbInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
-        currentOrbInstance.GetComponent<Rigidbody>().velocity = direction;
-
-        
+        currentOrbInstance.GetComponent<Rigidbody>().velocity = direction * pickupableSpeed;       
     }
 }
