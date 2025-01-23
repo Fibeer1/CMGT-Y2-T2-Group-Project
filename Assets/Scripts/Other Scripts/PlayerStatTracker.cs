@@ -89,7 +89,7 @@ public class PlayerStatTracker : MonoBehaviour
         player.lifeSteal = basePlayerLifeSteal + sword.currentLifeStealGrowth;
 
         string playerHealth = $"Health: {(int)player.health}/{player.maxHealth}\n";
-        string playerArmor = $"Armor: {((100 / player.armor) - 100).ToString("0.0")}%\n";
+        string playerArmor = $"Armor: {((1 - player.armor) * 100).ToString("0.0")}%\n";
         string playerSpeed = $"Move Speed: {player.speed}\n";
         string playerMeleeDamage = $"Melee Damage: {player.meleeDamage}\n";
         string playerLifeSteal = $"Melee Life Steal: {player.lifeSteal} hp\n";

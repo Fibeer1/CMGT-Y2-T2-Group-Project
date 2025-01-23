@@ -25,12 +25,11 @@ public class UIBodyArmor : UIGearPiece
     {
         if (currentLevelIndex == 0 || currentLevelIndex == healthGrowthValues.Length)
         {
-            int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextHealthGrowth = currentHealthGrowth + healthGrowthValues[currentIndex];
-            float nextArmorGrowth = Mathf.Abs(100 * (currentArmorGrowth - armorGrowthValues[currentIndex]));
+            float healthGrowth = currentLevelIndex == 0 ? healthGrowthValues[currentLevelIndex] : currentHealthGrowth;
+            float armorGrowth = Mathf.Abs(100 * (currentLevelIndex == 0 ? armorGrowthValues[currentLevelIndex] : currentArmorGrowth));
 
-            string healthGrowthText = $"Health: +{nextHealthGrowth}\n";
-            string armorGrowthText = $"Armor: +{nextArmorGrowth.ToString("0.0")}%\n";
+            string healthGrowthText = $"Health: +{healthGrowth}\n";
+            string armorGrowthText = $"Armor: +{armorGrowth.ToString("0.0")}%\n";
             return healthGrowthText + armorGrowthText;
         }
         else

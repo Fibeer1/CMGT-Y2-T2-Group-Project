@@ -24,10 +24,9 @@ public class UIShield : UIAbility
     {
         if (currentLevelIndex == 0 || currentLevelIndex == shieldCDValues.Length)
         {
-            int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextShieldCD = Mathf.Abs(currentShieldCD - shieldCDValues[currentIndex]);
-            float nextShieldCost = Mathf.Abs(100 * (currentShieldCost - shieldCostValues[currentIndex]));
-            float nextShieldFlat = currentShieldFlat + shieldFlatValues[currentIndex];
+            float nextShieldCD = Mathf.Abs(currentLevelIndex == 0 ? shieldCDValues[currentLevelIndex] : currentShieldCD);
+            float nextShieldCost = Mathf.Abs(100 * (currentLevelIndex == 0 ? shieldCostValues[currentLevelIndex] : currentShieldCost));
+            float nextShieldFlat = currentLevelIndex == 0 ? shieldFlatValues[currentLevelIndex] : currentShieldFlat;
             string shieldCDText = $"Cooldown: -{nextShieldCD}s\n";
             string shieldCostText = $"Health Cost: -{nextShieldCost.ToString("0.0")}%\n";
             string shieldFlatText = $"Flat Shield HP: +{nextShieldFlat}\n";
@@ -35,9 +34,9 @@ public class UIShield : UIAbility
         }
         else
         {
-            float previousShieldCD = shieldCDValues[currentLevelIndex - 1];
-            float previousShieldCost = Mathf.Abs(100 * shieldCostValues[currentLevelIndex - 1]);
-            float previousShieldFlat = shieldFlatValues[currentLevelIndex - 1];
+            float previousShieldCD = currentShieldCD;
+            float previousShieldCost = Mathf.Abs(100 * currentShieldCost);
+            float previousShieldFlat = currentShieldFlat;
             float nextShieldCD = Mathf.Abs(currentShieldCD - shieldCDValues[currentLevelIndex]);
             float nextShieldCost = Mathf.Abs(100 * (currentShieldCost - shieldCostValues[currentLevelIndex]));
             float nextShieldFlat = currentShieldFlat + shieldFlatValues[currentLevelIndex];

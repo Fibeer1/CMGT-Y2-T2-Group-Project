@@ -30,12 +30,11 @@ public class UIRangedAttack : UIAbility
     {
         if (currentLevelIndex == 0 || currentLevelIndex == bulletCDValues.Length)
         {
-            int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextBulletCD = Mathf.Abs(currentBulletCD - bulletCDValues[currentIndex]);
-            float nextBulletCost = Mathf.Abs(100 * (currentBulletCost - bulletCostValues[currentIndex]));
-            float nextBulletDamage = currentBulletDamage + bulletDamageValues[currentIndex];
-            float nextBulletVelocity = currentBulletVelocity + bulletVelocityValues[currentIndex];
-            float nextBulletExplosionDamage = currentBulletExplosionDamage + bulletExplosionDamageValues[currentIndex];
+            float nextBulletCD = Mathf.Abs(currentLevelIndex == 0 ? bulletCDValues[currentLevelIndex] : currentBulletCD);
+            float nextBulletCost = Mathf.Abs(100 * (currentLevelIndex == 0 ? bulletCostValues[currentLevelIndex] : currentBulletCost));
+            float nextBulletDamage = currentLevelIndex == 0 ? bulletDamageValues[currentLevelIndex] : currentBulletDamage;
+            float nextBulletVelocity = currentLevelIndex == 0 ? bulletVelocityValues[currentLevelIndex] : currentBulletVelocity;
+            float nextBulletExplosionDamage = currentLevelIndex == 0 ? bulletExplosionDamageValues[currentLevelIndex] : currentBulletExplosionDamage;
 
             string bulletCDText = $"Cooldown: -{nextBulletCD}s\n";
             string bulletCostText = $"Health Cost: -{nextBulletCost.ToString("0.0")}%\n";
@@ -46,11 +45,11 @@ public class UIRangedAttack : UIAbility
         }
         else
         {
-            float previousBulletCD = Mathf.Abs(bulletCDValues[currentLevelIndex - 1]);
-            float previousBulletCost = Mathf.Abs(100 * bulletCostValues[currentLevelIndex - 1]);
-            float previousBulletDamage = bulletDamageValues[currentLevelIndex - 1];
-            float previousBulletVelocity = bulletVelocityValues[currentLevelIndex - 1];
-            float previousBulletExplosionDamage = bulletExplosionDamageValues[currentLevelIndex - 1];
+            float previousBulletCD = Mathf.Abs(currentBulletCD);
+            float previousBulletCost = Mathf.Abs(100 * currentBulletCost);
+            float previousBulletDamage = currentBulletDamage;
+            float previousBulletVelocity = currentBulletVelocity;
+            float previousBulletExplosionDamage = currentBulletExplosionDamage;
 
             float nextBulletCD = Mathf.Abs(currentBulletCD - bulletCDValues[currentLevelIndex]);
             float nextBulletCost = Mathf.Abs(100 * (currentBulletCost - bulletCostValues[currentLevelIndex]));
