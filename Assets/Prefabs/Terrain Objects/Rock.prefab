@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6204047415707688176}
   m_Layer: 10
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

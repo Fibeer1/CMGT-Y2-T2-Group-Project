@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private protected float lifeTime;
     private protected List<Entity> entitiesHit = new List<Entity>();
     [SerializeField] private bool destroyProjectileOnHit = false;
-    [SerializeField] private protected LayerMask obstacleLayer;
+    [SerializeField] private protected string obstacleTag;
 
     private void Update()
     {
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         {
             OnHit(entityScript);
         }
-        if (LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) == obstacleLayer)
+        if (other.gameObject.tag == obstacleTag)
         {
             //Destroy projectile if it hits an obstacle
             DestroyProjectile();

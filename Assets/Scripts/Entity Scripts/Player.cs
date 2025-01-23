@@ -174,7 +174,7 @@ public class Player : Entity
             yield break;
         }
         isDead = true;
-        AudioManager.instance.PlayOneShot(playerDyingSound, this.transform.position);
+        //AudioManager.instance.PlayOneShot(playerDyingSound, this.transform.position);
         Instantiate(deathEffect, transform.position, Quaternion.identity);        
         playerSprite.enabled = false;
         health = 0;
@@ -232,7 +232,7 @@ public class Player : Entity
             shootRotator.LookAt(targetDirection);
         }
 
-        AudioManager.instance.PlayOneShot(throwSound, this.transform.position);
+        //AudioManager.instance.PlayOneShot(throwSound, this.transform.position);
         //Spawn the projectile
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
         GameObject projectileInstance = Instantiate(projectilePrefab,
@@ -278,7 +278,7 @@ public class Player : Entity
             spawnPosition, swordSwingRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, meleeDamage);
         swordSwingCDTimer = swordSwingCD;
-        AudioManager.instance.PlayOneShot(attackSound, this.transform.position);
+        //AudioManager.instance.PlayOneShot(attackSound, this.transform.position);
     }
 
     private void HandleShieldMechanics()

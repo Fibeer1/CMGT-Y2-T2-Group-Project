@@ -19,7 +19,7 @@ public class BloodBullet : Projectile
             OnHit(entityScript);
         }
 
-        if (LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) == obstacleLayer)
+        if (other.gameObject.tag == obstacleTag)
         {
             SpawnExplosion();
             DestroyProjectile();

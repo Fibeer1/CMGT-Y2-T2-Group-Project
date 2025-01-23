@@ -41,11 +41,11 @@ public class Entity : MonoBehaviour
             //Play sound
             if (GetComponent<Enemy>() != null)
             {
-                AudioManager.instance.PlayOneShot(enemyTakeDamageSound, this.transform.position);
+                //AudioManager.instance.PlayOneShot(enemyTakeDamageSound, this.transform.position);
             }
             else if (GetComponent<Player>() != null)
             {
-                AudioManager.instance.PlayOneShot(takeDamageSound, this.transform.position);
+                //AudioManager.instance.PlayOneShot(takeDamageSound, this.transform.position);
             }
 
         }

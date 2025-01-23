@@ -4950,6 +4950,4 @@ MonoBehaviour:
   speed: 10
   lifeTime: 2
   destroyProjectileOnHit: 1
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  obstacleTag: Obstacle
