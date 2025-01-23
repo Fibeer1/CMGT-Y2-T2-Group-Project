@@ -436,21 +436,21 @@ MonoBehaviour:
   currentLevelIndex: 0
   itemName: Shield
   shouldSelectOnStart: 0
-  level1UpgradeMaterialCosts: 030000000200000001000000
-  level2UpgradeMaterialCosts: 040000000300000002000000
-  level3UpgradeMaterialCosts: 050000000400000003000000
+  level1UpgradeMaterialCosts: 0f0000000f00000005000000
+  level2UpgradeMaterialCosts: 1e0000001e0000000f000000
+  level3UpgradeMaterialCosts: 3c0000003c00000019000000
   shieldCDValues:
-  - 0.1
-  - 0.25
-  - 0.5
-  shieldCostValues:
-  - 0.05
-  - 0.1
-  - 0.15
-  shieldFlatValues:
+  - 2
+  - 3
   - 5
-  - 10
-  - 15
+  shieldCostValues:
+  - 0.005
+  - 0.005
+  - 0.01
+  shieldFlatValues:
+  - 20
+  - 30
+  - 50
   currentShieldCD: 0
   currentShieldCost: 0
   currentShieldFlat: 0
@@ -5645,7 +5645,7 @@ MonoBehaviour:
   shootRotator: {fileID: 2302666237565066484}
   rangedAttackOffset: 0.2
   rangedAttackCDTimer: 0
-  rangedAttackCD: 1
+  rangedAttackCD: 3
   rangedAttackCost: 0.12
   rangedAttackVelocity: 10
   isDashing: 0
@@ -5658,7 +5658,7 @@ MonoBehaviour:
   dashProjectile: {fileID: 852857912230753220, guid: f7c2bcee7d61ac945bc25673d644cfbf, type: 3}
   shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
   percentageMissingHealthShield: 0.25
-  fixedShieldAmount: 10
+  fixedShieldAmount: 20
   shieldDuration: 30
   shieldCDTimer: 0
   shieldCD: 30
@@ -7008,29 +7008,29 @@ MonoBehaviour:
   currentLevelIndex: 0
   itemName: Blood Bullet
   shouldSelectOnStart: 0
-  level1UpgradeMaterialCosts: 030000000200000001000000
-  level2UpgradeMaterialCosts: 040000000300000002000000
-  level3UpgradeMaterialCosts: 050000000400000003000000
+  level1UpgradeMaterialCosts: 0f0000000f00000005000000
+  level2UpgradeMaterialCosts: 1e0000001e0000000a000000
+  level3UpgradeMaterialCosts: 460000004600000019000000
   bulletCDValues:
   - 0.1
+  - 0.15
   - 0.25
-  - 0.5
   bulletCostValues:
+  - 0.005
   - 0.01
-  - 0.05
-  - 0.1
+  - 0.015
   bulletDamageValues:
-  - 5
-  - 10
-  - 15
+  - 25
+  - 25
+  - 25
   bulletVelocityValues:
   - 1
   - 2
   - 5
   bulletExplosionDamageValues:
-  - 25
+  - 15
+  - 35
   - 50
-  - 75
   currentBulletCD: 0
   currentBulletCost: 0
   currentBulletDamage: 0
@@ -8327,21 +8327,21 @@ MonoBehaviour:
   currentLevelIndex: 0
   itemName: Dash
   shouldSelectOnStart: 1
-  level1UpgradeMaterialCosts: 010000000100000001000000
-  level2UpgradeMaterialCosts: 020000000200000002000000
-  level3UpgradeMaterialCosts: 030000000300000003000000
+  level1UpgradeMaterialCosts: 050000000500000003000000
+  level2UpgradeMaterialCosts: 190000001900000006000000
+  level3UpgradeMaterialCosts: 3c0000003c0000000f000000
   dashCDValues:
   - 0.1
+  - 0.15
   - 0.25
-  - 0.5
   dashCostValues:
-  - 0.05
-  - 0.25
-  - 0.5
+  - 0.005
+  - 0.01
+  - 0.015
   dashDamageValues:
-  - 5
-  - 7
-  - 10
+  - 25
+  - 40
+  - 60
   currentDashCD: 0
   currentDashCost: 0
   currentDashDamage: 0
