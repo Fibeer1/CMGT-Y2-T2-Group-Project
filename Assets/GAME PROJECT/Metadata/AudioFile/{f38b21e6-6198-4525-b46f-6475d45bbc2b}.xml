@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f38b21e6-6198-4525-b46f-6475d45bbc2b}">
+		<property name="assetPath">
+			<value>hit-flesh-01-266311 (1).mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.67200000000000004</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{39513945-7749-46c6-a1a4-64191fb3f25b}</destination>
+		</relationship>
+	</object>
+</objects>

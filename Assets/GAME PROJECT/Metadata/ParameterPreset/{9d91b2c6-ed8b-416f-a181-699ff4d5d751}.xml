@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{9d91b2c6-ed8b-416f-a181-699ff4d5d751}">
+		<property name="name">
+			<value>Suspense</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f49fc1f0-a9bc-4799-a96c-b07ed1ef02a8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1d97b446-b9b8-4e47-a046-ccb14463ff20}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1d97b446-b9b8-4e47-a046-ccb14463ff20}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.059999998658895493</value>
+		</property>
+		<property name="seekSpeedDescending">
+			<value>0.15999999642372131</value>
+		</property>
+	</object>
+</objects>
