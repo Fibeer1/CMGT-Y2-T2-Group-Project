@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] private Transform enemyUnitParent;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private int maxEnemies = 10;
     public List<Enemy> enemies = new List<Enemy>();
@@ -49,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemies.Count >= maxEnemies || GameManager.enemies.Count >= GameManager.maxEnemies)
         {
+            Debug.Log("Unable to spawn enemy.");
             return;
         }
         //Spawn the enemy in a radius around the spawn location
@@ -56,11 +56,12 @@ public class EnemySpawner : MonoBehaviour
         Vector3 direction = new Vector3(Mathf.Cos(angle), 0.25f, Mathf.Sin(angle));
         Vector3 position = spawnLocation.position + (Random.Range(minSpawnDistance, maxSpawnDistance) * direction);
         position.y = 0;
-        GameObject enemyInstance = Instantiate(enemyPrefabs[enemyIndex], position, Quaternion.identity, enemyUnitParent);
+        GameObject enemyInstance = Instantiate(enemyPrefabs[enemyIndex], position, Quaternion.identity, transform);
         Enemy enemyScript = enemyInstance.GetComponent<Enemy>();
         enemies.Add(enemyScript);
         GameManager.enemies.Add(enemyScript);
         enemyScript.originSpawner = this;
+        Debug.Log("Spawned enemy at: " + position.ToString());
     }
 
     private void OnDrawGizmos()

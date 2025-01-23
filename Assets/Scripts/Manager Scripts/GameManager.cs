@@ -8,13 +8,8 @@ public class GameManager : MonoBehaviour
     public static List<Enemy> enemies = new List<Enemy>();
     [SerializeField] private int maxEnemiesValue = 30;
 
-    private void Start()
-    {
-        maxEnemies = maxEnemiesValue;
-    }
-
     private void Update()
     {
-        
+        maxEnemies = maxEnemiesValue;
     }
 }
