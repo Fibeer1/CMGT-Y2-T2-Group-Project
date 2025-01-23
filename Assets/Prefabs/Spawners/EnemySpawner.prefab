@@ -59,6 +59,13 @@ MonoBehaviour:
   enemySpawnTimer: 0
   shouldSpawnEnemies: 1
   shouldDrawSpawnCircle: 1
+  spawnSound:
+    Guid:
+      Data1: -805205921
+      Data2: 1084281905
+      Data3: 192896164
+      Data4: -1859592899
+    Path: event:/Enemy/Enemy spawn
 --- !u!198 &5482708610041981366
 ParticleSystem:
   m_ObjectHideFlags: 0

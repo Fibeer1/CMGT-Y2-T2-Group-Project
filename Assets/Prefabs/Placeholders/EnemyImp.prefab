@@ -80,6 +80,20 @@ MonoBehaviour:
   textSize: 3
   textFadeDuration: 0.1
   textLifeTime: 0.5
+  enemyTakeDamageSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  takeDamageSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   shouldMove: 1
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
@@ -108,6 +122,20 @@ MonoBehaviour:
   deAggroRange: 20
   aggroed: 0
   isAttacking: 0
+  enemyAttackSound:
+    Guid:
+      Data1: -1325717001
+      Data2: 1077315689
+      Data3: 929453201
+      Data4: 321703308
+    Path: event:/Enemy/Flying Enemy Attack
+  enemyDyingSound:
+    Guid:
+      Data1: -1608642073
+      Data2: 1333505801
+      Data3: 1480911510
+      Data4: 1520838622
+    Path: event:/Enemy/Enemy dying
 --- !u!195 &1730138799474534964
 NavMeshAgent:
   m_ObjectHideFlags: 0

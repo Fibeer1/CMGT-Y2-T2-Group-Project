@@ -254,8 +254,11 @@ MonoBehaviour:
   target: {fileID: 0}
   moveSpeed: 10
   smoothTime: 0.1
+  collectSound:
+    Guid:
+      Data1: 113906886
+      Data2: 1258914089
+      Data3: -1046119539
+      Data4: 1916371846
+    Path: event:/Other events/Collect sound
   bloodGainAmount: 5
-  textColor: {r: 0, g: 0.4188679, b: 0.002030673, a: 1}
-  textSize: 3
-  textFadeDuration: 0.1
-  textLifetime: 0.5

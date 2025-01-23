@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float enemySpawnTimer;
     [SerializeField] private bool shouldSpawnEnemies = true;
     [SerializeField] private bool shouldDrawSpawnCircle = false;
-
+    [SerializeField] private EventReference spawnSound;
     private void Start()
     {
         enemySpawnTimer = enemySpawnTime;
@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void HandleEnemySpawning()
     {
+        AudioManager.instance.PlayOneShot(spawnSound, this.transform.position);
         enemySpawnTimer = enemySpawnTime;
         SpawnEnemy(Random.Range(0, enemyPrefabs.Length));
     }

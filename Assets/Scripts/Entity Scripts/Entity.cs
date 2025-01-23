@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class Entity : MonoBehaviour
 {
     [Header("General Variables")]
@@ -19,6 +19,9 @@ public class Entity : MonoBehaviour
     [SerializeField] private float textFadeDuration = 0.1f;
     [SerializeField] private float textLifeTime = 0.5f;
 
+    [Header("Sounds")]
+    [SerializeField] private EventReference enemyTakeDamageSound;
+    [SerializeField] private EventReference takeDamageSound;
     public virtual void InitializeEntity()
     {
 
@@ -36,6 +39,15 @@ public class Entity : MonoBehaviour
         if (shouldPlaySound)
         {
             //Play sound
+            if (GetComponent<Enemy>() != null)
+            {
+                AudioManager.instance.PlayOneShot(enemyTakeDamageSound, this.transform.position);
+            }
+            else if (GetComponent<Player>() != null)
+            {
+                AudioManager.instance.PlayOneShot(takeDamageSound, this.transform.position);
+            }
+
         }
         if (health > maxHealth)
         {

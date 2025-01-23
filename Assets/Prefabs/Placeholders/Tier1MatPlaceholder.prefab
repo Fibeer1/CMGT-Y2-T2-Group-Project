@@ -300,6 +300,13 @@ MonoBehaviour:
   target: {fileID: 0}
   moveSpeed: 10
   smoothTime: 0.1
+  collectSound:
+    Guid:
+      Data1: 113906886
+      Data2: 1258914089
+      Data3: -1046119539
+      Data4: 1916371846
+    Path: event:/Other events/Collect sound
   materialName: Iron
   materialTierIndex: 0
   materialCount: 1

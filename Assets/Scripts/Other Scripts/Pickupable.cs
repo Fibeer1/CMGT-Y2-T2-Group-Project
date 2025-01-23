@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class Pickupable : MonoBehaviour
 {
     public Transform target;
@@ -9,7 +9,7 @@ public class Pickupable : MonoBehaviour
     [SerializeField] private float smoothTime = 0.2f;
     private Vector3 velocity = Vector3.zero;
     private Rigidbody rb;
-
+    [SerializeField] private EventReference collectSound;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,6 +33,7 @@ public class Pickupable : MonoBehaviour
         if (collisionPlayer != null && collision.transform == target)
         {
             OnCollision(collisionPlayer);
+            AudioManager.instance.PlayOneShot(collectSound, this.transform.position);
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using FMODUnity;
 
 public class Enemy : Entity
 {
@@ -37,6 +38,10 @@ public class Enemy : Entity
     [SerializeField] private protected bool aggroed = false;
     [SerializeField] private protected bool isAttacking = false;
     private protected float distanceToPlayer;
+
+    [Header("Combat Variables")]
+    [SerializeField] private EventReference enemyAttackSound;
+    [SerializeField] private EventReference enemyDyingSound;
 
     private NavMeshAgent meshAgent;
 
@@ -95,10 +100,12 @@ public class Enemy : Entity
                 meshAgent.destination = transform.position;
                 attackOffset = normalAttackOffset;
                 meshAgent.speed = normalMoveSpeed;
-            }            
+            }
             AttackPlayer();
+            
+
         }
-        
+
         else if (!isAttacking)
         {
             shouldMove = true;
@@ -107,11 +114,14 @@ public class Enemy : Entity
 
     private void AttackPlayer()
     {
+
+        
         if (attackCDTimer > 0)
         {
             return;
         }
         StartCoroutine(HandleAttack());
+
     }
 
     private IEnumerator HandleAttack()
@@ -125,6 +135,7 @@ public class Enemy : Entity
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
             enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+        AudioManager.instance.PlayOneShot(enemyAttackSound, this.transform.position);
 
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
@@ -137,6 +148,8 @@ public class Enemy : Entity
         {
             yield break;
         }
+        AudioManager.instance.PlayOneShot(enemyDyingSound, this.transform.position);
+
         GameManager.enemies.Remove(this);
         originSpawner.enemies.Remove(this);
         DropPickupables();
