@@ -31,11 +31,12 @@ public class UIRangedAttack : UIAbility
         if (currentLevelIndex == 0 || currentLevelIndex == bulletCDValues.Length)
         {
             int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextBulletCD = bulletCDValues[currentIndex];
-            float nextBulletCost = 100 * bulletCostValues[currentIndex];
-            float nextBulletDamage = bulletDamageValues[currentIndex];
-            float nextBulletVelocity = bulletVelocityValues[currentIndex];
-            float nextBulletExplosionDamage = bulletExplosionDamageValues[currentIndex];
+            float nextBulletCD = Mathf.Abs(currentBulletCD - bulletCDValues[currentIndex]);
+            float nextBulletCost = Mathf.Abs(100 * (currentBulletCost - bulletCostValues[currentIndex]));
+            float nextBulletDamage = currentBulletDamage + bulletDamageValues[currentIndex];
+            float nextBulletVelocity = currentBulletVelocity + bulletVelocityValues[currentIndex];
+            float nextBulletExplosionDamage = currentBulletExplosionDamage + bulletExplosionDamageValues[currentIndex];
+
             string bulletCDText = $"Cooldown: -{nextBulletCD}s\n";
             string bulletCostText = $"Health Cost: -{nextBulletCost.ToString("0.0")}%\n";
             string bulletDamageText = $"Damage: +{nextBulletDamage}\n";
@@ -45,16 +46,18 @@ public class UIRangedAttack : UIAbility
         }
         else
         {
-            float previousBulletCD = bulletCDValues[currentLevelIndex - 1];
-            float previousBulletCost = 100 * bulletCostValues[currentLevelIndex - 1];
+            float previousBulletCD = Mathf.Abs(bulletCDValues[currentLevelIndex - 1]);
+            float previousBulletCost = Mathf.Abs(100 * bulletCostValues[currentLevelIndex - 1]);
             float previousBulletDamage = bulletDamageValues[currentLevelIndex - 1];
             float previousBulletVelocity = bulletVelocityValues[currentLevelIndex - 1];
             float previousBulletExplosionDamage = bulletExplosionDamageValues[currentLevelIndex - 1];
-            float nextBulletCD = bulletCDValues[currentLevelIndex];
-            float nextBulletCost = 100 * bulletCostValues[currentLevelIndex];
-            float nextBulletDamage = bulletDamageValues[currentLevelIndex];
-            float nextBulletVelocity = bulletVelocityValues[currentLevelIndex];
-            float nextBulletExplosionDamage = bulletExplosionDamageValues[currentLevelIndex];
+
+            float nextBulletCD = Mathf.Abs(currentBulletCD - bulletCDValues[currentLevelIndex]);
+            float nextBulletCost = Mathf.Abs(100 * (currentBulletCost - bulletCostValues[currentLevelIndex]));
+            float nextBulletDamage = currentBulletDamage + bulletDamageValues[currentLevelIndex];
+            float nextBulletVelocity = currentBulletVelocity + bulletVelocityValues[currentLevelIndex];
+            float nextBulletExplosionDamage = currentBulletExplosionDamage + bulletExplosionDamageValues[currentLevelIndex];
+
             string bulletCDText = $"Cooldown: -{previousBulletCD}s -> -{nextBulletCD}s\n";
             string bulletCostText = $"Health Cost: -{previousBulletCost.ToString("0.0")}% -> -{nextBulletCost.ToString("0.0")}%\n";
             string bulletDamageText = $"Damage: +{previousBulletDamage} -> +{nextBulletDamage}\n";

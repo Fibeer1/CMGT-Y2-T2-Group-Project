@@ -24,9 +24,9 @@ public class UIDash : UIAbility
         if (currentLevelIndex == 0 || currentLevelIndex == dashCDValues.Length)
         {
             int currentIndex = currentLevelIndex == 0 ? 0 : currentLevelIndex - 1;
-            float nextDashCD = dashCDValues[currentIndex];
-            float nextDashCost = 100 * dashCostValues[currentIndex];
-            float nextDashDamage = dashDamageValues[currentIndex];
+            float nextDashCD = Mathf.Abs(currentDashCD - dashCDValues[currentIndex]);
+            float nextDashCost = Mathf.Abs(100 * (currentDashCost - dashCostValues[currentIndex]));
+            float nextDashDamage = currentDashDamage + dashDamageValues[currentIndex];
             string dashCDText = $"Cooldown: -{nextDashCD}s\n";
             string dashCostText = $"Health Cost: -{nextDashCost.ToString("0.0")}%\n";
             string dashDamageText = $"Bullet Damage: +{nextDashDamage}\n";
@@ -34,12 +34,14 @@ public class UIDash : UIAbility
         }
         else
         {
-            float previousDashCD = dashCDValues[currentLevelIndex - 1];
-            float previousDashCost = 100 * dashCostValues[currentLevelIndex - 1];
+            float previousDashCD = Mathf.Abs(dashCDValues[currentLevelIndex - 1]);
+            float previousDashCost = Mathf.Abs(100 * dashCostValues[currentLevelIndex - 1]);
             float previousDashDamage = dashDamageValues[currentLevelIndex - 1];
-            float nextDashCD = dashCDValues[currentLevelIndex];
-            float nextDashCost = 100 * dashCostValues[currentLevelIndex];
-            float nextDashDamage = dashDamageValues[currentLevelIndex];
+
+            float nextDashCD = Mathf.Abs(currentDashCD - dashCDValues[currentLevelIndex]);
+            float nextDashCost = Mathf.Abs(100 * (currentDashCost - dashCostValues[currentLevelIndex]));
+            float nextDashDamage = currentDashDamage + dashDamageValues[currentLevelIndex];
+
             string dashCDText = $"Cooldown: -{previousDashCD}s -> {nextDashCD}s\n";
             string dashCostText = $"Health Cost: -{previousDashCost.ToString("0.0")}% -> -{nextDashCost.ToString("0.0")}%\n";
             string dashDamageText = $"Bullet Damage: +{previousDashDamage} -> +{nextDashDamage}\n";
