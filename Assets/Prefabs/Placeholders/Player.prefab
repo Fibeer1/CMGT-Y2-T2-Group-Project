@@ -3456,10 +3456,10 @@ MonoBehaviour:
   - 35
   - 50
   lifeStealGrowthValues:
-  - 0.1
-  - 0.25
   - 0.5
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
   currentDamageGrowth: 0
   currentLifeStealGrowth: 0
 --- !u!1 &3203201045719165509
@@ -5653,7 +5653,7 @@ MonoBehaviour:
   dashingTime: 0.2
   dashCDTimer: 1.5
   dashCD: 1.5
-  dashHealthCost: 0.06
+  dashHealthCost: 0.07
   closestEnemy: {fileID: 0}
   dashProjectile: {fileID: 852857912230753220, guid: f7c2bcee7d61ac945bc25673d644cfbf, type: 3}
   shieldPrefab: {fileID: 9180818838856650258, guid: c07243c5ac1b75b46a3ef186b1ed3283, type: 3}
