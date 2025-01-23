@@ -39,8 +39,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void HandleEnemySpawning()
-    {
-        AudioManager.instance.PlayOneShot(spawnSound, this.transform.position);
+    {        
         enemySpawnTimer = enemySpawnTime;
         SpawnEnemy(Random.Range(0, enemyPrefabs.Length));
     }
@@ -52,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("Unable to spawn enemy.");
             return;
         }
+        AudioManager.instance.PlayOneShot(spawnSound, this.transform.position);
         //Spawn the enemy in a radius around the spawn location
         float angle = Random.Range(-360, 360);
         Vector3 direction = new Vector3(Mathf.Cos(angle), 0.25f, Mathf.Sin(angle));
