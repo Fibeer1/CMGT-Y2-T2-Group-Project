@@ -41,7 +41,7 @@ public class UIDash : UIAbility
             float nextDashCost = Mathf.Abs(100 * (currentDashCost - dashCostValues[currentLevelIndex]));
             float nextDashDamage = currentDashDamage + dashDamageValues[currentLevelIndex];
 
-            string dashCDText = $"Cooldown: -{previousDashCD}s -> {nextDashCD}s\n";
+            string dashCDText = $"Cooldown: -{previousDashCD}s -> -{nextDashCD}s\n";
             string dashCostText = $"Health Cost: -{previousDashCost.ToString("0.0")}% -> -{nextDashCost.ToString("0.0")}%\n";
             string dashDamageText = $"Bullet Damage: +{previousDashDamage} -> +{nextDashDamage}\n";
             return dashCDText + dashCostText + dashDamageText;

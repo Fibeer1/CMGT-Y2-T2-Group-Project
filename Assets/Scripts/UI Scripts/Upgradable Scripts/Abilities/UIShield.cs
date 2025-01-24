@@ -34,13 +34,13 @@ public class UIShield : UIAbility
         }
         else
         {
-            float previousShieldCD = currentShieldCD;
+            float previousShieldCD = Mathf.Abs(currentShieldCD);
             float previousShieldCost = Mathf.Abs(100 * currentShieldCost);
             float previousShieldFlat = currentShieldFlat;
             float nextShieldCD = Mathf.Abs(currentShieldCD - shieldCDValues[currentLevelIndex]);
             float nextShieldCost = Mathf.Abs(100 * (currentShieldCost - shieldCostValues[currentLevelIndex]));
             float nextShieldFlat = currentShieldFlat + shieldFlatValues[currentLevelIndex];
-            string shieldCDText = $"Cooldown: -{previousShieldCD}s -> {nextShieldCD}s\n";
+            string shieldCDText = $"Cooldown: -{previousShieldCD}s -> -{nextShieldCD}s\n";
             string shieldCostText = $"Health Cost: -{previousShieldCost.ToString("0.0")}% -> -{nextShieldCost.ToString("0.0")}%\n";
             string shieldFlatText = $"Flat Shield HP: +{previousShieldFlat} -> +{nextShieldFlat}\n";
             return shieldCDText + shieldCostText + shieldFlatText;
