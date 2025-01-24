@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -93,5 +94,20 @@ public class EnemySpawner : MonoBehaviour
             Gizmos.DrawLine(previousPoint, nextPoint);
             previousPoint = nextPoint;
         }
+    }
+
+    public void DestroyEnemies()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Destroy(enemies[i]);
+            enemies.RemoveAt(i);
+            GameManager.enemies.RemoveAt(i);
+        }
+    }
+
+    public void ChangeEnemyPrefabs(GameObject[] enemyPrefabGroup)
+    {
+        enemyPrefabs = enemyPrefabGroup;
     }
 }
