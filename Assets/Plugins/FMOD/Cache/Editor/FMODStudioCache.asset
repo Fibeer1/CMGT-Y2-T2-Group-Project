@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/GAME PROJECT/Build/Desktop/MUSIC.bank
   Name: MUSIC
   StudioPath: bank:/MUSIC
-  lastModified: 638732466457533632
+  lastModified: 638732427247745627
   FileSizes:
   - Name: Desktop
     Value: 3182048
@@ -632,7 +632,7 @@ MonoBehaviour:
   - {fileID: 1557947267672513664}
   StringsBanks:
   - {fileID: 3899298992043224968}
-  cacheTime: 638732466457583978
+  cacheTime: 638732427247745627
   cacheVersion: 131622
 --- !u!114 &178747938574598697
 MonoBehaviour:
@@ -727,7 +727,7 @@ MonoBehaviour:
   Path: Assets/GAME PROJECT/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638732466457583978
+  lastModified: 638732427237633990
   FileSizes:
   - Name: Desktop
     Value: 1139392
@@ -852,7 +852,7 @@ MonoBehaviour:
   Path: Assets/GAME PROJECT/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638732466457583978
+  lastModified: 638732427237652529
   FileSizes:
   - Name: Desktop
     Value: 2368
