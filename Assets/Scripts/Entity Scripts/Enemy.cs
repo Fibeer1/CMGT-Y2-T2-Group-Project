@@ -125,7 +125,10 @@ public class Enemy : Entity
     {
         isAttacking = true;
         attackCDTimer = attackCD;
-        animator.shouldAttack = true;
+        if (animator != null)
+        {
+            animator.shouldAttack = true;
+        }        
         yield return new WaitForSeconds(attackDelay);
         enemyAttackRotator.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
