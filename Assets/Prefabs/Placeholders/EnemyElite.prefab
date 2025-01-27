@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7028460819330084649}
   - component: {fileID: 1948334045637165478}
   - component: {fileID: 6297320485782748351}
+  - component: {fileID: 5657324168184740889}
   - component: {fileID: 3096548063755689734}
+  - component: {fileID: 5158871009685654127}
   m_Layer: 7
   m_Name: EnemyElite
   m_TagString: Untagged
@@ -88,6 +90,7 @@ MonoBehaviour:
       Data4: -1114902598
     Path: event:/Enemy/Enemy take damage
   shouldMove: 1
+  player: {fileID: 0}
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
   bloodOrbsOnDeath: 4
@@ -131,6 +134,29 @@ MonoBehaviour:
       Data3: 1480911510
       Data4: 1520838622
     Path: event:/Enemy/Enemy dying
+--- !u!114 &5657324168184740889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123433927205347779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73adeea7986be544f8ccd49d093f0969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAttack: 0
+  attackAnimDuration: 1.5
+  idleAnim: EliteEnemyIdle
+  attackDownAnim: EliteEnemyAttack
+  attackUpAnim: EliteEnemyAttack
+  attackLeftAnim: EliteEnemyAttack
+  attackRightAnim: EliteEnemyAttack
+  runDownAnim: EnemyRunDown
+  runUpAnim: EnemyRunUp
+  runLeftAnim: EnemyRunLeft
+  runRightAnim: EnemyRunRight
 --- !u!195 &3096548063755689734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -153,6 +179,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &5158871009685654127
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123433927205347779}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4492dd4cd26a7244bb4bf250f1cd216, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4116085147351940410
 GameObject:
   m_ObjectHideFlags: 0
