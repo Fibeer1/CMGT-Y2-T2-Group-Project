@@ -1138,8 +1138,8 @@ MonoBehaviour:
   shouldSelectOnStart: 0
   uncommonUpgradeMaterialCosts: 0a0000000a00000003000000
   rareUpgradeMaterialCosts: 1e0000001e00000008000000
-  epicUpgradeMaterialCosts: 3c0000003c0000000f000000
-  legendaryUpgradeMaterialCosts: 640000006400000019000000
+  epicUpgradeMaterialCosts: 3c0000003c0000000d000000
+  legendaryUpgradeMaterialCosts: 640000006400000014000000
   meleeDamageGrowthValues:
   - 15
   - 25
@@ -2276,9 +2276,9 @@ MonoBehaviour:
   currentLevelIndex: 0
   itemName: Blood Bullet
   shouldSelectOnStart: 0
-  level1UpgradeMaterialCosts: 0f0000000f0000000a000000
-  level2UpgradeMaterialCosts: 1e0000001e00000014000000
-  level3UpgradeMaterialCosts: 460000004600000028000000
+  level1UpgradeMaterialCosts: 0f0000000f00000005000000
+  level2UpgradeMaterialCosts: 1e0000001e0000000a000000
+  level3UpgradeMaterialCosts: 460000004600000019000000
   bulletCDValues:
   - 0.1
   - 0.15
@@ -3196,9 +3196,9 @@ MonoBehaviour:
   currentLevelIndex: 0
   itemName: Shield
   shouldSelectOnStart: 0
-  level1UpgradeMaterialCosts: 0f0000000f0000000a000000
-  level2UpgradeMaterialCosts: 1e0000001e00000019000000
-  level3UpgradeMaterialCosts: 3c0000003c00000032000000
+  level1UpgradeMaterialCosts: 0f0000000f00000005000000
+  level2UpgradeMaterialCosts: 1e0000001e0000000f000000
+  level3UpgradeMaterialCosts: 3c0000003c00000019000000
   shieldCDValues:
   - 2
   - 3
@@ -4529,9 +4529,9 @@ MonoBehaviour:
   itemName: Chestplate
   shouldSelectOnStart: 1
   uncommonUpgradeMaterialCosts: 080000000500000000000000
-  rareUpgradeMaterialCosts: 120000000c00000008000000
-  epicUpgradeMaterialCosts: 1e0000001200000010000000
-  legendaryUpgradeMaterialCosts: 3c0000001e00000023000000
+  rareUpgradeMaterialCosts: 120000000c00000001000000
+  epicUpgradeMaterialCosts: 1e0000001200000003000000
+  legendaryUpgradeMaterialCosts: 3c0000001e00000005000000
   healthGrowthValues:
   - 8
   - 20
@@ -6056,8 +6056,8 @@ MonoBehaviour:
   itemName: Dash
   shouldSelectOnStart: 1
   level1UpgradeMaterialCosts: 050000000500000003000000
-  level2UpgradeMaterialCosts: 19000000190000000a000000
-  level3UpgradeMaterialCosts: 3c0000003c00000019000000
+  level2UpgradeMaterialCosts: 190000001900000006000000
+  level3UpgradeMaterialCosts: 3c0000003c0000000f000000
   dashCDValues:
   - 0.1
   - 0.15
@@ -7419,9 +7419,9 @@ MonoBehaviour:
   itemName: Leggings
   shouldSelectOnStart: 0
   uncommonUpgradeMaterialCosts: 050000000600000000000000
-  rareUpgradeMaterialCosts: 0b0000000c00000007000000
-  epicUpgradeMaterialCosts: 14000000160000000f000000
-  legendaryUpgradeMaterialCosts: 280000002d0000001e000000
+  rareUpgradeMaterialCosts: 0b0000000c00000001000000
+  epicUpgradeMaterialCosts: 140000001600000003000000
+  legendaryUpgradeMaterialCosts: 280000002d00000005000000
   healthGrowthValues:
   - 6
   - 12
@@ -9467,10 +9467,10 @@ MonoBehaviour:
   currentLevelIndex: 0
   itemName: Boots
   shouldSelectOnStart: 0
-  uncommonUpgradeMaterialCosts: 040000000600000001000000
-  rareUpgradeMaterialCosts: 0b0000001000000008000000
-  epicUpgradeMaterialCosts: 120000001c0000000f000000
-  legendaryUpgradeMaterialCosts: 1e0000003700000023000000
+  uncommonUpgradeMaterialCosts: 040000000600000000000000
+  rareUpgradeMaterialCosts: 0b0000001000000001000000
+  epicUpgradeMaterialCosts: 120000001c00000003000000
+  legendaryUpgradeMaterialCosts: 1e0000003700000005000000
   healthGrowthValues:
   - 5
   - 12
