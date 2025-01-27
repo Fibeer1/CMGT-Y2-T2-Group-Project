@@ -21,6 +21,7 @@ public class Entity : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private EventReference takeDamageSound;
+
     public virtual void InitializeEntity()
     {
 

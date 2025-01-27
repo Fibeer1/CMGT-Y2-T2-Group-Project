@@ -8,8 +8,9 @@ public class Enemy : Entity
 {
     [Header("General Variables")]
     [SerializeField] private protected bool shouldMove = true;
-    private protected Player player;
+    public Player player;
     public EnemySpawner originSpawner;
+    private EnemyAnimator animator;
 
     [Header("Material Drop Variables")]
     [SerializeField] private GameObject bloodOrbPrefab;
@@ -20,7 +21,7 @@ public class Enemy : Entity
 
     [Header("Combat Variables")]
     [SerializeField] private GameObject enemyAttackPrefab;
-    [SerializeField] private Transform enemyAttackRotator;
+    public Transform enemyAttackRotator;
     [SerializeField] private protected float damage;
     [SerializeField] private Transform attackParent;
     [SerializeField] private float attackCDTimer;
@@ -34,12 +35,12 @@ public class Enemy : Entity
     [SerializeField] private float normalMoveSpeed;
     [SerializeField] private float attackDelay = 0.1f;
     [SerializeField] private protected float aggroRange = 10f;
-    [SerializeField] private protected float deAggroRange = 20f;
+    public float deAggroRange = 20f;
     [SerializeField] private protected bool aggroed = false;
     [SerializeField] private protected bool isAttacking = false;
     private protected float distanceToPlayer;
 
-    [Header("Combat Variables")]
+    [Header("Sound Variables")]
     [SerializeField] private EventReference enemyAttackSound;
     [SerializeField] private EventReference enemyDyingSound;
 
@@ -49,6 +50,7 @@ public class Enemy : Entity
     {
         player = FindObjectOfType<Player>();
         meshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<EnemyAnimator>();
         attackOffset = normalAttackOffset;
         meshAgent.speed = normalMoveSpeed;
     }
@@ -102,8 +104,6 @@ public class Enemy : Entity
                 meshAgent.speed = normalMoveSpeed;
             }
             AttackPlayer();
-            
-
         }
 
         else if (!isAttacking)
@@ -125,6 +125,7 @@ public class Enemy : Entity
     {
         isAttacking = true;
         attackCDTimer = attackCD;
+        animator.shouldAttack = true;
         yield return new WaitForSeconds(attackDelay);
         enemyAttackRotator.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
@@ -157,7 +158,7 @@ public class Enemy : Entity
     {
         for (int i = 0; i < bloodOrbsOnDeath; i++)
         {
-            LaunchPickupable(bloodOrbPrefab, pickupableSpawnSpeed, 2.5f, 7.5f);
+            LaunchPickupable(bloodOrbPrefab, pickupableSpawnSpeed);
         }
         for (int i = 0; i < materialPrefabs.Length; i++)
         {
@@ -172,15 +173,13 @@ public class Enemy : Entity
         {
             return;
         }
-        LaunchPickupable(materialPrefabs[materialIndex], pickupableSpawnSpeed, 2.5f, 7.5f);
+        LaunchPickupable(materialPrefabs[materialIndex], pickupableSpawnSpeed);
     }
 
-    private void LaunchPickupable(GameObject pickupablePrefab, float pickupableSpeed, float minYVelocity, float maxYVelocity)
+    private void LaunchPickupable(GameObject pickupablePrefab, float pickupableSpeed)
     {
         float angle = Random.Range(-360, 360);
-        Vector3 direction = new Vector3(Mathf.Cos(angle), 
-            Random.Range(minYVelocity, maxYVelocity), 
-            Mathf.Sin(angle));
+        Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         GameObject currentOrbInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
         currentOrbInstance.GetComponent<Rigidbody>().velocity = direction * pickupableSpeed;       
     }

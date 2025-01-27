@@ -85,10 +85,10 @@ public class Player : Entity
     [SerializeField] private EventReference abilitySound;
     [SerializeField] private EventReference dashSound;
 
-    //Animation states
+    [Header("Animation Variables")]
     [SerializeField] private float attackAnimDuration;
-    private bool shouldAttack = true;
-    private bool isAttacking = false;
+    private bool shouldAttack = false;
+    private bool duringAttackAnim = false;
     private string currentAnimState;
     private const string idleAnim = "PlayerIdleDown";
     private const string attackDownAnim = "PlayerAttackDown";
@@ -148,12 +148,11 @@ public class Player : Entity
         if (shouldAttack)
         {
             shouldAttack = false;
-            if (!isAttacking)
+            if (!duringAttackAnim)
             {
-                isAttacking = true;
+                duringAttackAnim = true;
                 string targetAnim;
                 float angle = swordSwingRotator.localRotation.eulerAngles.y;
-                Debug.Log(angle);
                 if ((angle >= 0 && angle <= 45) || (angle >= 315 && angle <= 360))
                 {
                     targetAnim = attackUpAnim;
@@ -175,7 +174,7 @@ public class Player : Entity
                 Invoke("StopAttackAnim", attackAnimDuration);
             }
         }
-        if (isAttacking)
+        if (duringAttackAnim)
         {
             return;
         }
@@ -209,7 +208,7 @@ public class Player : Entity
 
     private void StopAttackAnim()
     {
-        isAttacking = false;
+        duringAttackAnim = false;
     }
 
     private void ChangeAnimationState(string newState)

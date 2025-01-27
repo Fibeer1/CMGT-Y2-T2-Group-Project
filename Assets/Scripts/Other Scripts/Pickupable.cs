@@ -26,14 +26,14 @@ public class Pickupable : MonoBehaviour
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Player collisionPlayer = collision.transform.GetComponent<Player>();
 
         if (collisionPlayer != null && collision.transform == target)
         {
             OnCollision(collisionPlayer);
-            AudioManager.instance.PlayOneShot(collectSound, this.transform.position);
+            AudioManager.instance.PlayOneShot(collectSound, transform.position);
         }
     }
 
