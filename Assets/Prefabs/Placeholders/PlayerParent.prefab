@@ -417,6 +417,9 @@ MonoBehaviour:
   RangedCDOverlay: {fileID: 7507101557039443847}
   ShieldCDOverlay: {fileID: 3017664314589452950}
   healthSlider: {fileID: 263318389793860382}
+  dashIcon: {fileID: 5770302151486668166}
+  projectileIcon: {fileID: 8475700512652394397}
+  shieldIcon: {fileID: 4142742514983321322}
 --- !u!114 &1933705091459975491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8130,6 +8133,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  canShootBullet: 1
+  canDash: 1
+  canUseShield: 1
   meleeDamage: 25
   rangedDamage: 25
   dashProjectileDamage: 50

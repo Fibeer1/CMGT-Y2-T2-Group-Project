@@ -11,6 +11,11 @@ public class Player : Entity
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Ability Lock Variables")]
+    public bool canShootBullet = true;
+    public bool canDash = true;
+    public bool canUseShield = true;
+
     [Header("Stat Variables")]
     public float meleeDamage = 25;
     public float rangedDamage = 50f;
@@ -55,8 +60,7 @@ public class Player : Entity
     public float rangedAttackVelocity = 10f;
 
     [Header("Dash Variables")]   
-    public bool isDashing;
-    private bool canDash = true;
+    public bool isDashing;    
     [SerializeField] private float dashingPower = 16f;
     public float dashingTime = 0.2f;
     public float dashCDTimer = 1f;
@@ -293,7 +297,7 @@ public class Player : Entity
             rangedAttackCDTimer -= Time.deltaTime;
             return;
         }
-        if (Input.GetKeyDown(rangedAttackKey))
+        if (Input.GetKeyDown(rangedAttackKey) && canShootBullet)
         {
             Shoot(rangedProjectilePrefab, rangedDamage);
         }
@@ -387,7 +391,7 @@ public class Player : Entity
             return;
         }
 
-        if (Input.GetKeyDown(shieldKey))
+        if (Input.GetKeyDown(shieldKey) && canUseShield)
         {
             GenerateShield();
         }
