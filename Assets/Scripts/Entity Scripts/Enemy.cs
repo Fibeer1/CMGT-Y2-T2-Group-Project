@@ -156,7 +156,10 @@ public class Enemy : Entity
         AudioManager.instance.PlayOneShot(enemyDyingSound, this.transform.position);
 
         GameManager.enemies.Remove(this);
-        originSpawner.enemies.Remove(this);
+        if (originSpawner != null)
+        {
+            originSpawner.enemies.Remove(this);
+        }
         DropPickupables();
         StartCoroutine(base.DeathSequence());
     }

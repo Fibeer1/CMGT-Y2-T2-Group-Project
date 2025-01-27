@@ -25,6 +25,10 @@ public class Miniboss : Enemy
             rockAttackCDTimer -= Time.deltaTime;
             return;
         }
+        if (!aggroed)
+        {
+            return;
+        }
         SpawnRock();
     }
 
