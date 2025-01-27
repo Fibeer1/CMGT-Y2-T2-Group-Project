@@ -131,8 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 53284387}
+  - component: {fileID: 53284386}
   - component: {fileID: 53284388}
-  - component: {fileID: 53284389}
   m_Layer: 0
   m_Name: RockProjectile
   m_TagString: Untagged
@@ -140,6 +140,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &53284386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53284385}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.621445}
+  m_Center: {x: 0, y: 0.5, z: 0.29424116}
 --- !u!4 &53284387
 Transform:
   m_ObjectHideFlags: 0
@@ -149,7 +170,7 @@ Transform:
   m_GameObject: {fileID: 53284385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.90158993, y: 0, z: 0.66444814}
+  m_LocalPosition: {x: -0.90158993, y: 0.041066065, z: 0.66444814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -174,16 +195,8 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   armor: 1
-  healTextColor:
-    r: 0
-    g: 0.35
-    b: 0
-    a: 1
-  damageTextColor:
-    r: 0.35
-    g: 0
-    b: 0
-    a: 1
+  healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
+  damageTextColor: {r: 0.35, g: 0, b: 0, a: 1}
   textSize: 3
   textFadeDuration: 0.1
   textLifeTime: 0.5
@@ -203,28 +216,6 @@ MonoBehaviour:
   pickupableSpawnSpeed: 5
   aftershockPrefab: {fileID: 6664643138578975943, guid: c051a82d15189fd4c88dc6127774422d, type: 3}
   damage: 10
-  animator: {fileID: 0}
---- !u!135 &53284389
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53284385}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.25, z: 0.47}
 --- !u!1 &107390718
 GameObject:
   m_ObjectHideFlags: 0
@@ -26114,7 +26105,7 @@ SpriteRenderer:
   m_Size: {x: 0.256, y: 0.256}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &324014093

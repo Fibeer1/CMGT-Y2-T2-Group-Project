@@ -133,9 +133,9 @@ public class Enemy : Entity
         enemyAttackRotator.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
         //Spawn the attack effect
-        GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
+        GameObject enemyAttackInstance = Instantiate(enemyAttackPrefab,
             enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
-        swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+        enemyAttackInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
         AudioManager.instance.PlayOneShot(enemyAttackSound, transform.position);
 
         //Attack duration is half the attack cooldown
@@ -183,7 +183,7 @@ public class Enemy : Entity
     {
         float angle = Random.Range(-360, 360);
         Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        GameObject currentOrbInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
-        currentOrbInstance.GetComponent<Rigidbody>().velocity = direction * pickupableSpeed;       
+        GameObject currentPickupableInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
+        currentPickupableInstance.GetComponent<Rigidbody>().velocity = direction * pickupableSpeed;
     }
 }
