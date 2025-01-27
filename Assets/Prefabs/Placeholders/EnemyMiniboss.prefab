@@ -72,8 +72,8 @@ MonoBehaviour:
   deathEffect: {fileID: 6225803126070366110, guid: 468845f2ec4b55149852925d3a0db439, type: 3}
   allegiance: Enemy
   isDead: 0
-  health: 500
-  maxHealth: 500
+  health: 5000
+  maxHealth: 5000
   armor: 1
   healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
   damageTextColor: {r: 0.35, g: 0, b: 0, a: 1}
@@ -91,23 +91,36 @@ MonoBehaviour:
   player: {fileID: 0}
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
-  bloodOrbsOnDeath: 10
+  bloodOrbsOnDeath: 20
   pickupableSpawnSpeed: 5
-  materialPrefabs: []
-  materialChances: 
+  materialPrefabs:
+  - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
+  - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
+  - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
+  - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
+  - {fileID: 615999386595208211, guid: 8e5991a99f4b6fa469dfd559df55e64a, type: 3}
+  - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
+  - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
+  - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
+  - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
+  - {fileID: 4560365679938856077, guid: be4991fff37745040963582115d0e6fd, type: 3}
+  - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
+  - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
+  - {fileID: 5772003449127996387, guid: 95f128e4df1df72418843cb28f70573f, type: 3}
+  materialChances: 64000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000
   enemyAttackPrefab: {fileID: 6664643138578975943, guid: 7c0549879f5ea0347ac016f5f1e78fdd, type: 3}
   enemyAttackRotator: {fileID: 496740057282205958}
   damage: 50
   attackParent: {fileID: 7162085630007793789}
   attackCDTimer: 0.5
-  attackCD: 3
+  attackCD: 4
   attackRange: 1.5
   attackOffset: 3
   closeAttackOffset: 0.75
   normalAttackOffset: 1
   minFleeDistance: 0.9
   fleeMoveSpeed: 0
-  normalMoveSpeed: 0.7
+  normalMoveSpeed: 0.5
   attackDelay: 0.7
   aggroRange: 10
   deAggroRange: 18
