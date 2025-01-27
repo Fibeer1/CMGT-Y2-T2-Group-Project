@@ -73,7 +73,7 @@ MonoBehaviour:
   isDead: 0
   health: 100
   maxHealth: 100
-  armor: 1
+  armor: 0.8
   healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
   damageTextColor: {r: 0.35, g: 0, b: 0, a: 1}
   textSize: 3
@@ -91,10 +91,10 @@ MonoBehaviour:
   despawnAnim: MinibossRockDespawn
   despawnAnimDuration: 1
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
-  bloodOrbsOnDeath: 10
+  bloodOrbsOnDeath: 5
   pickupableSpawnSpeed: 5
   aftershockPrefab: {fileID: 6664643138578975943, guid: c051a82d15189fd4c88dc6127774422d, type: 3}
-  damage: 10
+  damage: 20
   aftershockSpawnDelay: 0.25
 --- !u!95 &3921922639861956915
 Animator:
