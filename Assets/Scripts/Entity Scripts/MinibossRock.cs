@@ -18,6 +18,7 @@ public class MinibossRock : Entity
     [Header("Aftershock Variables")]
     [SerializeField] private GameObject aftershockPrefab;
     [SerializeField] private float damage;
+    [SerializeField] private float aftershockSpawnDelay = 0.25f;
 
     private Animator animator;
 
@@ -25,7 +26,7 @@ public class MinibossRock : Entity
     {
         animator = GetComponent<Animator>();
         animator.Play(spawnAnim);
-        SpawnAftershock();
+        Invoke("SpawnAftershock", aftershockSpawnDelay);
     }
 
     private void Update()

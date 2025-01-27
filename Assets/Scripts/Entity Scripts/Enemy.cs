@@ -57,6 +57,10 @@ public class Enemy : Entity
 
     private void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
         HandlePlayerTargeting();
     }
 
