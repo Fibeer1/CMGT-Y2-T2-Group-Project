@@ -7,6 +7,7 @@ public class Player : Entity
     [Header("General Variables")]
     public Vector3 spawnPoint;
     private Camera playerCam;
+    private Animator animator;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private LayerMask groundLayer;
 
@@ -84,6 +85,20 @@ public class Player : Entity
     [SerializeField] private EventReference abilitySound;
     [SerializeField] private EventReference dashSound;
 
+    //Animation states
+    [SerializeField] private float attackAnimDuration;
+    private bool shouldAttack = true;
+    private bool isAttacking = false;
+    private string currentAnimState;
+    private const string idleAnim = "PlayerIdleDown";
+    private const string attackDownAnim = "PlayerAttackDown";
+    private const string attackUpAnim = "PlayerAttackUp";
+    private const string attackLeftAnim = "PlayerAttackLeft";
+    private const string attackRightAnim = "PlayerAttackRight";
+    private const string runDownAnim = "PlayerRunDown";
+    private const string runUpAnim = "PlayerRunUp";
+    private const string runLeftAnim = "PlayerRunLeft";
+    private const string runRightAnim = "PlayerRunRight";
 
     private void Awake()
     {
@@ -92,6 +107,8 @@ public class Player : Entity
         spawnPoint = transform.position;
         playerCam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        ChangeAnimationState(idleAnim);
         swordSwingCDTimer = swordSwingCD;
         healthDrainTimer = healthDrainTickRate;
     }
@@ -102,7 +119,8 @@ public class Player : Entity
         {
             return;
         }
-        HandleMovementInput();        
+        HandleMovementInput();
+        HandleAnimations();
         HandleBloodDrain();
         HandleShooting();
         HandleSwordSwing();        
@@ -123,6 +141,86 @@ public class Player : Entity
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+    }
+
+    private void HandleAnimations()
+    {
+        if (shouldAttack)
+        {
+            shouldAttack = false;
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                string targetAnim;
+                float angle = swordSwingRotator.localRotation.eulerAngles.y;
+                Debug.Log(angle);
+                if ((angle >= 0 && angle <= 45) || (angle >= 315 && angle <= 360))
+                {
+                    targetAnim = attackUpAnim;
+                }
+                else if (angle >= 45 && angle <= 135)
+                {
+                    targetAnim = attackRightAnim;
+                }
+                else if (angle >= 225 && angle < 315)
+                {
+                    targetAnim = attackLeftAnim;
+                }
+                else
+                {
+                    targetAnim = attackDownAnim;
+                }
+                
+                ChangeAnimationState(targetAnim);
+                Invoke("StopAttackAnim", attackAnimDuration);
+            }
+        }
+        if (isAttacking)
+        {
+            return;
+        }
+        if (vertical > 0 || (vertical > 0 && horizontal != 0))
+        {
+            //Prioritize vertical animations during diagonal movement
+            ChangeAnimationState(runUpAnim);
+        }
+        else if (vertical < 0 || (vertical < 0 && horizontal != 0))
+        {
+            //Prioritize vertical animations during diagonal movement
+            ChangeAnimationState(runDownAnim);
+        }
+        else if (vertical == 0)
+        {
+            if (horizontal > 0)
+            {
+                ChangeAnimationState(runRightAnim);
+            }
+            else if (horizontal < 0)
+            {
+                ChangeAnimationState(runLeftAnim);
+            }
+        }
+        
+        if (horizontal == 0 && vertical == 0)
+        {
+            ChangeAnimationState(idleAnim);
+        }
+    }
+
+    private void StopAttackAnim()
+    {
+        isAttacking = false;
+    }
+
+    private void ChangeAnimationState(string newState)
+    {
+        if (currentAnimState == newState)
+        {
+            return;
+        }
+
+        animator.Play(newState);
+        currentAnimState = newState;
     }
 
     private void HandleBloodDrain()
@@ -174,7 +272,7 @@ public class Player : Entity
             yield break;
         }
         isDead = true;
-        AudioManager.instance.PlayOneShot(playerDyingSound, this.transform.position);
+        AudioManager.instance.PlayOneShot(playerDyingSound, transform.position);
         Instantiate(deathEffect, transform.position, Quaternion.identity);        
         playerSprite.enabled = false;
         health = 0;
@@ -232,7 +330,7 @@ public class Player : Entity
             shootRotator.LookAt(targetDirection);
         }
 
-        AudioManager.instance.PlayOneShot(throwSound, this.transform.position);
+        AudioManager.instance.PlayOneShot(throwSound, transform.position);
         //Spawn the projectile
         Vector3 spawnPosition = shootRotator.position + shootRotator.forward * rangedAttackOffset;
         GameObject projectileInstance = Instantiate(projectilePrefab,
@@ -265,6 +363,7 @@ public class Player : Entity
 
     private void SwingSword()
     {
+        shouldAttack = true;
         //Rotate the sword swing transform towards the mouse
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 1000, groundLayer))
@@ -278,7 +377,7 @@ public class Player : Entity
             spawnPosition, swordSwingRotator.rotation, transform);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, meleeDamage);
         swordSwingCDTimer = swordSwingCD;
-        AudioManager.instance.PlayOneShot(attackSound, this.transform.position);
+        AudioManager.instance.PlayOneShot(attackSound, transform.position);
     }
 
     private void HandleShieldMechanics()
@@ -309,7 +408,7 @@ public class Player : Entity
         currentShieldInstance = Instantiate(shieldPrefab, transform.position, 
             Quaternion.identity, transform).GetComponent<Shield>();
         currentShieldInstance.InitializeShield(this, shieldHealth, shieldDuration);
-        AudioManager.instance.PlayOneShot(abilitySound, this.transform.position);
+        AudioManager.instance.PlayOneShot(abilitySound, transform.position);
     }
 
     public void DestroyShield()
@@ -322,7 +421,7 @@ public class Player : Entity
     {        
         if (Input.GetKeyDown(dashKey) && canDash)
         {
-            AudioManager.instance.PlayOneShot(dashSound, this.transform.position);
+            AudioManager.instance.PlayOneShot(dashSound, transform.position);
             float healthCost = health * dashHealthCost;
             float remainingHealth = health - healthCost;
             if (remainingHealth <= 0)

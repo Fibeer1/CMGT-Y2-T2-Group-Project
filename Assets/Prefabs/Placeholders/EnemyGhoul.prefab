@@ -164,20 +164,13 @@ MonoBehaviour:
   textSize: 3
   textFadeDuration: 0.1
   textLifeTime: 0.5
-  enemyTakeDamageSound:
+  takeDamageSound:
     Guid:
       Data1: -1959240025
       Data2: 1325730580
       Data3: -1883333452
       Data4: -1114902598
     Path: event:/Enemy/Enemy take damage
-  takeDamageSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   shouldMove: 1
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}

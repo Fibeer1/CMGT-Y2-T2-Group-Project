@@ -10,7 +10,7 @@ public class MeleeAttackTrigger : Projectile
     public override void InitializeProjectile(Entity pOrigin, float pDamage)
     {
         base.InitializeProjectile(pOrigin, pDamage);
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         animator.Play(swingAnimationName);
     }
 

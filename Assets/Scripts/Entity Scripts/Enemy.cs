@@ -113,15 +113,12 @@ public class Enemy : Entity
     }
 
     private void AttackPlayer()
-    {
-
-        
+    {       
         if (attackCDTimer > 0)
         {
             return;
         }
         StartCoroutine(HandleAttack());
-
     }
 
     private IEnumerator HandleAttack()
@@ -135,7 +132,7 @@ public class Enemy : Entity
         GameObject swordSwingInstance = Instantiate(enemyAttackPrefab,
             enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
         swordSwingInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
-        AudioManager.instance.PlayOneShot(enemyAttackSound, this.transform.position);
+        AudioManager.instance.PlayOneShot(enemyAttackSound, transform.position);
 
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
