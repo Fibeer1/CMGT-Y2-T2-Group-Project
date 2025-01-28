@@ -148,8 +148,8 @@ MonoBehaviour:
   meshAgent: {fileID: 0}
   rockAttackIndicator: {fileID: 7758737366089918515, guid: 65140ceefe4e33a449b358b544d201b9, type: 3}
   rockAttackPrefab: {fileID: 2086440198433708197, guid: 8a4ef95712c774f45aec6e6f16c2005f, type: 3}
-  rockAttackCDTimer: 30
-  rockAttackCD: 30
+  rockAttackCDTimer: 15
+  rockAttackCD: 15
   rockAttackSpawnDelay: 0.5
   abilityToUnlock: Bullet
 --- !u!195 &280142109981396572
