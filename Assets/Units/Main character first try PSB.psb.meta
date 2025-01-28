@@ -3294,7 +3294,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 693
+      x: 694
       y: 4
       width: 133
       height: 77
@@ -3623,7 +3623,7 @@ ScriptedImporter:
     - {x: 25, y: 26}
     - {x: 26, y: 27}
     tessellationDetail: 0
-    uvTransform: {x: 693, y: 4}
+    uvTransform: {x: 694, y: 4}
     spritePosition: {x: 596, y: 88}
   - name: main character back leg
     originalName: 
@@ -4512,7 +4512,7 @@ ScriptedImporter:
     parentIndex: 19
     spriteID: a18aa404cd8245640a977b6718f2d699
     layerID: 75
-    mosaicPosition: {x: 693, y: 4}
+    mosaicPosition: {x: 694, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
