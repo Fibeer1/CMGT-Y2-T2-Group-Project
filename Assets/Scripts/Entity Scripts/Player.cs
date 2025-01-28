@@ -444,7 +444,10 @@ public class Player : Entity
 
     private IEnumerator Dash()
     {
-        canDash = false;
+        if (isDashing)
+        {
+            yield break;
+        }
         isDashing = true;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * dashingPower;
         yield return new WaitForSeconds(dashingTime);
@@ -456,6 +459,5 @@ public class Player : Entity
         isDashing = false;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
         yield return new WaitForSeconds(dashCD);
-        canDash = true;
     }
 }
