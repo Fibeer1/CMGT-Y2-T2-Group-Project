@@ -75,7 +75,7 @@ MonoBehaviour:
   maxHealth: 100
   armor: 0.8
   healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
-  damageTextColor: {r: 0.35, g: 0, b: 0, a: 1}
+  damageTextColor: {r: 1, g: 1, b: 1, a: 1}
   textSize: 3
   textFadeDuration: 0.1
   textLifeTime: 0.5
