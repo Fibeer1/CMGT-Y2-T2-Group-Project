@@ -421,7 +421,12 @@ public class Player : Entity
     }
 
     private void HandleDashing()
-    {        
+    {
+        if (dashCDTimer > 0)
+        {
+            dashCDTimer -= Time.deltaTime;
+            return;
+        }
         if (Input.GetKeyDown(dashKey) && canDash)
         {
             AudioManager.instance.PlayOneShot(dashSound, transform.position);
@@ -434,30 +439,20 @@ public class Player : Entity
             }
             ChangeHealth(healthCost, false, false, false);
             StartCoroutine(Dash());
-        }
-        //Purely used for the HUD
-        if (dashCDTimer > 0)
-        {
-            dashCDTimer -= Time.deltaTime;
-        }
+        }        
     }
 
     private IEnumerator Dash()
     {
-        if (isDashing)
-        {
-            yield break;
-        }
         isDashing = true;
+        dashCDTimer = dashCD;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * dashingPower;
         yield return new WaitForSeconds(dashingTime);
         if (closestEnemy != null)
         {
             Shoot(dashProjectile, dashProjectileDamage, false, closestEnemy.transform);
         }
-        dashCDTimer = dashCD;
         isDashing = false;
-        rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
-        yield return new WaitForSeconds(dashCD);
+        rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;      
     }
 }
