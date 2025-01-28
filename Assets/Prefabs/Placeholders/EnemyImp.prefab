@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 140998754220963780}
-  - component: {fileID: 5094061435265918746}
+  - component: {fileID: 2352449528396420663}
   - component: {fileID: 4148408205229310829}
   - component: {fileID: 1730138799474534964}
   m_Layer: 7
@@ -36,8 +36,8 @@ Transform:
   - {fileID: 6718667339481537443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5094061435265918746
-BoxCollider:
+--- !u!135 &2352449528396420663
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -55,7 +55,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4148408205229310829
 MonoBehaviour:
@@ -88,6 +88,7 @@ MonoBehaviour:
       Data4: -1114902598
     Path: event:/Enemy/Enemy take damage
   shouldMove: 1
+  player: {fileID: 0}
   originSpawner: {fileID: 0}
   bloodOrbPrefab: {fileID: 8409672975981723602, guid: a74b0da9efc1e4d46b2e2d1da47e7a70, type: 3}
   bloodOrbsOnDeath: 2
