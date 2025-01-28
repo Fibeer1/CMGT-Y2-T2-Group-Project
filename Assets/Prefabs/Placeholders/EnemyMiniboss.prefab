@@ -151,7 +151,7 @@ MonoBehaviour:
   rockAttackCDTimer: 15
   rockAttackCD: 15
   rockAttackSpawnDelay: 0.5
-  abilityIndexToUnlock: 0
+  abilityIndexToUnlock: 1
 --- !u!195 &280142109981396572
 NavMeshAgent:
   m_ObjectHideFlags: 0
