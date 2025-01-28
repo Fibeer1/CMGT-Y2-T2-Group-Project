@@ -51,6 +51,11 @@ public class Enemy : Entity
 
     private void Start()
     {
+        InitializeEntity();
+    }
+
+    public override void InitializeEntity()
+    {
         player = FindObjectOfType<Player>();
         meshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<EnemyAnimator>();

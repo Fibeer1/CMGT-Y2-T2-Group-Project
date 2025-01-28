@@ -26168,14 +26168,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMiniboss
       objectReference: {fileID: 0}
-    - target: {fileID: 2810878815644378865, guid: e748f8d8bafa50144b5235f957ad4ebe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810878815644378865, guid: e748f8d8bafa50144b5235f957ad4ebe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7162085630007793789, guid: e748f8d8bafa50144b5235f957ad4ebe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2625031
@@ -26217,8 +26209,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8523475629825884649, guid: e748f8d8bafa50144b5235f957ad4ebe, type: 3}
-      propertyPath: rockAttackSpawnDelay
-      value: 0.5
+      propertyPath: abilityToUnlock
+      value: Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

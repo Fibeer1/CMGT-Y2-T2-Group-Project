@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3960735628389194951}
   - component: {fileID: 8523475629825884649}
   - component: {fileID: 280142109981396572}
+  - component: {fileID: 8461962846119216775}
   - component: {fileID: 4961757484812751873}
   m_Layer: 7
   m_Name: EnemyMiniboss
@@ -150,6 +151,7 @@ MonoBehaviour:
   rockAttackCDTimer: 30
   rockAttackCD: 30
   rockAttackSpawnDelay: 0.5
+  abilityToUnlock: Bullet
 --- !u!195 &280142109981396572
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -172,6 +174,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8461962846119216775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225964432293262179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a851fd25ac1460f4f829eb60c614b001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4961757484812751873
 MonoBehaviour:
   m_ObjectHideFlags: 0

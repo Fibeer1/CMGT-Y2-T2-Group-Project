@@ -9,6 +9,14 @@ public class Miniboss : Enemy
     [SerializeField] private float rockAttackCDTimer;
     [SerializeField] private float rockAttackCD;
     [SerializeField] private float rockAttackSpawnDelay;
+    private PlayerAbilityUnlocker abilityUnlocker;
+    [SerializeField] private string abilityToUnlock;
+
+    private void Start()
+    {
+        abilityUnlocker = GetComponent<PlayerAbilityUnlocker>();
+        InitializeEntity();
+    }
 
     private void Update()
     {
@@ -32,6 +40,12 @@ public class Miniboss : Enemy
             return;
         }
         SpawnRock();
+    }
+
+    public override IEnumerator DeathSequence()
+    {
+        abilityUnlocker.UnlockPlayerAbility(abilityToUnlock);
+        return base.DeathSequence();
     }
 
     private void SpawnRock()
