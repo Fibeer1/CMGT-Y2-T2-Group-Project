@@ -60,6 +60,10 @@ public class EnemyAnimator : MonoBehaviour
 
     private void HandleAnimations()
     {
+        if (animator == null)
+        {
+            return;
+        }
         if (shouldAttack)
         {
             shouldAttack = false;
@@ -115,7 +119,7 @@ public class EnemyAnimator : MonoBehaviour
 
     private void ChangeAnimationState(string newState)
     {
-        if (currentAnimState == newState)
+        if (currentAnimState == newState || animator == null)
         {
             return;
         }

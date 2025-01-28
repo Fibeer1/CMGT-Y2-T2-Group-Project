@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 1575811313121840814}
   - component: {fileID: 981791864129212585}
   - component: {fileID: 6887255062776279691}
+  - component: {fileID: 9149643972495069611}
   m_Layer: 7
   m_Name: EnemyGhoul
   m_TagString: Untagged
@@ -284,7 +285,9 @@ MonoBehaviour:
   aggroRange: 10
   deAggroRange: 20
   aggroed: 0
+  attackTriggeredThroughAnim: 0
   isAttacking: 0
+  targetPosition: {x: 0, y: 0, z: 0}
   enemyAttackSound:
     Guid:
       Data1: -1664102438
@@ -299,6 +302,7 @@ MonoBehaviour:
       Data3: 1480911510
       Data4: 1520838622
     Path: event:/Enemy/Enemy dying
+  meshAgent: {fileID: 0}
 --- !u!195 &6887255062776279691
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -321,6 +325,30 @@ NavMeshAgent:
   m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &9149643972495069611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840070204490057809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73adeea7986be544f8ccd49d093f0969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAttack: 0
+  characterObject: {fileID: 8682514916008363774}
+  attackAnimDuration: 0
+  duringAttackAnim: 0
+  currentAnimState: 
+  idleAnim: EnemyIdleDown
+  attackDownAnim: EnemyAttackDown
+  attackUpAnim: EnemyAttackUp
+  attackAnim: EnemyAttackLeft
+  runDownAnim: EnemyRunDown
+  runUpAnim: EnemyRunUp
+  runAnim: EnemyRun
 --- !u!1 &6097636847991441011
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Miniboss : Enemy
 {
+    [SerializeField] private GameObject rockAttackIndicator;
     [SerializeField] private GameObject rockAttackPrefab;
     [SerializeField] private float rockAttackCDTimer;
     [SerializeField] private float rockAttackCD;
+    [SerializeField] private float rockAttackSpawnDelay;
 
     private void Update()
     {
@@ -35,7 +37,8 @@ public class Miniboss : Enemy
     private void SpawnRock()
     {
         rockAttackCDTimer = rockAttackCD;
-        Vector3 targetPos = new Vector3(player.transform.position.x, 0, player.transform.position.z);
-        Instantiate(rockAttackPrefab, targetPos, Quaternion.identity);
+        EnemySpecialAttackIndicator attackIndicator = Instantiate(rockAttackIndicator, 
+            player.transform.position, Quaternion.identity).GetComponent<EnemySpecialAttackIndicator>();
+        attackIndicator.StartCoroutine(attackIndicator.SpawnProjectileAfterDelay(rockAttackPrefab, rockAttackSpawnDelay));
     }
 }
