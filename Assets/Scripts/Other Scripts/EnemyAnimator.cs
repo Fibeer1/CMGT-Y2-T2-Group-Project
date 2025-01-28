@@ -7,31 +7,62 @@ public class EnemyAnimator : MonoBehaviour
     [Header("Animation Triggers")]
     public bool shouldAttack = false;
 
+    [Header("Character Position Variables")]
+    [SerializeField] private Transform characterObject;
+    private Vector3 characterObjectOffset;
+    private Vector3 characterObjectScale;
+
     private Enemy enemyScript;
     private Animator animator;    
     [SerializeField] private float attackAnimDuration;
-    private bool duringAttackAnim = false;
-    private string currentAnimState;
+    [SerializeField] private bool duringAttackAnim = false;
+    [SerializeField] private string currentAnimState;
     [SerializeField] private string idleAnim = "EnemyIdleDown";
     [SerializeField] private string attackDownAnim = "EnemyAttackDown";
     [SerializeField] private string attackUpAnim = "EnemyAttackUp";
-    [SerializeField] private string attackLeftAnim = "EnemyAttackLeft";
-    [SerializeField] private string attackRightAnim = "EnemyAttackRight";
+    [SerializeField] private string attackAnim = "EnemyAttackLeft";
     [SerializeField] private string runDownAnim = "EnemyRunDown";
     [SerializeField] private string runUpAnim = "EnemyRunUp";
-    [SerializeField] private string runLeftAnim = "EnemyRunLeft";
-    [SerializeField] private string runRightAnim = "EnemyRunRight";
+    [SerializeField] private string runAnim = "EnemyRun";
+    private bool facingRight;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         enemyScript = GetComponent<Enemy>();
+        characterObjectOffset = characterObject.localPosition;
+        characterObjectScale = characterObject.localScale;
         ChangeAnimationState(idleAnim);
     }
 
     private void Update()
     {
         HandleAnimations();
+        HandleSpriteFlip();
+    }
+
+    private void HandleSpriteFlip()
+    {
+        if (!enemyScript.aggroed)
+        {
+            return;
+        }
+        Vector3 diff = (enemyScript.player.transform.position - enemyScript.transform.position).normalized;
+        float angleDiff = Vector3.Dot(diff, transform.right);
+        Vector3 targetPosition = characterObjectOffset;
+        Vector3 targetScale = characterObjectScale;
+        if (angleDiff >= 0)
+        {
+            targetPosition.x = -characterObjectOffset.x;
+            targetScale.x = -characterObjectScale.x;
+        }
+        else
+        {
+            targetPosition.x = characterObjectOffset.x;
+            targetScale.x = characterObjectScale.x;
+        }
+        characterObject.localPosition = targetPosition;
+        characterObject.localScale = targetScale;
     }
 
     private void HandleAnimations()
@@ -48,13 +79,9 @@ public class EnemyAnimator : MonoBehaviour
                 {
                     targetAnim = attackUpAnim;
                 }
-                else if (angle >= 45 && angle <= 135)
+                else if ((angle >= 45 && angle <= 135) || (angle >= 225 && angle < 315))
                 {
-                    targetAnim = attackRightAnim;
-                }
-                else if (angle >= 225 && angle < 315)
-                {
-                    targetAnim = attackLeftAnim;
+                    targetAnim = attackAnim;
                 }
                 else
                 {
@@ -69,8 +96,20 @@ public class EnemyAnimator : MonoBehaviour
             return;
         }
 
-        if (!duringAttackAnim || Vector3.Distance(enemyScript.player.transform.position, 
-            transform.position) >= enemyScript.deAggroRange)
+        if (enemyScript.meshAgent.velocity.x != 0)
+        {
+            ChangeAnimationState(runAnim);
+        }
+        if (enemyScript.meshAgent.velocity.z > 0)
+        {
+            ChangeAnimationState(runUpAnim);
+        }
+        else if (enemyScript.meshAgent.velocity.z < 0)
+        {
+            ChangeAnimationState(runDownAnim);
+        }
+
+        if (!duringAttackAnim || !enemyScript.aggroed && enemyScript.meshAgent.velocity.magnitude < 1)
         {
             ChangeAnimationState(idleAnim);
         }

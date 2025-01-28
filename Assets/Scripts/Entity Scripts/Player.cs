@@ -453,6 +453,6 @@ public class Player : Entity
             Shoot(dashProjectile, dashProjectileDamage, false, closestEnemy.transform);
         }
         isDashing = false;
-        rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;      
+        rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
     }
 }

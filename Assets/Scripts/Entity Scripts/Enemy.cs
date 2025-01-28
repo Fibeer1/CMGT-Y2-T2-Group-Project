@@ -36,15 +36,18 @@ public class Enemy : Entity
     [SerializeField] private float attackDelay = 0.1f;
     [SerializeField] private protected float aggroRange = 10f;
     public float deAggroRange = 20f;
-    [SerializeField] private protected bool aggroed = false;
+    public bool aggroed = false;
+    [SerializeField] private bool attackTriggeredThroughAnim = false;
     [SerializeField] private protected bool isAttacking = false;
     private protected float distanceToPlayer;
+    public Vector3 targetPosition;
 
     [Header("Sound Variables")]
     [SerializeField] private EventReference enemyAttackSound;
     [SerializeField] private EventReference enemyDyingSound;
 
-    private NavMeshAgent meshAgent;
+
+    public NavMeshAgent meshAgent;
 
     private void Start()
     {
@@ -74,7 +77,9 @@ public class Enemy : Entity
         if (distanceToPlayer > deAggroRange)
         {
             aggroed = false;
-            meshAgent.destination = transform.position;
+            targetPosition = transform.position;
+            meshAgent.SetDestination(targetPosition);
+
         }
         if (aggroed)
         {
@@ -96,14 +101,15 @@ public class Enemy : Entity
                 //Move away from the player when he is too close
                 attackOffset = closeAttackOffset;
                 Vector3 diff = transform.position - player.transform.position;
-                Vector3 targetPosition = transform.position + diff;
+                targetPosition = transform.position + diff;
                 meshAgent.SetDestination(targetPosition);
                 meshAgent.speed = fleeMoveSpeed;
             }
             else
             {
                 shouldMove = false;
-                meshAgent.destination = transform.position;
+                targetPosition = transform.position;
+                meshAgent.SetDestination(targetPosition);
                 attackOffset = normalAttackOffset;
                 meshAgent.speed = normalMoveSpeed;
             }
@@ -136,16 +142,33 @@ public class Enemy : Entity
         yield return new WaitForSeconds(attackDelay);
         enemyAttackRotator.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
-        //Spawn the attack effect
-        GameObject enemyAttackInstance = Instantiate(enemyAttackPrefab,
-            enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
-        enemyAttackInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
-        AudioManager.instance.PlayOneShot(enemyAttackSound, transform.position);
+        if (!attackTriggeredThroughAnim)
+        {
+            //Spawn the attack effect
+            GameObject enemyAttackInstance = Instantiate(enemyAttackPrefab,
+                enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
+            enemyAttackInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+            AudioManager.instance.PlayOneShot(enemyAttackSound, transform.position);
+        }
 
         //Attack duration is half the attack cooldown
         yield return new WaitForSeconds(attackCD / 2);
         isAttacking = false;
     }
+
+    public void SpawnAttackEffect()
+    {
+        if (!attackTriggeredThroughAnim)
+        {
+            return;
+        }
+        GameObject enemyAttackInstance = Instantiate(enemyAttackPrefab,
+            enemyAttackRotator.position + enemyAttackRotator.forward * attackOffset, enemyAttackRotator.rotation, attackParent);
+        enemyAttackInstance.GetComponent<Projectile>().InitializeProjectile(this, damage);
+        AudioManager.instance.PlayOneShot(enemyAttackSound, transform.position);
+    }
+
+
 
     public override IEnumerator DeathSequence()
     {
