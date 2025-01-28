@@ -8223,10 +8223,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  canDash: 0
   canShootBullet: 1
-  canDash: 1
   canUseShield: 1
-  abilityLockArray: 000000
+  abilityLockArray: 000101
   meleeDamage: 25
   rangedDamage: 25
   dashProjectileDamage: 50

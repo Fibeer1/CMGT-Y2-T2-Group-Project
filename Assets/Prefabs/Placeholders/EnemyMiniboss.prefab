@@ -151,7 +151,7 @@ MonoBehaviour:
   rockAttackCDTimer: 15
   rockAttackCD: 15
   rockAttackSpawnDelay: 0.5
-  abilityToUnlock: Bullet
+  abilityIndexToUnlock: 0
 --- !u!195 &280142109981396572
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -200,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldAttack: 0
   characterObject: {fileID: 2810878815644378865}
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
   attackAnimDuration: 0
   duringAttackAnim: 0
   currentAnimState: 
