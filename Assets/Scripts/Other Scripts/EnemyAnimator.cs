@@ -51,16 +51,9 @@ public class EnemyAnimator : MonoBehaviour
         float angleDiff = Vector3.Dot(diff, transform.right);
         Vector3 targetPosition = characterObjectOffset;
         Vector3 targetScale = characterObjectScale;
-        if (angleDiff >= 0)
-        {
-            targetPosition.x = -characterObjectOffset.x;
-            targetScale.x = -characterObjectScale.x;
-        }
-        else
-        {
-            targetPosition.x = characterObjectOffset.x;
-            targetScale.x = characterObjectScale.x;
-        }
+
+        targetPosition.x = characterObjectOffset.x * (angleDiff >= 0 ? -1 : 1);
+        targetScale.x = characterObjectScale.x * (angleDiff >= 0 ? -1 : 1);
         characterObject.localPosition = targetPosition;
         characterObject.localScale = targetScale;
     }
@@ -109,7 +102,7 @@ public class EnemyAnimator : MonoBehaviour
             ChangeAnimationState(runDownAnim);
         }
 
-        if (!duringAttackAnim || !enemyScript.aggroed && enemyScript.meshAgent.velocity.magnitude < 1)
+        if (enemyScript.meshAgent.velocity == Vector3.zero)
         {
             ChangeAnimationState(idleAnim);
         }

@@ -677,7 +677,7 @@ MonoBehaviour:
   damage: 30
   attackParent: {fileID: 0}
   attackCDTimer: 0.5
-  attackCD: 3
+  attackCD: 4
   attackRange: 1.5
   attackOffset: 3
   closeAttackOffset: 0.75
@@ -730,7 +730,7 @@ MonoBehaviour:
   attackAnim: GolemSlam
   runDownAnim: GolemWalk
   runUpAnim: GolemWalk
-  runAnim: EnemyRun
+  runAnim: GolemWalk
 --- !u!195 &3096548063755689734
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -79,11 +79,15 @@ public class Enemy : Entity
             aggroed = false;
             targetPosition = transform.position;
             meshAgent.SetDestination(targetPosition);
-
         }
         if (aggroed)
         {
             HandleAggroState();
+        }
+        if (isAttacking)
+        {
+            targetPosition = transform.position;
+            meshAgent.SetDestination(targetPosition);
         }
         if (attackCDTimer > 0)
         {
