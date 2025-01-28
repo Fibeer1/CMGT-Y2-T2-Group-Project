@@ -11,7 +11,7 @@ public class EnemyAnimator : MonoBehaviour
     [SerializeField] private Transform characterObject;
     [SerializeField] private Sprite frontSprite;
     [SerializeField] private Sprite backSprite;
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
     private Vector3 characterObjectOffset;
     private Vector3 characterObjectScale;
 
@@ -32,7 +32,7 @@ public class EnemyAnimator : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         enemyScript = GetComponent<Enemy>();
-        renderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         characterObjectOffset = characterObject.localPosition;
         characterObjectScale = characterObject.localScale;
         ChangeAnimationState(idleAnim);
@@ -60,7 +60,7 @@ public class EnemyAnimator : MonoBehaviour
         targetScale.x = characterObjectScale.x * (horizontalAngleDiff >= 0 ? -1 : 1);
         if (backSprite != null && frontSprite != null)
         {
-            renderer.sprite = verticalAngleDiff >= 0 ? backSprite : frontSprite;
+            spriteRenderer.sprite = verticalAngleDiff >= 0 ? backSprite : frontSprite;
         }
         characterObject.localPosition = targetPosition;
         characterObject.localScale = targetScale;
