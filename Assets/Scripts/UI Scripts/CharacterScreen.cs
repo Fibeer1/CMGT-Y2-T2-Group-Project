@@ -14,6 +14,7 @@ public class CharacterScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] materialCountTexts;
     [SerializeField] private TextMeshProUGUI[] gearPieceTexts; //0 item name, 1 rarity, 2 stats, 3 costs
     [SerializeField] private TextMeshProUGUI[] abilityTexts; //0 ability name, 1 level, 2 stats, 3 costs
+    [SerializeField] private GameObject[] abilityButtons;
     private Pause pauseMenu;
 
     private UIGearPiece currentGearPiece;
@@ -24,6 +25,7 @@ public class CharacterScreen : MonoBehaviour
         player = FindObjectOfType<Player>();
         pauseMenu = GetComponent<Pause>();
         characterScreen.SetActive(false);
+        RefreshAbilities();   
     }
 
     private void Update()
@@ -35,6 +37,21 @@ public class CharacterScreen : MonoBehaviour
         for (int i = 0; i < materialCountTexts.Length; i++)
         {
             materialCountTexts[i].text = player.materialCounts[i].ToString();
+        }
+    }
+
+    public void RefreshAbilities()
+    {
+        for (int i = 0; i < player.abilityLockArray.Length; i++)
+        {
+            if (player.abilityLockArray[i])
+            {
+                abilityButtons[i].SetActive(true);
+            }
+            else
+            {
+                abilityButtons[i].SetActive(false);
+            }
         }
     }
 

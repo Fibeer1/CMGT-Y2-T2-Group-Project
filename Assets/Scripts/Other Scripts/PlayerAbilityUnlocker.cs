@@ -5,25 +5,20 @@ using UnityEngine;
 public class PlayerAbilityUnlocker : MonoBehaviour
 {
     private Player player;
+    private HUD hud;
+    private CharacterScreen charScreen;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        hud = FindObjectOfType<HUD>();
+        charScreen = FindObjectOfType<CharacterScreen>();
     }
 
-    public void UnlockPlayerAbility(string abilityName)
+    public void UnlockPlayerAbility(int abilityIndex)
     {
-        if (abilityName == "Dash")
-        {
-            player.canDash = true;
-        }
-        if (abilityName == "Bullet")
-        {
-            player.canShootBullet = true;
-        }
-        if (abilityName == "Shield")
-        {
-            player.canUseShield = true;
-        }
+        player.abilityLockArray[abilityIndex] = true;
+        charScreen.RefreshAbilities();
+        hud.RefreshAbilities();
     }
 }

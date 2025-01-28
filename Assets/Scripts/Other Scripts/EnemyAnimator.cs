@@ -9,6 +9,9 @@ public class EnemyAnimator : MonoBehaviour
 
     [Header("Character Position Variables")]
     [SerializeField] private Transform characterObject;
+    [SerializeField] private Sprite frontSprite;
+    [SerializeField] private Sprite backSprite;
+    private SpriteRenderer renderer;
     private Vector3 characterObjectOffset;
     private Vector3 characterObjectScale;
 
@@ -24,12 +27,12 @@ public class EnemyAnimator : MonoBehaviour
     [SerializeField] private string runDownAnim = "EnemyRunDown";
     [SerializeField] private string runUpAnim = "EnemyRunUp";
     [SerializeField] private string runAnim = "EnemyRun";
-    private bool facingRight;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
         enemyScript = GetComponent<Enemy>();
+        renderer = GetComponentInChildren<SpriteRenderer>();
         characterObjectOffset = characterObject.localPosition;
         characterObjectScale = characterObject.localScale;
         ChangeAnimationState(idleAnim);
@@ -48,12 +51,17 @@ public class EnemyAnimator : MonoBehaviour
             return;
         }
         Vector3 diff = (enemyScript.player.transform.position - enemyScript.transform.position).normalized;
-        float angleDiff = Vector3.Dot(diff, transform.right);
+        float horizontalAngleDiff = Vector3.Dot(diff, transform.right);
+        float verticalAngleDiff = Vector3.Dot(diff, transform.forward);
         Vector3 targetPosition = characterObjectOffset;
         Vector3 targetScale = characterObjectScale;
 
-        targetPosition.x = characterObjectOffset.x * (angleDiff >= 0 ? -1 : 1);
-        targetScale.x = characterObjectScale.x * (angleDiff >= 0 ? -1 : 1);
+        targetPosition.x = characterObjectOffset.x * (horizontalAngleDiff >= 0 ? -1 : 1);
+        targetScale.x = characterObjectScale.x * (horizontalAngleDiff >= 0 ? -1 : 1);
+        if (backSprite != null && frontSprite != null)
+        {
+            renderer.sprite = verticalAngleDiff >= 0 ? backSprite : frontSprite;
+        }
         characterObject.localPosition = targetPosition;
         characterObject.localScale = targetScale;
     }

@@ -10,7 +10,7 @@ public class Miniboss : Enemy
     [SerializeField] private float rockAttackCD;
     [SerializeField] private float rockAttackSpawnDelay;
     private PlayerAbilityUnlocker abilityUnlocker;
-    [SerializeField] private string abilityToUnlock;
+    [SerializeField] private int abilityIndexToUnlock;
 
     private void Start()
     {
@@ -44,7 +44,7 @@ public class Miniboss : Enemy
 
     public override IEnumerator DeathSequence()
     {
-        abilityUnlocker.UnlockPlayerAbility(abilityToUnlock);
+        abilityUnlocker.UnlockPlayerAbility(abilityIndexToUnlock);
         return base.DeathSequence();
     }
 

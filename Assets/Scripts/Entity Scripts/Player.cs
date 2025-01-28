@@ -12,9 +12,10 @@ public class Player : Entity
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Ability Lock Variables")]
-    public bool canShootBullet = true;
     public bool canDash = true;
+    public bool canShootBullet = true;   
     public bool canUseShield = true;
+    public bool[] abilityLockArray;
 
     [Header("Stat Variables")]
     public float meleeDamage = 25;
@@ -123,6 +124,7 @@ public class Player : Entity
         {
             return;
         }
+        HandleAbilityLocks();
         HandleMovementInput();
         HandleAnimations();
         HandleBloodDrain();
@@ -139,6 +141,13 @@ public class Player : Entity
             return;
         }
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
+    }
+
+    private void HandleAbilityLocks()
+    {
+        canDash = abilityLockArray[0];
+        canShootBullet = abilityLockArray[1];
+        canUseShield = abilityLockArray[2];
     }
 
     private void HandleMovementInput()

@@ -171,6 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldAttack: 0
   characterObject: {fileID: 5047988196281162716}
+  frontSprite: {fileID: 21300000, guid: cdbc9f375e2ed8c40bc66e29578e7c36, type: 3}
+  backSprite: {fileID: 21300000, guid: a19938c8ee1735d478ee7c475fd19e8a, type: 3}
   attackAnimDuration: 0
   duringAttackAnim: 0
   currentAnimState: 
@@ -322,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 2476684855550608620}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0.1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -369,12 +371,12 @@ SpriteRenderer:
   m_SortingLayerID: 968355605
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c0004b3bd46d22445b1fe7cde2e3099a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdbc9f375e2ed8c40bc66e29578e7c36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 3.68, y: 4.78}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -16,14 +16,13 @@ public class HUD : MonoBehaviour
     [SerializeField] private Slider healthSlider;
 
     [Header("HUD Icons")]
-    [SerializeField] private GameObject dashIcon;
-    [SerializeField] private GameObject projectileIcon;
-    [SerializeField] private GameObject shieldIcon;
+    [SerializeField] private GameObject[] abilityIcons;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
         healthSlider.maxValue = player.maxHealth;
+        RefreshAbilities();
     }
 
     private void Update()
@@ -34,32 +33,20 @@ public class HUD : MonoBehaviour
         ShieldCDOverlay.fillAmount= player.shieldCDTimer / player.shieldCD;
         healthSlider.value = player.health;
         healthSlider.maxValue = player.maxHealth;
+    }
 
-
-        //Awful code, remake it to a method which gets called when the player kills a miniboss
-        if (player.canDash)
+    public void RefreshAbilities()
+    {
+        for (int i = 0; i < player.abilityLockArray.Length; i++)
         {
-            dashIcon.SetActive(true);
-        }
-        else
-        {
-            dashIcon.SetActive(false);
-        }
-        if (player.canShootBullet)
-        {
-            projectileIcon.SetActive(true);
-        }
-        else
-        {
-            projectileIcon.SetActive(false);
-        }
-        if (player.canUseShield)
-        {
-            shieldIcon.SetActive(true);
-        }
-        else
-        {
-            shieldIcon.SetActive(false);
-        }
+            if (player.abilityLockArray[i])
+            {
+                abilityIcons[i].SetActive(true);
+            }
+            else
+            {
+                abilityIcons[i].SetActive(false);
+            }
+        }        
     }
 }
