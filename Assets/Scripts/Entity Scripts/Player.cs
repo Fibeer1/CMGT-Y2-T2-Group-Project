@@ -82,6 +82,10 @@ public class Player : Entity
 
     [Header("Material Variables")]
     public int[] materialCounts;
+    [SerializeField] private GameObject[] materialPrefabs;
+    [SerializeField] private float materialDropAmountPercent = 0.5f;
+    [SerializeField] private float materialDropSpawnSpeed = 10f;
+    [SerializeField] private GameObject pickupRange;
 
     [Header("Sounds")]
     [SerializeField] private EventReference playerDyingSound;
@@ -102,6 +106,7 @@ public class Player : Entity
     private const string attackAnim = "Main Character Attack";
     private const string runAnim = "Main Character Running";
     private const string deathAnim = "Main Character Death";
+    private const string hurtAnim = "Main Character Hurt";
 
     private void Awake()
     {
@@ -116,6 +121,7 @@ public class Player : Entity
         healthDrainTimer = healthDrainTickRate;
         characterObjectOffset = characterObject.localPosition;
         characterObjectScale = characterObject.localScale;
+        spawnPoint = transform.position;
     }
 
     private void Update()
@@ -250,6 +256,10 @@ public class Player : Entity
         {
             base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, 
                 shouldDisplayDamageText, shouldPlaySound);
+            if (shouldPlaySound)
+            {
+                ChangeAnimationState(hurtAnim);
+            }
         }
     }
 
@@ -262,17 +272,53 @@ public class Player : Entity
         isDead = true;
         AudioManager.instance.PlayOneShot(playerDyingSound, transform.position);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
-        animator.Play(deathAnim);
+        ChangeAnimationState(deathAnim);
         health = 0;
         rb.velocity = Vector2.zero;
         GetComponent<Collider>().enabled = false;
+        pickupRange.SetActive(false);
+        DropPickupables();
         if (currentShieldInstance != null)
         {
             currentShieldInstance.gameObject.SetActive(false);
         }
         yield return new WaitForSecondsRealtime(2);
-        GameOverScreen.DeathAnimation();
-        enabled = false;
+        isDead = false;
+        pickupRange.SetActive(true);
+        transform.position = spawnPoint;
+        health = maxHealth;
+        GetComponent<Collider>().enabled = true;
+        EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
+        foreach (var spawner in spawners)
+        {
+            spawner.DestroyEnemies();
+        }
+    }
+
+    private void DropPickupables()
+    {
+        for (int i = 0; i < materialPrefabs.Length; i++)
+        {
+            int materialCount = (int)(materialCounts[i] * materialDropAmountPercent);
+            for (int j = 0; j < materialCount; j++)
+            {
+                DropMaterial(i);
+            }
+            materialCounts[i] = materialCount;
+        }
+    }
+
+    private void DropMaterial(int materialIndex)
+    {
+        LaunchPickupable(materialPrefabs[materialIndex], materialDropSpawnSpeed);
+    }
+
+    private void LaunchPickupable(GameObject pickupablePrefab, float pickupableSpeed)
+    {
+        float angle = Random.Range(-360, 360);
+        Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        GameObject currentPickupableInstance = Instantiate(pickupablePrefab, transform.position, Quaternion.identity);
+        currentPickupableInstance.GetComponent<Rigidbody>().velocity = direction * pickupableSpeed;
     }
 
     private void HandleShooting()
