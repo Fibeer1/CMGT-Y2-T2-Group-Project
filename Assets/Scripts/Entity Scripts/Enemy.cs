@@ -142,6 +142,10 @@ public class Enemy : Entity
 
     private IEnumerator HandleAttack()
     {
+        if (isAttacking)
+        {
+            yield break;
+        }
         isAttacking = true;
         attackCDTimer = attackCD;
         if (animator != null)
