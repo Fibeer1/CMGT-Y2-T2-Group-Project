@@ -307,7 +307,7 @@ MonoBehaviour:
       Data3: -1046119539
       Data4: 1916371846
     Path: event:/Other events/Collect sound
-  materialName: Blood
+  materialName: Crystal
   materialTierIndex: 2
   materialCount: 1
   textColor: {r: 1, g: 0.435849, b: 0.435849, a: 1}
