@@ -676,7 +676,7 @@ MonoBehaviour:
   enemyAttackRotator: {fileID: 151221076889105181}
   damage: 30
   attackParent: {fileID: 0}
-  attackCDTimer: 0.5
+  attackCDTimer: 0.2
   attackCD: 4
   attackRange: 1.5
   attackOffset: 3
@@ -721,6 +721,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldAttack: 0
   characterObject: {fileID: 999305627531072539}
+  frontSprite: {fileID: 0}
+  backSprite: {fileID: 0}
   attackAnimDuration: 3
   duringAttackAnim: 0
   currentAnimState: 
