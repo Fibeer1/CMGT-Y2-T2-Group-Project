@@ -92,18 +92,16 @@ public class Player : Entity
 
     [Header("Animation Variables")]
     [SerializeField] private float attackAnimDuration;
+    [SerializeField] private Transform characterObject;
+    private Vector3 characterObjectOffset;
+    private Vector3 characterObjectScale;
     private bool shouldAttack = false;
     private bool duringAttackAnim = false;
     private string currentAnimState;
-    private const string idleAnim = "PlayerIdleDown";
-    private const string attackDownAnim = "PlayerAttackDown";
-    private const string attackUpAnim = "PlayerAttackUp";
-    private const string attackLeftAnim = "PlayerAttackLeft";
-    private const string attackRightAnim = "PlayerAttackRight";
-    private const string runDownAnim = "PlayerRunDown";
-    private const string runUpAnim = "PlayerRunUp";
-    private const string runLeftAnim = "PlayerRunLeft";
-    private const string runRightAnim = "PlayerRunRight";
+    private const string idleAnim = "Main Character Idle";
+    private const string attackAnim = "Main Character Attack";
+    private const string runAnim = "Main Character Running";
+    private const string deathAnim = "Main Character Death";
 
     private void Awake()
     {
@@ -112,10 +110,12 @@ public class Player : Entity
         spawnPoint = transform.position;
         playerCam = FindObjectOfType<Camera>();
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         ChangeAnimationState(idleAnim);
         swordSwingCDTimer = swordSwingCD;
         healthDrainTimer = healthDrainTickRate;
+        characterObjectOffset = characterObject.localPosition;
+        characterObjectScale = characterObject.localScale;
     }
 
     private void Update()
@@ -164,24 +164,7 @@ public class Player : Entity
             if (!duringAttackAnim)
             {
                 duringAttackAnim = true;
-                string targetAnim;
-                float angle = swordSwingRotator.localRotation.eulerAngles.y;
-                if ((angle >= 0 && angle <= 45) || (angle >= 315 && angle <= 360))
-                {
-                    targetAnim = attackUpAnim;
-                }
-                else if (angle >= 45 && angle <= 135)
-                {
-                    targetAnim = attackRightAnim;
-                }
-                else if (angle >= 225 && angle < 315)
-                {
-                    targetAnim = attackLeftAnim;
-                }
-                else
-                {
-                    targetAnim = attackDownAnim;
-                }
+                string targetAnim = attackAnim;
                 
                 ChangeAnimationState(targetAnim);
                 Invoke("StopAttackAnim", attackAnimDuration);
@@ -191,28 +174,21 @@ public class Player : Entity
         {
             return;
         }
-        if (vertical > 0 || (vertical > 0 && horizontal != 0))
+        if (horizontal != 0)
         {
-            //Prioritize vertical animations during diagonal movement
-            ChangeAnimationState(runUpAnim);
+            Vector3 targetPosition = characterObjectOffset;
+            Vector3 targetScale = characterObjectScale;
+
+            targetPosition.x = characterObjectOffset.x * (horizontal >= 0 ? 1 : -1);
+            targetScale.x = characterObjectScale.x * (horizontal >= 0 ? 1 : -1);
+            characterObject.localPosition = targetPosition;
+            characterObject.localScale = targetScale;
         }
-        else if (vertical < 0 || (vertical < 0 && horizontal != 0))
+
+        if (horizontal != 0 || vertical != 0)
         {
-            //Prioritize vertical animations during diagonal movement
-            ChangeAnimationState(runDownAnim);
+            ChangeAnimationState(runAnim);
         }
-        else if (vertical == 0)
-        {
-            if (horizontal > 0)
-            {
-                ChangeAnimationState(runRightAnim);
-            }
-            else if (horizontal < 0)
-            {
-                ChangeAnimationState(runLeftAnim);
-            }
-        }
-        
         if (horizontal == 0 && vertical == 0)
         {
             ChangeAnimationState(idleAnim);
@@ -285,8 +261,8 @@ public class Player : Entity
         }
         isDead = true;
         AudioManager.instance.PlayOneShot(playerDyingSound, transform.position);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);        
-        playerSprite.enabled = false;
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        animator.Play(deathAnim);
         health = 0;
         rb.velocity = Vector2.zero;
         GetComponent<Collider>().enabled = false;
@@ -294,7 +270,7 @@ public class Player : Entity
         {
             currentShieldInstance.gameObject.SetActive(false);
         }
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(2);
         GameOverScreen.DeathAnimation();
         enabled = false;
     }
