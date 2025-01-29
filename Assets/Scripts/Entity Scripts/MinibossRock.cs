@@ -14,6 +14,7 @@ public class MinibossRock : Entity
     [SerializeField] private GameObject bloodOrbPrefab;
     [SerializeField] private int bloodOrbsOnDeath;
     [SerializeField] private float pickupableSpawnSpeed = 5;
+    private bool hasSpawnedPickupables = false;
 
     [Header("Aftershock Variables")]
     [SerializeField] private GameObject aftershockPrefab;
@@ -69,6 +70,11 @@ public class MinibossRock : Entity
 
     private void DropPickupables()
     {
+        if (hasSpawnedPickupables)
+        {
+            return;
+        }
+        hasSpawnedPickupables = true;
         for (int i = 0; i < bloodOrbsOnDeath; i++)
         {
             LaunchBloodOrbs(pickupableSpawnSpeed);

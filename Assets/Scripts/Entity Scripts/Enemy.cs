@@ -18,6 +18,7 @@ public class Enemy : Entity
     [SerializeField] private float pickupableSpawnSpeed = 5;
     [SerializeField] private GameObject[] materialPrefabs;
     [SerializeField] private int[] materialChances;
+    private bool hasSpawnedPickupables = false;
 
     [Header("Combat Variables")]
     [SerializeField] private GameObject enemyAttackPrefab;
@@ -189,7 +190,7 @@ public class Enemy : Entity
         {
             yield break;
         }
-        AudioManager.instance.PlayOneShot(enemyDyingSound, this.transform.position);
+        AudioManager.instance.PlayOneShot(enemyDyingSound, transform.position);
 
         GameManager.enemies.Remove(this);
         if (originSpawner != null)
@@ -202,6 +203,11 @@ public class Enemy : Entity
 
     private void DropPickupables()
     {
+        if (hasSpawnedPickupables)
+        {
+            return;
+        }
+        hasSpawnedPickupables = true;
         for (int i = 0; i < bloodOrbsOnDeath; i++)
         {
             LaunchPickupable(bloodOrbPrefab, pickupableSpawnSpeed);
