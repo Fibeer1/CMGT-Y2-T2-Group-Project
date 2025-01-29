@@ -893,14 +893,14 @@ ScriptedImporter:
     spritePosition: {x: 498, y: 766}
   - name: main character front hand
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.1346198, y: 0.6178916}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 618
-      y: 4
-      width: 67
+      x: 617
+      y: 1
+      width: 73
       height: 161
     spriteID: 019c5679878bdb442bc2da2625922543
     spriteBone:
