@@ -152,6 +152,7 @@ MonoBehaviour:
   rockAttackCD: 15
   rockAttackSpawnDelay: 0.5
   abilityIndexToUnlock: 1
+  bossHealthBarPrefab: {fileID: 1705934086414640547, guid: 4a1ae49294fb73746baa31145afcd9dc, type: 3}
 --- !u!195 &280142109981396572
 NavMeshAgent:
   m_ObjectHideFlags: 0
