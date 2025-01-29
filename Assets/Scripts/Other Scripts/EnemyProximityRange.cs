@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyProximityRange : MonoBehaviour
 {
     [SerializeField] private Player player;
-    private List<Enemy> enemies = new List<Enemy>();
+    [SerializeField] private List<Transform> enemies = new List<Transform>();
     
     private void Update()
     {
@@ -15,18 +15,18 @@ public class EnemyProximityRange : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy collisionEnemy = other.GetComponent<Enemy>();
-        if (collisionEnemy != null && !enemies.Contains(collisionEnemy))
+        if (collisionEnemy != null && !enemies.Contains(collisionEnemy.transform))
         {
-            enemies.Add(collisionEnemy);
+            enemies.Add(collisionEnemy.transform);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Enemy collisionEnemy = other.GetComponent<Enemy>();
-        if (collisionEnemy != null && enemies.Contains(collisionEnemy))
+        if (collisionEnemy != null && enemies.Contains(collisionEnemy.transform))
         {
-            enemies.Remove(collisionEnemy);
+            enemies.Remove(collisionEnemy.transform);
         }
     }
 
@@ -47,17 +47,17 @@ public class EnemyProximityRange : MonoBehaviour
         }
 
         float closestEnemyDistance = Mathf.Infinity;
-        foreach (Enemy enemy in enemies)
+        foreach (Transform enemy in enemies)
         {
             if (enemy == null)
             {
                 continue;
             }
-            float distance = Vector2.Distance(player.transform.position, enemy.transform.position);
+            float distance = Vector3.Distance(player.transform.position, enemy.position);
             if (distance < closestEnemyDistance)
             {
                 closestEnemyDistance = distance;
-                player.closestEnemy = enemy;
+                player.closestEnemy = enemy.GetComponent<Enemy>();
             }
         }
     }
