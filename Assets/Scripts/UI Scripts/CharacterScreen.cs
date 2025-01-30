@@ -15,6 +15,8 @@ public class CharacterScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] gearPieceTexts; //0 item name, 1 rarity, 2 stats, 3 costs
     [SerializeField] private TextMeshProUGUI[] abilityTexts; //0 ability name, 1 level, 2 stats, 3 costs
     [SerializeField] private GameObject[] abilityButtons;
+    [SerializeField] private GameObject gearSelectionOutline;
+    [SerializeField] private GameObject abilitySelectionOutline;
     private Pause pauseMenu;
 
     private UIGearPiece currentGearPiece;
@@ -82,6 +84,7 @@ public class CharacterScreen : MonoBehaviour
     public void OnGearPieceClick(GameObject gearPiece)
     {
         currentGearPiece = gearPiece.GetComponent<UIGearPiece>();
+        gearSelectionOutline.transform.position = currentGearPiece.transform.position;
         UpdateGearPiece();
     }
 
@@ -127,6 +130,7 @@ public class CharacterScreen : MonoBehaviour
     public void OnAbilityClick(GameObject gearPiece)
     {
         currentAbility = gearPiece.GetComponent<UIAbility>();
+        abilitySelectionOutline.transform.position = currentAbility.transform.position;
         UpdateAbility();
     }
 

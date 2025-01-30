@@ -26,7 +26,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-4412361151254067684
+--- !u!1102 &-5348987882339645001
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -65,11 +65,11 @@ AnimatorStateMachine:
     m_State: {fileID: 2944062756808633407}
     m_Position: {x: 200, y: 0, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -4412361151254067684}
-    m_Position: {x: 235, y: 65, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -5703384114471401628}
     m_Position: {x: 270, y: 130, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5348987882339645001}
+    m_Position: {x: 260, y: 70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

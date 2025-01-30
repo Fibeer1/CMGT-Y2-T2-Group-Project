@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    [Header("Animation Triggers")]
-    public bool shouldAttack = false;
-
     [Header("Character Position Variables")]
     [SerializeField] private Transform characterObject;
     [SerializeField] private Sprite frontSprite;
@@ -17,15 +14,11 @@ public class EnemyAnimator : MonoBehaviour
 
     private Enemy enemyScript;
     private Animator animator;    
-    [SerializeField] private float attackAnimDuration;
-    [SerializeField] private bool duringAttackAnim = false;
+    public float attackAnimDuration;
+    private bool duringSpecialAnim = false;
     [SerializeField] private string currentAnimState;
-    [SerializeField] private string idleAnim = "EnemyIdleDown";
-    [SerializeField] private string attackDownAnim = "EnemyAttackDown";
-    [SerializeField] private string attackUpAnim = "EnemyAttackUp";
-    [SerializeField] private string attackAnim = "EnemyAttackLeft";
-    [SerializeField] private string runDownAnim = "EnemyRunDown";
-    [SerializeField] private string runUpAnim = "EnemyRunUp";
+    [SerializeField] private string idleAnim = "EnemyIdle";
+    public string attackAnim = "EnemyAttack";
     [SerializeField] private string runAnim = "EnemyRun";
 
     private void Start()
@@ -68,35 +61,7 @@ public class EnemyAnimator : MonoBehaviour
 
     private void HandleAnimations()
     {
-        if (animator == null)
-        {
-            return;
-        }
-        if (shouldAttack)
-        {
-            shouldAttack = false;
-            if (!duringAttackAnim)
-            {
-                duringAttackAnim = true;
-                string targetAnim;
-                float angle = enemyScript.enemyAttackRotator.localRotation.eulerAngles.y;
-                if ((angle >= 0 && angle <= 45) || (angle >= 315 && angle <= 360))
-                {
-                    targetAnim = attackUpAnim;
-                }
-                else if ((angle >= 45 && angle <= 135) || (angle >= 225 && angle < 315))
-                {
-                    targetAnim = attackAnim;
-                }
-                else
-                {
-                    targetAnim = attackDownAnim;
-                }
-                ChangeAnimationState(targetAnim);
-                Invoke("StopAttackAnim", attackAnimDuration);
-            }
-        }
-        if (duringAttackAnim)
+        if (animator == null || duringSpecialAnim)
         {
             return;
         }
@@ -105,14 +70,6 @@ public class EnemyAnimator : MonoBehaviour
         {
             ChangeAnimationState(runAnim);
         }
-        if (enemyScript.meshAgent.velocity.z > 0)
-        {
-            ChangeAnimationState(runUpAnim);
-        }
-        else if (enemyScript.meshAgent.velocity.z < 0)
-        {
-            ChangeAnimationState(runDownAnim);
-        }
 
         if (enemyScript.meshAgent.velocity == Vector3.zero)
         {
@@ -120,9 +77,16 @@ public class EnemyAnimator : MonoBehaviour
         }
     }
 
-    private void StopAttackAnim()
+    public IEnumerator SpecialAnimation(string animName, float animDuration)
     {
-        duringAttackAnim = false;
+        if (duringSpecialAnim)
+        {
+            yield break;
+        }
+        duringSpecialAnim = true;
+        ChangeAnimationState(animName);
+        yield return new WaitForSeconds(animDuration);
+        duringSpecialAnim = false;
     }
 
     private void ChangeAnimationState(string newState)

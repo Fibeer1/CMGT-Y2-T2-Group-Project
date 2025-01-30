@@ -16,6 +16,9 @@ public class Miniboss : Enemy
     private GameObject healthBarInstance;
     private Slider healthBarSlider;
 
+    [SerializeField] private string rockSummonAnim;
+    [SerializeField] private float rockSummonAnimDuration;
+
     private void Start()
     {
         abilityUnlocker = GetComponent<PlayerAbilityUnlocker>();
@@ -74,6 +77,10 @@ public class Miniboss : Enemy
 
     private void SpawnRock()
     {
+        if (animator != null)
+        {
+            StartCoroutine(animator.SpecialAnimation(rockSummonAnim, rockSummonAnimDuration));
+        }
         rockAttackCDTimer = rockAttackCD;
         EnemySpecialAttackIndicator attackIndicator = Instantiate(rockAttackIndicator, 
             player.transform.position, Quaternion.identity).GetComponent<EnemySpecialAttackIndicator>();

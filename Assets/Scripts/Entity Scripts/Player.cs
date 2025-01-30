@@ -93,6 +93,7 @@ public class Player : Entity
     [SerializeField] private EventReference throwSound;
     [SerializeField] private EventReference abilitySound;
     [SerializeField] private EventReference dashSound;
+    [SerializeField] private EventReference footstepSound;
 
     [Header("Animation Variables")]
     [SerializeField] private float attackAnimDuration;
@@ -225,6 +226,11 @@ public class Player : Entity
         isAttacking = false;
     }
 
+    public void Footstep()
+    {
+        AudioManager.instance.PlayOneShot(footstepSound, transform.position);
+    }
+
     private void ChangeAnimationState(string newState)
     {
         if (currentAnimState == newState)
@@ -269,6 +275,11 @@ public class Player : Entity
             {
                 base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, 
                     shouldDisplayDamageText, shouldPlaySound);
+                float remainingHealth = health - healthChangeValue;
+                if (remainingHealth > 0)
+                {
+                    
+                }
                 StartCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
             }
         }

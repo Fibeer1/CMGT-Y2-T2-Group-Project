@@ -678,6 +678,7 @@ MonoBehaviour:
   attackParent: {fileID: 0}
   attackCDTimer: 0.2
   attackCD: 4
+  attackDuration: 2
   attackRange: 1.5
   attackOffset: 3
   closeAttackOffset: 0.75
@@ -719,7 +720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73adeea7986be544f8ccd49d093f0969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldAttack: 0
   characterObject: {fileID: 999305627531072539}
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
@@ -727,11 +727,7 @@ MonoBehaviour:
   duringAttackAnim: 0
   currentAnimState: 
   idleAnim: GolemIdle
-  attackDownAnim: GolemSlam
-  attackUpAnim: GolemSlam
   attackAnim: GolemSlam
-  runDownAnim: GolemWalk
-  runUpAnim: GolemWalk
   runAnim: GolemWalk
 --- !u!195 &3096548063755689734
 NavMeshAgent:
