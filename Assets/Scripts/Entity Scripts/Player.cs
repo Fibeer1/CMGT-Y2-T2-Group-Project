@@ -93,7 +93,6 @@ public class Player : Entity
     [SerializeField] private EventReference throwSound;
     [SerializeField] private EventReference abilitySound;
     [SerializeField] private EventReference dashSound;
-    [SerializeField] private EventReference footstepSound;
 
     [Header("Animation Variables")]
     [SerializeField] private float attackAnimDuration;
@@ -224,11 +223,6 @@ public class Player : Entity
         yield return new WaitForSeconds(animDuration);
         duringSpecialAnim = false;
         isAttacking = false;
-    }
-
-    public void Footstep()
-    {
-        AudioManager.instance.PlayOneShot(footstepSound, transform.position);
     }
 
     private void ChangeAnimationState(string newState)
