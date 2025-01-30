@@ -565,7 +565,7 @@ MonoBehaviour:
   damage: 10
   attackParent: {fileID: 4097444177194900160}
   attackCDTimer: 0
-  attackCD: 1
+  attackCD: 1.05
   attackDuration: 0.5
   attackRange: 1
   attackOffset: 0.2
@@ -634,7 +634,6 @@ MonoBehaviour:
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
   attackAnimDuration: 1
-  duringAttackAnim: 0
   currentAnimState: 
   idleAnim: GhoulHover
   attackAnim: GhoulAttack
