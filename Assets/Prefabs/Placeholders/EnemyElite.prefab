@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 4580239102208618172}
   - component: {fileID: 8159936607591768031}
   - component: {fileID: 1818161816127069919}
+  - component: {fileID: 1113150858120316148}
   m_Layer: 0
   m_Name: Golem PSB
   m_TagString: Untagged
@@ -444,6 +445,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db15ed776d0bd145a30c21fbbc49d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &1113150858120316148
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095905525924531320}
+  m_Enabled: 1
+  m_SortingLayerID: 968355605
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &2843082359326149561
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b518bbb896c129b47a83eae27f79a83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 6225803126070366110, guid: 468845f2ec4b55149852925d3a0db439, type: 3}
+  deathEffect: {fileID: 0}
   allegiance: Enemy
   isDead: 0
   health: 100

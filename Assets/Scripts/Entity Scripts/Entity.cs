@@ -67,7 +67,10 @@ public class Entity : MonoBehaviour
             yield break;
         }
         isDead = true;
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
         yield return null;
         Destroy(gameObject);
     }
