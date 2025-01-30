@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Text;
-
+using FMODUnity;
 public class CharacterScreen : MonoBehaviour
 {
     [SerializeField] private GameObject characterScreen;
@@ -19,7 +19,7 @@ public class CharacterScreen : MonoBehaviour
 
     private UIGearPiece currentGearPiece;
     private UIAbility currentAbility;
-
+    [SerializeField] private EventReference upgradeSound;
     private void Start()
     {
         player = FindObjectOfType<Player>();
@@ -102,10 +102,11 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("Missing required materials to upgrade.");
             return;
         }
-
+        AudioManager.instance.PlayOneShot(upgradeSound, this.transform.position);
         currentGearPiece.UpgradePlayerStats();
         UpdateGearPiece();
     }
+
 
     private void UpdateGearPiece()
     {
@@ -147,7 +148,7 @@ public class CharacterScreen : MonoBehaviour
             Debug.Log("Missing required materials to upgrade.");
             return;
         }
-
+        AudioManager.instance.PlayOneShot(upgradeSound, this.transform.position);
         currentAbility.UpgradePlayerStats();
         UpdateAbility();
     }

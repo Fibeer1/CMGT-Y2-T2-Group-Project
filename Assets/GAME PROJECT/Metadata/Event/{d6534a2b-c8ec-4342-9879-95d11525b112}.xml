@@ -240,7 +240,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{ff36ad3f-769d-40fc-b9f8-a7b52e0424b6}">
 		<property name="volume">
-			<value>-18.5</value>
+			<value>-15</value>
 		</property>
 		<relationship name="automators">
 			<destination>{fdf69090-4328-4a04-85e9-0a01914e7ab2}</destination>

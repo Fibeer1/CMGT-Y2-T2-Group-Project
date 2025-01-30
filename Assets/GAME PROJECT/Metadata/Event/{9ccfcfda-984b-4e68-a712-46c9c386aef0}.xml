@@ -104,7 +104,7 @@
 	<object class="MixerBusPanner" id="{6250dc78-11fd-4589-be4d-750cdfc25e68}" />
 	<object class="EventSound" id="{b832a625-b7e7-4ca7-acd1-94603f7e76e0}">
 		<property name="pitch">
-			<value>8.5</value>
+			<value>2.79999995</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{57b5b77a-584c-42e9-9b5a-bd3b7dcf1acd}</destination>

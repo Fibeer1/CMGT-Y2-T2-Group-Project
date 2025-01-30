@@ -92,11 +92,17 @@
 		<property name="length">
 			<value>0.69999999999999996</value>
 		</property>
+		<property name="startOffset">
+			<value>7.5</value>
+		</property>
 		<property name="timelockedOffset">
 			<value>1.053776968529982</value>
 		</property>
+		<property name="volume">
+			<value>7</value>
+		</property>
 		<property name="pitch">
-			<value>12</value>
+			<value>8.5</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{acc3815e-c82a-4982-b031-09ab9365379b}</destination>
@@ -169,7 +175,7 @@
 	</object>
 	<object class="AutomationPoint" id="{6bc6fad9-11f6-4970-9716-4193d3b6d76c}">
 		<property name="position">
-			<value>0.10000000000000002</value>
+			<value>0.20000000000000001</value>
 		</property>
 		<property name="value">
 			<value>1</value>

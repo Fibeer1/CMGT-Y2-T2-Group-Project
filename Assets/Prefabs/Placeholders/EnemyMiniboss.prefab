@@ -133,18 +133,18 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   enemyAttackSound:
     Guid:
-      Data1: -1664102438
-      Data2: 1315477579
-      Data3: -918154585
-      Data4: -256997693
-    Path: event:/Enemy/Enemy attack
+      Data1: 228127039
+      Data2: 1326348001
+      Data3: 124979584
+      Data4: 87463264
+    Path: event:/NEW SOUNDS/Boss melee
   enemyDyingSound:
     Guid:
-      Data1: -1608642073
-      Data2: 1333505801
-      Data3: 1480911510
-      Data4: 1520838622
-    Path: event:/Enemy/Enemy dying
+      Data1: 779047545
+      Data2: 1207729026
+      Data3: 1772218798
+      Data4: -281977485
+    Path: event:/NEW SOUNDS/Golem death
   meshAgent: {fileID: 0}
   rockAttackIndicator: {fileID: 7758737366089918515, guid: 65140ceefe4e33a449b358b544d201b9, type: 3}
   rockAttackPrefab: {fileID: 2086440198433708197, guid: 8a4ef95712c774f45aec6e6f16c2005f, type: 3}
@@ -153,6 +153,20 @@ MonoBehaviour:
   rockAttackSpawnDelay: 0.5
   abilityIndexToUnlock: 1
   bossHealthBarPrefab: {fileID: 1705934086414640547, guid: 4a1ae49294fb73746baa31145afcd9dc, type: 3}
+  bossRockSummonSound:
+    Guid:
+      Data1: -1244452327
+      Data2: 1170650721
+      Data3: -259468920
+      Data4: -1251950382
+    Path: event:/NEW SOUNDS/Boss rock summon
+  bossRockAttackSound:
+    Guid:
+      Data1: 236885518
+      Data2: 1181090233
+      Data3: -263919451
+      Data4: 1555060228
+    Path: event:/NEW SOUNDS/Boss rock attack
 --- !u!195 &280142109981396572
 NavMeshAgent:
   m_ObjectHideFlags: 0

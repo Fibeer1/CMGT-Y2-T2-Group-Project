@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 6297320485782748351}
   - component: {fileID: 5657324168184740889}
   - component: {fileID: 3096548063755689734}
+  - component: {fileID: 5527640001535503147}
   m_Layer: 7
   m_Name: EnemyElite
   m_TagString: Untagged
@@ -694,18 +695,18 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   enemyAttackSound:
     Guid:
-      Data1: -1664102438
-      Data2: 1315477579
-      Data3: -918154585
-      Data4: -256997693
-    Path: event:/Enemy/Enemy attack
+      Data1: -1728126767
+      Data2: 1084045536
+      Data3: 144948893
+      Data4: 1393086965
+    Path: event:/NEW SOUNDS/Golem attack
   enemyDyingSound:
     Guid:
-      Data1: -1608642073
-      Data2: 1333505801
-      Data3: 1480911510
-      Data4: 1520838622
-    Path: event:/Enemy/Enemy dying
+      Data1: 779047545
+      Data2: 1207729026
+      Data3: 1772218798
+      Data4: -281977485
+    Path: event:/NEW SOUNDS/Golem death
   meshAgent: {fileID: 0}
 --- !u!114 &5657324168184740889
 MonoBehaviour:
@@ -755,6 +756,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &5527640001535503147
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123433927205347779}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3301752183958795882
 GameObject:
   m_ObjectHideFlags: 0

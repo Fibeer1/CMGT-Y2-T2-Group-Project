@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using FMODUnity;
 public class Miniboss : Enemy
 {
     [SerializeField] private GameObject rockAttackIndicator;
@@ -15,6 +15,9 @@ public class Miniboss : Enemy
     [SerializeField] private GameObject bossHealthBarPrefab;
     private GameObject healthBarInstance;
     private Slider healthBarSlider;
+
+    [SerializeField] private EventReference bossRockSummonSound;
+    [SerializeField] private EventReference bossRockAttackSound;
 
     private void Start()
     {
@@ -63,6 +66,7 @@ public class Miniboss : Enemy
             return;
         }
         SpawnRock();
+        AudioManager.instance.PlayOneShot(bossRockAttackSound, this.transform.position);
     }
 
     public override IEnumerator DeathSequence()
@@ -74,6 +78,7 @@ public class Miniboss : Enemy
 
     private void SpawnRock()
     {
+        AudioManager.instance.PlayOneShot(bossRockSummonSound, this.transform.position);
         rockAttackCDTimer = rockAttackCD;
         EnemySpecialAttackIndicator attackIndicator = Instantiate(rockAttackIndicator, 
             player.transform.position, Quaternion.identity).GetComponent<EnemySpecialAttackIndicator>();

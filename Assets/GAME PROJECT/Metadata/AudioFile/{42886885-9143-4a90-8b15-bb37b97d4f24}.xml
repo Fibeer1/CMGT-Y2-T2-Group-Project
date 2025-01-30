@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{42886885-9143-4a90-8b15-bb37b97d4f24}">
+		<property name="assetPath">
+			<value>Golem death.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.83591836734693881</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{39513945-7749-46c6-a1a4-64191fb3f25b}</destination>
+		</relationship>
+	</object>
+</objects>

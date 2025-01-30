@@ -108,7 +108,7 @@
 			<value>-11.5</value>
 		</property>
 		<property name="pitch">
-			<value>8</value>
+			<value>7</value>
 		</property>
 		<property name="playlistMode">
 			<value>1</value>
@@ -126,6 +126,12 @@
 	<object class="MixerBusFader" id="{85487bad-eac9-4953-8ee6-d4fee406f051}" />
 	<object class="ThreeEQEffect" id="{997a660e-f1c4-4ede-8225-7344b57fe5ab}">
 		<property name="lowGain">
+			<value>-8.5</value>
+		</property>
+		<property name="midGain">
+			<value>-4.5</value>
+		</property>
+		<property name="highGain">
 			<value>-8.5</value>
 		</property>
 	</object>
