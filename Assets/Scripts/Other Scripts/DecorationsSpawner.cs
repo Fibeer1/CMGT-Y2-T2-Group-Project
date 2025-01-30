@@ -6,7 +6,7 @@ public class DecorationsSpawner : MonoBehaviour
     [SerializeField] private GameObject[] objectsToSpawn;
     [SerializeField] private Vector2 spawnAreaSize = new Vector2(10f, 10f);
     [SerializeField] private int objectCount = 20;
-    [SerializeField] private float minSpacing = 1f;
+    [SerializeField] private float minSpacing = 5f;
 
     private List<Vector3> spawnedPositions = new List<Vector3>();
 
