@@ -172,7 +172,6 @@ public class Player : Entity
 
     private void HandleAnimations()
     {
-
         if (horizontal != 0 || isAttacking)
         {
             Vector3 targetPosition = characterObjectOffset;
@@ -197,7 +196,6 @@ public class Player : Entity
         {
             return;
         }
-        
 
         if (isMoving)
         {
