@@ -8315,6 +8315,7 @@ MonoBehaviour:
   hurtAnimDuration: 0.5
   dashAnimDuration: 0.2
   abilityAnimDuration: 0.75
+  deathAnimDuration: 0
   characterObject: {fileID: 7612997527424034786}
 --- !u!1 &7691437193162134163
 GameObject:
