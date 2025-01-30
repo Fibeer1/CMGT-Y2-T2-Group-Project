@@ -99,6 +99,7 @@ public class Player : Entity
     [SerializeField] private float hurtAnimDuration;
     [SerializeField] private float dashAnimDuration;
     [SerializeField] private float abilityAnimDuration;
+    [SerializeField] private float deathAnimDuration;
     [SerializeField] private Transform characterObject;
     private Vector3 characterObjectOffset;
     private Vector3 characterObjectScale;
@@ -287,7 +288,8 @@ public class Player : Entity
         isDead = true;
         AudioManager.instance.PlayOneShot(playerDyingSound, transform.position);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
-        ChangeAnimationState(deathAnim);
+        StopCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
+        StartCoroutine(SpecialAnimation(deathAnim, deathAnimDuration));
         health = 0;
         rb.velocity = Vector2.zero;
         GetComponent<Collider>().enabled = false;

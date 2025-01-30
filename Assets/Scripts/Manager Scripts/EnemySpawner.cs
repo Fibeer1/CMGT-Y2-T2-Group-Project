@@ -100,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < enemies.Count; i++)
         {
-            Destroy(enemies[i]);
+            Destroy(enemies[i].gameObject);
             enemies.RemoveAt(i);
             GameManager.enemies.RemoveAt(i);
         }
