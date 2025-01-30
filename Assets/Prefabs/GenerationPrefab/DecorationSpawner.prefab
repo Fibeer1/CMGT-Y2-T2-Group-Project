@@ -47,6 +47,8 @@ MonoBehaviour:
   objectsToSpawn:
   - {fileID: 729524340369864418, guid: fa66bbc7b4ff0b440b18991d04fa26eb, type: 3}
   - {fileID: 5522103951729692863, guid: d70df2c0fa57c674cbf2f7e38a498c6b, type: 3}
+  - {fileID: 6575771048784754110, guid: a8fd7035115f05641b3b2aa9745102b3, type: 3}
+  - {fileID: 1132784644856769065, guid: 9d995a452e24f5c44a7ade38dd603180, type: 3}
   spawnAreaSize: {x: 200, y: 200}
   objectCount: 1000
   minSpacing: 2
