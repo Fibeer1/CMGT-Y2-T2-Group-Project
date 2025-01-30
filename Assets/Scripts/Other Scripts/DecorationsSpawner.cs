@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class DecorationsSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] objectsToSpawn;
+    [SerializeField] private Vector3 centerPosition;
     [SerializeField] private Vector2 spawnAreaSize = new Vector2(10f, 10f);
     [SerializeField] private int objectCount = 20;
     [SerializeField] private float minSpacing = 5f;
@@ -56,7 +57,8 @@ public class DecorationsSpawner : MonoBehaviour
     {
         foreach (Vector3 spawnedPosition in spawnedPositions)
         {
-            if (Vector3.Distance(position, spawnedPosition) < minSpacing)
+            if (Vector3.Distance(position, spawnedPosition) < minSpacing || 
+                Vector3.Distance(position, centerPosition) < minSpacing * 3)
             {
                 return false;
             }
