@@ -319,6 +319,11 @@ public class Player : Entity
         {
             spawner.DestroyEnemies();
         }
+        Miniboss[] minibosses = FindObjectsOfType<Miniboss>();
+        foreach (var miniboss in minibosses)
+        {
+            miniboss.ResetBoss();
+        }
     }
 
     private void DropPickupables()

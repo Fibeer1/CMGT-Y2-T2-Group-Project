@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using FMODUnity;
 public class Miniboss : Enemy
 {
+    private Vector3 spawnPoint;
     [SerializeField] private GameObject rockAttackIndicator;
     [SerializeField] private GameObject rockAttackPrefab;
     [SerializeField] private float rockAttackCDTimer;
@@ -29,6 +30,7 @@ public class Miniboss : Enemy
         healthBarSlider = healthBarInstance.GetComponent<Slider>();
         healthBarSlider.maxValue = maxHealth;
         healthBarSlider.value = health;
+        spawnPoint = transform.position;
         InitializeEntity();
     }
 
@@ -41,6 +43,12 @@ public class Miniboss : Enemy
         HandlePlayerTargeting();
         HandleRockAttack();
         HandleHealthBar();
+    }
+
+    public void ResetBoss()
+    {
+        transform.position = spawnPoint;
+        health = maxHealth;
     }
 
     private void HandleHealthBar()
