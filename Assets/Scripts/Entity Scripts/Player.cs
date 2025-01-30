@@ -301,11 +301,12 @@ public class Player : Entity
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         StopCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
         StartCoroutine(SpecialAnimation(deathAnim, deathAnimDuration));
+        StopCoroutine(Dash());
         health = 0;
         rb.velocity = Vector2.zero;
         GetComponent<Collider>().enabled = false;
         pickupRange.SetActive(false);
-        DropPickupables();
+        DropPickupables();       
         if (currentShieldInstance != null)
         {
             currentShieldInstance.gameObject.SetActive(false);
