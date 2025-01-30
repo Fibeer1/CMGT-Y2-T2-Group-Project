@@ -392,8 +392,8 @@ MonoBehaviour:
   deathEffect: {fileID: 6225803126070366110, guid: 468845f2ec4b55149852925d3a0db439, type: 3}
   allegiance: Enemy
   isDead: 0
-  health: 5000
-  maxHealth: 5000
+  health: 4000
+  maxHealth: 4000
   armor: 1
   healTextColor: {r: 0, g: 0.35, b: 0, a: 1}
   damageTextColor: {r: 1, g: 1, b: 1, a: 1}
