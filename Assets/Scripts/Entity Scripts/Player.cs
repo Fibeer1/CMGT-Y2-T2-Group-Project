@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD;
+
 public class Player : Entity
 {    
     [Header("General Variables")]
@@ -93,6 +95,7 @@ public class Player : Entity
     [SerializeField] private EventReference throwSound;
     [SerializeField] private EventReference abilitySound;
     [SerializeField] private EventReference dashSound;
+    [SerializeField] private EventReference cdSound;
 
     [Header("Animation Variables")]
     [SerializeField] private float attackAnimDuration;
@@ -349,8 +352,14 @@ public class Player : Entity
         if (rangedAttackCDTimer > 0)
         {
             rangedAttackCDTimer -= Time.deltaTime;
+
+            if (Input.GetKeyDown(rangedAttackKey)) // Play cooldown sound if attempting to shoot
+            {
+                AudioManager.instance.PlayOneShot(cdSound, this.transform.position);
+            }
             return;
         }
+
         if (Input.GetKeyDown(rangedAttackKey) && canShootBullet)
         {
             Shoot(rangedProjectilePrefab, rangedDamage);
@@ -450,6 +459,11 @@ public class Player : Entity
         if (shieldCDTimer > 0 || currentShieldInstance != null)
         {
             shieldCDTimer -= Time.deltaTime;
+
+            if (Input.GetKeyDown(shieldKey)) // Play cooldown sound if attempting to use shield
+            {
+                AudioManager.instance.PlayOneShot(cdSound, this.transform.position);
+            }
             return;
         }
 
@@ -484,27 +498,35 @@ public class Player : Entity
 
     private void HandleDashing()
     {
-        if (dashCDTimer > 0)
-        {
-            dashCDTimer -= Time.deltaTime;
-            return;
-        }
-        if (Input.GetKeyDown(dashKey) && canDash)
-        {
-            AudioManager.instance.PlayOneShot(dashSound, transform.position);
-            float healthCost = health * dashHealthCost;
-            float remainingHealth = health - healthCost;
-            if (remainingHealth <= 0)
+        
+            if (dashCDTimer > 0)
             {
-                Debug.Log("Not enough health to dash.");
-                return;
-            }           
-            ChangeHealth(healthCost, false, false, false);
-            StartCoroutine(Dash());
-        }        
-    }
+                dashCDTimer -= Time.deltaTime;
 
-    private IEnumerator Dash()
+                if (Input.GetKeyDown(dashKey)) // Play cooldown sound if attempting to dash
+                {
+                    AudioManager.instance.PlayOneShot(cdSound, transform.position);
+                }
+                return;
+            }
+
+            if (Input.GetKeyDown(dashKey) && canDash)
+            {
+                AudioManager.instance.PlayOneShot(dashSound, transform.position);
+                float healthCost = health * dashHealthCost;
+                float remainingHealth = health - healthCost;
+
+                if (remainingHealth <= 0)
+                {
+                    return;
+                }
+
+                ChangeHealth(healthCost, false, false, false);
+                StartCoroutine(Dash());
+            }
+        }
+
+        private IEnumerator Dash()
     {
         if (isDashing)
         {

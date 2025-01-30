@@ -99,7 +99,7 @@
 			<value>24.71660899653979</value>
 		</property>
 		<property name="pitch">
-			<value>2.4000001</value>
+			<value>9.5</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{3e93e6ac-961f-41cb-8a0d-377082e668ef}</destination>
@@ -112,6 +112,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{4ddb7e6d-5698-4bc1-b968-8605fc76464d}">
+		<property name="volume">
+			<value>2.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -164,7 +167,7 @@
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>1</value>
+			<value>-0.148033753</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{af5d1250-5a8d-4db9-a907-b38bc34bda88}">
