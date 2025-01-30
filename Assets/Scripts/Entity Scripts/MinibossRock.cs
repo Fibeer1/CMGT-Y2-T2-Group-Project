@@ -62,6 +62,7 @@ public class MinibossRock : Entity
         {
             yield break;
         }
+        GetComponent<Collider>().enabled = false;
         animator.Play(despawnAnim);
         DropPickupables();
         yield return new WaitForSeconds(despawnAnimDuration);
