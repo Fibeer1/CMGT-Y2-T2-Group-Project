@@ -96,17 +96,25 @@ public class Player : Entity
 
     [Header("Animation Variables")]
     [SerializeField] private float attackAnimDuration;
+    [SerializeField] private float hurtAnimDuration;
+    [SerializeField] private float dashAnimDuration;
+    [SerializeField] private float abilityAnimDuration;
     [SerializeField] private Transform characterObject;
     private Vector3 characterObjectOffset;
     private Vector3 characterObjectScale;
-    private bool shouldAttack = false;
-    private bool duringAttackAnim = false;
+    private bool duringSpecialAnim = false;
+    private bool isAttacking = false;
     private string currentAnimState;
-    private const string idleAnim = "Main Character Idle";
-    private const string attackAnim = "Main Character Attack";
-    private const string runAnim = "Main Character Running";
-    private const string deathAnim = "Main Character Death";
-    private const string hurtAnim = "Main Character Hurt";
+    private const string idleAnim = "PlayerIdle";
+    private const string attackAnim = "PlayerAttack";
+    private const string attackMoveAnim = "PlayerAttackMove";
+    private const string dashAnim = "PlayerDash";
+    private const string abilityAnim = "PlayerAbility";
+    private const string runAnim = "PlayerRun";
+    private const string deathAnim = "PlayerDeath";
+    private const string hurtAnim = "PlayerHurt";
+
+    private bool isMoving => horizontal != 0 || vertical != 0 ? true : false;
 
     private void Awake()
     {
@@ -164,34 +172,46 @@ public class Player : Entity
 
     private void HandleAnimations()
     {
-        if (shouldAttack)
-        {
-            shouldAttack = false;
-            if (!duringAttackAnim)
-            {
-                duringAttackAnim = true;
-                string targetAnim = attackAnim;
-                
-                ChangeAnimationState(targetAnim);
-                Invoke("StopAttackAnim", attackAnimDuration);
-            }
-        }
-        if (duringAttackAnim)
-        {
-            return;
-        }
-        if (horizontal != 0)
+        //if (shouldAttack)
+        //{
+        //    shouldAttack = false;
+        //    if (!duringAttackAnim)
+        //    {
+        //        duringAttackAnim = true;
+        //        string targetAnim = attackAnim;
+
+        //        ChangeAnimationState(targetAnim);
+        //        Invoke("StopAttackAnim", attackAnimDuration);
+        //    }
+        //}
+
+        if (horizontal != 0 || isAttacking)
         {
             Vector3 targetPosition = characterObjectOffset;
             Vector3 targetScale = characterObjectScale;
+            float angle = swordSwingRotator.eulerAngles.y;            
 
-            targetPosition.x = characterObjectOffset.x * (horizontal >= 0 ? 1 : -1);
-            targetScale.x = characterObjectScale.x * (horizontal >= 0 ? 1 : -1);
+            if (isAttacking)
+            {
+               targetPosition.x = characterObjectOffset.x * (angle > 0 && angle <= 180 ? 1 : -1);
+               targetScale.x = characterObjectScale.x * (angle > 0 && angle <= 180 ? 1 : -1);
+            }
+            else
+            {
+                targetPosition.x = characterObjectOffset.x * (horizontal >= 0 ? 1 : -1);
+                targetScale.x = characterObjectScale.x * (horizontal >= 0 ? 1 : -1);
+            }
             characterObject.localPosition = targetPosition;
             characterObject.localScale = targetScale;
         }
 
-        if (horizontal != 0 || vertical != 0)
+        if (duringSpecialAnim)
+        {
+            return;
+        }
+        
+
+        if (isMoving)
         {
             ChangeAnimationState(runAnim);
         }
@@ -201,9 +221,21 @@ public class Player : Entity
         }
     }
 
-    private void StopAttackAnim()
+    private IEnumerator SpecialAnimation(string animName, float animDuration, bool attackAnimation = false)
     {
-        duringAttackAnim = false;
+        if (duringSpecialAnim)
+        {
+            yield break;
+        }
+        if (attackAnimation)
+        {
+            isAttacking = true;
+        }
+        duringSpecialAnim = true;
+        ChangeAnimationState(animName);
+        yield return new WaitForSeconds(animDuration);
+        duringSpecialAnim = false;
+        isAttacking = false;
     }
 
     private void ChangeAnimationState(string newState)
@@ -250,16 +282,13 @@ public class Player : Entity
             {
                 base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, 
                     shouldDisplayDamageText, shouldPlaySound);
+                StartCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
             }
         }
         else
         {
             base.ChangeHealth(healthChangeValue, false, shouldAccountForArmor, 
                 shouldDisplayDamageText, shouldPlaySound);
-            if (shouldPlaySound)
-            {
-                ChangeAnimationState(hurtAnim);
-            }
         }
     }
 
@@ -345,6 +374,7 @@ public class Player : Entity
             }
             rangedAttackCDTimer = rangedAttackCD;
             ChangeHealth(healthCost, false, false, false);
+            StartCoroutine(SpecialAnimation(abilityAnim, abilityAnimDuration));
         }
         
         if (target != null)
@@ -397,7 +427,14 @@ public class Player : Entity
 
     private void SwingSword()
     {
-        shouldAttack = true;
+        if (isMoving)
+        {
+            StartCoroutine(SpecialAnimation(attackMoveAnim, attackAnimDuration, true));
+        }
+        else
+        {
+            StartCoroutine(SpecialAnimation(attackAnim, attackAnimDuration, true));
+        }
         //Rotate the sword swing transform towards the mouse
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 1000, groundLayer))
@@ -467,7 +504,7 @@ public class Player : Entity
             {
                 Debug.Log("Not enough health to dash.");
                 return;
-            }
+            }           
             ChangeHealth(healthCost, false, false, false);
             StartCoroutine(Dash());
         }        
@@ -475,6 +512,11 @@ public class Player : Entity
 
     private IEnumerator Dash()
     {
+        if (isDashing)
+        {
+            yield break;
+        }
+        StartCoroutine(SpecialAnimation(dashAnim, dashAnimDuration));
         isDashing = true;
         dashCDTimer = dashCD;
         rb.velocity = new Vector3(horizontal, 0, vertical).normalized * dashingPower;
