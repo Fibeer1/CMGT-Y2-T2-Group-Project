@@ -48,7 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3123433927205347779, guid: 289d9c78f323410478a0bf55649c0ea6, type: 3}
-  enemyUnitParent: {fileID: 0}
   spawnLocation: {fileID: 6337117648421310333}
   maxEnemies: 5
   enemies: []
@@ -4854,7 +4853,7 @@ ParticleSystemRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5766729986456165567}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

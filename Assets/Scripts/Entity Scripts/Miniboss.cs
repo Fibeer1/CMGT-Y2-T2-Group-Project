@@ -16,6 +16,9 @@ public class Miniboss : Enemy
     private GameObject healthBarInstance;
     private Slider healthBarSlider;
 
+    [SerializeField] private string rockSummonAnim;
+    [SerializeField] private float rockSummonAnimDuration;
+
     [SerializeField] private EventReference bossRockSummonSound;
     [SerializeField] private EventReference bossRockAttackSound;
 
@@ -79,6 +82,10 @@ public class Miniboss : Enemy
     private void SpawnRock()
     {
         AudioManager.instance.PlayOneShot(bossRockSummonSound, this.transform.position);
+        if (animator != null)
+        {
+            StartCoroutine(animator.SpecialAnimation(rockSummonAnim, rockSummonAnimDuration));
+        }
         rockAttackCDTimer = rockAttackCD;
         EnemySpecialAttackIndicator attackIndicator = Instantiate(rockAttackIndicator, 
             player.transform.position, Quaternion.identity).GetComponent<EnemySpecialAttackIndicator>();

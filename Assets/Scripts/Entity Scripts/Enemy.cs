@@ -10,7 +10,7 @@ public class Enemy : Entity
     [SerializeField] private protected bool shouldMove = true;
     public Player player;
     public EnemySpawner originSpawner;
-    private EnemyAnimator animator;
+    private protected EnemyAnimator animator;
 
     [Header("Material Drop Variables")]
     [SerializeField] private GameObject bloodOrbPrefab;
@@ -27,6 +27,7 @@ public class Enemy : Entity
     [SerializeField] private Transform attackParent;
     [SerializeField] private float attackCDTimer;
     [SerializeField] private float attackCD;
+    [SerializeField] private float attackDuration;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private float attackOffset = 0.2f;
     [SerializeField] private float closeAttackOffset = 0.5f;
@@ -151,7 +152,7 @@ public class Enemy : Entity
         attackCDTimer = attackCD;
         if (animator != null)
         {
-            animator.shouldAttack = true;
+             StartCoroutine(animator.SpecialAnimation(animator.attackAnim, animator.attackAnimDuration));
         }        
         yield return new WaitForSeconds(attackDelay);
         enemyAttackRotator.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
@@ -166,7 +167,7 @@ public class Enemy : Entity
         }
 
         //Attack duration is half the attack cooldown
-        yield return new WaitForSeconds(attackCD / 2);
+        yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
     }
 
