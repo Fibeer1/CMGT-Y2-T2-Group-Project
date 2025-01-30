@@ -275,9 +275,8 @@ public class Player : Entity
                 float remainingHealth = health - healthChangeValue;
                 if (remainingHealth > 0)
                 {
-                    
-                }
-                StartCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
+                    StartCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
+                }                
             }
         }
         else
@@ -297,8 +296,7 @@ public class Player : Entity
         AudioManager.instance.PlayOneShot(playerDyingSound, transform.position);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         StopCoroutine(SpecialAnimation(hurtAnim, hurtAnimDuration));
-        StartCoroutine(SpecialAnimation(deathAnim, deathAnimDuration));
-        StopCoroutine(Dash());
+        animator.Play(deathAnim);
         health = 0;
         rb.velocity = Vector2.zero;
         GetComponent<Collider>().enabled = false;
@@ -313,6 +311,7 @@ public class Player : Entity
         pickupRange.SetActive(true);
         transform.position = spawnPoint;
         health = maxHealth;
+        animator.Play(idleAnim);
         GetComponent<Collider>().enabled = true;
         EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
         foreach (var spawner in spawners)
@@ -547,6 +546,6 @@ public class Player : Entity
             Shoot(dashProjectile, dashProjectileDamage, false, closestEnemy.transform);
         }
         isDashing = false;
-        rb.velocity = new Vector3(horizontal, 0, vertical).normalized * speed;
+        rb.velocity = Vector3.zero;
     }
 }

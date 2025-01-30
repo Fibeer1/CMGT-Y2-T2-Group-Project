@@ -118,7 +118,6 @@ public class Enemy : Entity
             }
             else
             {
-                shouldMove = false;
                 targetPosition = transform.position;
                 meshAgent.SetDestination(targetPosition);
                 attackOffset = normalAttackOffset;
