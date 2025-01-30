@@ -36,7 +36,7 @@ public class DecorationsSpawner : MonoBehaviour
 
               
                 GameObject objectToSpawn = objectsToSpawn[Random.Range(0, objectsToSpawn.Length)];
-                Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+                Instantiate(objectToSpawn, randomPosition, Quaternion.identity, transform);
             }
             else
             {
