@@ -172,18 +172,6 @@ public class Player : Entity
 
     private void HandleAnimations()
     {
-        //if (shouldAttack)
-        //{
-        //    shouldAttack = false;
-        //    if (!duringAttackAnim)
-        //    {
-        //        duringAttackAnim = true;
-        //        string targetAnim = attackAnim;
-
-        //        ChangeAnimationState(targetAnim);
-        //        Invoke("StopAttackAnim", attackAnimDuration);
-        //    }
-        //}
 
         if (horizontal != 0 || isAttacking)
         {
